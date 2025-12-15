@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import datosInicio from '../lib/Inicio.json';
+---
+
+<Layout title="Inicio">
+  <!-- Sección Hero con fondo de imagen -->
+  <section id="Inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Fondo con imagen del JSON -->
+    <div 
+      class="absolute inset-0 z-0 " 
+      style={`
+        background-image: url('${datosInicio.fondo}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      `}
+    >
+      <!-- Overlay con opacidad -->
+      <div class="absolute inset-0 bg-black/70"></div>
+    </div>
+    
+  <div class="container relative z-10 text-center text-white px-4 py-10">
+  <!-- Título principal con efecto tipo Netflix -->
+  <h1 
+    class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 tracking-tight opacity-0 animate-[fade-in-up_1s_ease-out_0.3s_forwards]"
+    style="transform: translateY(30px); text-shadow: 0 10px 30px rgba(0,0,0,0.3);"
+  >
+    <span class="bg-primary from-white via-primary/30 to-white bg-clip-text text-transparent animate-background-shine">
+      {datosInicio.titulo}
+    </span>
+  </h1>
+  
+  <!-- Subtítulo con efecto máquina de escribir -->
+  <p 
+    class="text-2xl md:text-3xl mb-12 max-w-2xl mx-auto font-light leading-relaxed opacity-0 animate-[fade-in_1.2s_ease-out_0.8s_forwards]"
+    style="text-shadow: 0 2px 10px rgba(0,0,0,0.2);"
+  >
+    {datosInicio.subtitulo}
+  </p>
+  
+  <!-- Botones flotantes -->
+  <div class="flex flex-col sm:flex-row gap-6 justify-center animate-[fade-in-up_0.8s_ease-out_1s_forwards] opacity-0">
+    <!-- Botón principal con efecto 3D -->
+    <a 
+      href={datosInicio.botones.contacto.enlace}
+      class="group relative px-12 py-5 bg-gradient-to-br from-white to-gray-100 text-primary font-bold text-xl rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95"
+    >
+      <span class="relative z-10 flex items-center gap-3">
+        {datosInicio.botones.contacto.texto}
+        <span class="group-hover:translate-x-2 transition-transform duration-300">→</span>
+      </span>
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300"></div>
+    </a>
+    
+    <!-- Botón secundario con efecto vidrio -->
+    <a 
+      href={datosInicio.botones.servicios.enlace}
+      class="group relative px-12 py-5 backdrop-blur-md bg-white/10 border-2 border-white/30 text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 hover:bg-white/20 hover:border-white/50"
+    >
+      <span class="relative z-10 flex items-center gap-3">
+        {datosInicio.botones.servicios.texto}
+        <span class="group-hover:rotate-90 transition-transform duration-300">+</span>
+      </span>
+    </a>
+  </div>
+  
+  <!-- Indicadores sociales o estadísticas -->
+  <div class="mt-16 flex justify-center gap-8 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">
+    <div class="text-center">
+      <div class="text-3xl font-bold mb-1 animate-pulse">500+</div>
+      <div class="text-sm text-white/70">Clientes Satisfechos</div>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold mb-1 animate-pulse" style="animation-delay: 0.2s">99%</div>
+      <div class="text-sm text-white/70">Tasa de Éxito</div>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold mb-1 animate-pulse" style="animation-delay: 0.4s">24/7</div>
+      <div class="text-sm text-white/70">Soporte Disponible</div>
+    </div>
+  </div>
+</div>
+  </section>
+</Layout>
+
+<style>
+  /* Animación personalizada para el fondo */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  section:first-child > div:first-child {
+    animation: fadeIn 1s ease-out;
+  }
+</style>

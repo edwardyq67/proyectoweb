@@ -1,0 +1,114 @@
+{
+  "productos": [
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil York",
+      "puntos": [
+        "Alta eficiencia energética SEER 18+",
+        "Control digital inteligente",
+        "Bajo nivel de ruido (≤ 45 dB)",
+        "Garantía de 5 años"
+      ],
+      "contenido": "Sistema de expansión directa York para climatización de alta eficiencia, ideal para aplicaciones comerciales y residenciales con necesidades de control preciso."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Expansion Directa",
+      "puntos": [
+        "Tecnología Inverter",
+        "Ahorro energético hasta 40%",
+        "Fácil instalación",
+        "Compatible con sistemas BMS"
+      ],
+      "contenido": "Sistema de expansión directa con tecnología inverter que optimiza el consumo energético y proporciona climatización constante."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil HVAC",
+      "puntos": [
+        "Control de humedad integrado",
+        "Filtros HEPA opcionales",
+        "Monitoreo remoto",
+        "Mantenimiento predictivo"
+      ],
+      "contenido": "Sistema HVAC completo que integra calefacción, ventilación y aire acondicionado con control avanzado de calidad del aire."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Industrial",
+      "puntos": [
+        "Capacidad 48,000+ BTU/h",
+        "Resistente a ambientes hostiles",
+        "Control industrial PLC",
+        "Diseño para espacios grandes"
+      ],
+      "contenido": "Sistema industrial diseñado para naves, fábricas y grandes espacios comerciales con requerimientos de climatización intensiva."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Residencial",
+      "puntos": [
+        "Diseño compacto y silencioso",
+        "Control WiFi y app móvil",
+        "Modo noche silencioso",
+        "Fácil limpieza de filtros"
+      ],
+      "contenido": "Solución perfecta para hogares, con diseño discreto y funcionamiento silencioso que no interfiere con la vida diaria."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Comercial",
+      "puntos": [
+        "Ideal para oficinas y tiendas",
+        "Control por zonas",
+        "Programación horaria",
+        "Bajo mantenimiento"
+      ],
+      "contenido": "Especialmente diseñado para espacios comerciales como oficinas, tiendas y restaurantes donde el confort es clave."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Alta Eficiencia",
+      "puntos": [
+        "Certificación Energy Star",
+        "Ahorro energético certificado",
+        "Compresor de alta eficiencia",
+        "Refrigerante ecológico R32"
+      ],
+      "contenido": "Modelos premium con la máxima certificación de eficiencia energética, reduciendo costos operativos y huella de carbono."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Sistema Split",
+      "puntos": [
+        "Instalación split flexible",
+        "Hasta 4 unidades internas",
+        "Control individual por zona",
+        "Diseño minimalista"
+      ],
+      "contenido": "Sistema split que permite climatizar múltiples zonas independientemente desde una sola unidad exterior."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Inverter",
+      "puntos": [
+        "Tecnología DC Inverter",
+        "Temperatura constante",
+        "Arranque suave",
+        "Larga vida útil"
+      ],
+      "contenido": "Tecnología inverter que ajusta automáticamente la potencia según la demanda, manteniendo temperatura constante y ahorrando energía."
+    },
+    {
+      "img": "https://atedsaperu.com/wp-content/uploads/2025/03/FANCOIL-EXPANSION-DIRECTA-YORK.png",
+      "titulo": "Fancoil Premium",
+      "puntos": [
+        "Diseño premium en acero",
+        "Panel táctil inteligente",
+        "Purificación de aire IA",
+        "Garantía extendida 7 años"
+      ],
+      "contenido": "Línea premium con materiales de alta gama, inteligencia artificial para purificación de aire y controles de última generación."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "titulo": "Sobre Nosotros",
+  "contenido": "Somos una empresa líder en el sector de aire acondicionado y ventilación mecánica con más de 20 años de experiencia especializada en instalación, mantenimiento y reparación de sistemas HVAC para el sector comercial, industrial y residencial.",
+  "boton": {
+    "texto": "Conoce Nuestra Historia",
+    "enlace": "/historia"
+  },
+  "foto": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg?t=st=1765814318~exp=1765817918~hmac=96ccd6962aa564cb35481940ab3a01f04532196da6702a3413680065fb954541&w=1480",
+  "logros": [
+    "Más de 20 años de experiencia",
+    "Equipo de especialistas certificados",
+    "Tecnología de última generación",
+    "Soporte técnico 24/7",
+    "Certificaciones internacionales",
+    "Proyectos en todo el país"
+  ],
+  "sello": {
+    "numero": "20+",
+    "texto": "Años de experiencia"
+  },
+  "servicios": [
+    {
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
+      "titulo": "Mantenimiento Preventivo",
+      "contenido": "Expertos en mantenimiento y restauración de sistemas HVAC para garantizar su óptimo funcionamiento.",
+      "url": "/servicios/mantenimiento-preventivo"
+    },
+    {
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
+      "titulo": "Instalación de Sistemas",
+      "contenido": "Instalación profesional de aire acondicionado y ventilación mecánica para todo tipo de espacios.",
+      "url": "/servicios/instalacion-sistemas"
+    },
+    {
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
+      "titulo": "Reparación Especializada",
+      "contenido": "Servicio técnico especializado en reparación de equipos de climatización y ventilación.",
+      "url": "/servicios/reparacion-especializada"
+    },
+    {
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_21-1280x853.jpg",
+      "titulo": "Ductos y Ventilación",
+      "contenido": "Diseño e instalación de sistemas de ductos para ventilación mecánica eficiente.",
+      "url": "/servicios/ductos-ventilacion"
+    },
+    {
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_20-1280x853.jpg",
+      "titulo": "Control de Calidad",
+      "contenido": "Garantizamos la calidad del aire interior con sistemas de filtración y purificación.",
+      "url": "/servicios/control-calidad"
+    },
+    {
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_19-1280x853.jpg",
+      "titulo": "Consultoría HVAC",
+      "contenido": "Asesoramiento técnico para proyectos de climatización y ventilación mecánica.",
+      "url": "/servicios/consultoria-hvac"
+    }
+  ]
+}

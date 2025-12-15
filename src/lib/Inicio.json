@@ -1,0 +1,17 @@
+{
+  "fondo": "https://img.freepik.com/foto-gratis/hornos-metalicos-dentro-gran-fabrica-equipos-pesados_114579-2820.jpg?t=st=1765813018~exp=1765816618~hmac=3be209a2e86ebc1a9000480ebf39c9de757b73fdca2e9c22a69b0f5245f57fa8&w=1480",
+  "titulo": "Bienvenido a Nuestra Empresa",
+  "subtitulo": "Soluciones industriales de alta calidad con más de 20 años de experiencia",
+  "botones": {
+    "contacto": {
+      "texto": "CONTACTANOS",
+      "enlace": "/contacto",
+      "estilo": "primary"
+    },
+    "servicios": {
+      "texto": "SERVICIOS",
+      "enlace": "/servicios",
+      "estilo": "secondary"
+    }
+  }
+}
