@@ -3,13 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import serviciosData from '../../lib/Nosotros.json';
 import { Icon } from 'astro-icon/components';
 import "../../styles/global.css";
-
-// Encontrar el índice del servicio actual para view-transition-name
-let servicioIndex = 0;
+import Productos from '../../components/Productos';
 
 // Exportar getStaticPaths para rutas dinámicas
 export async function getStaticPaths() {
-  return serviciosData.servicios.map((servicio, index) => ({
+  return serviciosData.servicios.map((servicio) => ({
     params: {
       servicio: servicio.slug
     }
@@ -19,15 +17,9 @@ export async function getStaticPaths() {
 // Obtener el parámetro de la URL
 const { servicio } = Astro.params;
 
-// Buscar el servicio por slug y obtener su índice
+// Buscar el servicio por slug
 const servicioEncontrado = serviciosData.servicios.find(
-  (s, index) => {
-    if (s.slug === servicio) {
-      servicioIndex = index;
-      return true;
-    }
-    return false;
-  }
+  s => s.slug === servicio
 );
 
 // Si no existe el servicio, redirigir a 404
@@ -55,27 +47,12 @@ if (!servicioEncontrado) {
     
     <!-- Título centrado sobre la imagen -->
     <div class="container relative z-10 text-center text-white px-4">
-      <h1 
-        class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight"
-        style={`view-transition-name: servicio-titulo-${servicioIndex};`}
-      >
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight">
         {servicioEncontrado.titulo}
       </h1>
-      <p class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+      <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto">
         {servicioEncontrado.contenido}
       </p>
-      
-      <!-- Indicadores del servicio -->
-      <div class="mt-8 flex flex-wrap justify-center gap-6">
-        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-          <Icon name={servicioEncontrado.icono} class="w-5 h-5" />
-          <span class="text-sm">{servicioEncontrado.duracion}</span>
-        </div>
-        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-          <Icon name="mdi:shield-check" class="w-5 h-5" />
-          <span class="text-sm">Garantía: {servicioEncontrado.garantia}</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -126,31 +103,13 @@ if (!servicioEncontrado) {
               </div>
             ))}
           </div>
-          
-          <!-- Información adicional -->
-          <div class="mt-10 pt-8 border-t border-gray-200">
-            <div class="grid grid-cols-2 gap-6">
-              <div class="text-center p-4 bg-white rounded-lg">
-                <div class="text-2xl font-bold text-primary mb-2">
-                  <Icon name="mdi:clock-outline" class="w-8 h-8 mx-auto" />
-                </div>
-                <div class="text-sm font-semibold text-gray-500">Duración</div>
-                <div class="text-lg font-bold text-gray-900">{servicioEncontrado.duracion}</div>
-              </div>
-              
-              <div class="text-center p-4 bg-white rounded-lg">
-                <div class="text-2xl font-bold text-primary mb-2">
-                  <Icon name="mdi:shield-check-outline" class="w-8 h-8 mx-auto" />
-                </div>
-                <div class="text-sm font-semibold text-gray-500">Garantía</div>
-                <div class="text-lg font-bold text-gray-900">{servicioEncontrado.garantia}</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- PRODUCTOS ESPECÍFICOS DEL SERVICIO -->
+  <Productos client:load servicioSlug={servicio} />
 
   <!-- CTA -->
   <section class="py-16 lg:py-24 bg-gradient-to-r from-primary to-primary/80 text-white">
@@ -195,41 +154,36 @@ if (!servicioEncontrado) {
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {serviciosData.servicios.filter(s => s.slug !== servicio).slice(0, 3).map((servicioRel, index) => {
-          // Encontrar el índice del servicio relacionado
-          const relacionIndex = serviciosData.servicios.findIndex(s => s.slug === servicioRel.slug);
-          
-          return (
-            <a 
-              href={servicioRel.url}
-              class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-            >
-              <div class="relative h-48 overflow-hidden">
-                <img 
-                  src={servicioRel.img}
-                  alt={servicioRel.titulo}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-4 left-4">
-                  <Icon name={servicioRel.icono} class="w-8 h-8 text-white" />
-                </div>
+        {serviciosData.servicios.filter(s => s.slug !== servicio).slice(0, 3).map((servicioRel, index) => (
+          <a 
+            href={servicioRel.url}
+            class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img 
+                src={servicioRel.img}
+                alt={servicioRel.titulo}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <Icon name={servicioRel.icono} class="w-8 h-8 text-white" />
               </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">
-                  {servicioRel.titulo}
-                </h3>
-                <p class="text-gray-600 text-sm mb-4">
-                  {servicioRel.contenido}
-                </p>
-                <div class="flex items-center text-primary font-semibold">
-                  <span>Ver más</span>
-                  <Icon name="mdi:arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">
+                {servicioRel.titulo}
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                {servicioRel.contenido}
+              </p>
+              <div class="flex items-center text-primary font-semibold">
+                <span>Ver más</span>
+                <Icon name="mdi:arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
-            </a>
-          );
-        })}
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>

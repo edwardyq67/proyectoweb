@@ -100,9 +100,9 @@ const Footer = () => {
                 {Object.entries(redesSociales).map(([key, red]) => {
                   const IconComponent = socialIcons[key];
                   const colorClass = socialColors[key] || 'bg-gray-600 hover:bg-gray-700';
-                  
+
                   if (!IconComponent) return null;
-                  
+
                   return (
                     <a
                       key={key}
@@ -116,7 +116,7 @@ const Footer = () => {
                     </a>
                   );
                 })}
-                
+
                 {whatsappBotones.length > 0 && (
                   <a
                     href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}
@@ -166,7 +166,7 @@ const Footer = () => {
                     </span>
                   </li>
                 ))}
-                
+
                 {telefonos.map((telefono, index) => (
                   <li key={index} className="flex items-center gap-3">
                     <FaPhone className="w-5 h-5 text-primary flex-shrink-0" />
@@ -178,7 +178,7 @@ const Footer = () => {
                     </a>
                   </li>
                 ))}
-                
+
                 {correos.map((correo, index) => (
                   <li key={index} className="flex items-center gap-3">
                     <FaEnvelope className="w-5 h-5 text-primary flex-shrink-0" />
@@ -190,7 +190,7 @@ const Footer = () => {
                     </a>
                   </li>
                 ))}
-                
+
                 {whatsappBotones.slice(0, 1).map((boton, index) => (
                   <li key={index} className="flex items-center gap-3">
                     <FaWhatsapp className="w-5 h-5 text-green-500 flex-shrink-0" />
@@ -221,29 +221,14 @@ const Footer = () => {
 
             {/* Columna 4: Newsletter */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Newsletter</h3>
-              <p className="text-gray-400 mb-4">
-                Suscríbete para recibir ofertas especiales y noticias sobre
-                climatización.
-              </p>
-              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="Tu correo electrónico"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+              <div className="p-3 cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg">
+                <img
+                  src="https://friotemp.com.pe/wp-content/uploads/libroreclamaciones-blanco.avif"
+                  alt="Libro de Reclamaciones"
+                  className="h-20 w-auto"
+                  loading="lazy"
                 />
-                <button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
-                >
-                  <FaPaperPlane className="w-4 h-4" />
-                  Suscribirse
-                </button>
-              </form>
-
+              </div>
               {/* Logros usando .map() */}
               {logros.length > 0 && (
                 <div className="mt-8 pt-6 border-t border-gray-800">
@@ -325,9 +310,9 @@ const Footer = () => {
         {Object.entries(redesSociales).map(([key, red]) => {
           const IconComponent = socialIcons[key];
           const colorClass = socialColors[key] || 'bg-gray-600 hover:bg-gray-700';
-          
+
           if (!IconComponent) return null;
-          
+
           return (
             <a
               key={key}

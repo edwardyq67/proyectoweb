@@ -1,6 +1,6 @@
 {
   "titulo": "Sobre Nosotros",
-  "contenido": "Somos una empresa líder en el sector de aire acondicionado y ventilación mecánica con más de 2 años de experiencia especializada en instalación, mantenimiento y reparación de sistemas HVAC para el sector comercial, industrial y residencial.",
+  "contenido": "Somos una empresa líder en el sector de aire acondicionado y ventilación mecánica con más de 20 años de experiencia especializada en instalación, mantenimiento y reparación de sistemas HVAC para el sector comercial, industrial y residencial.",
   "boton": {
     "texto": "Conoce Nuestra Historia",
     "enlace": "/historia"
@@ -18,11 +18,11 @@
     "numero": "2+",
     "texto": "Años de experiencia"
   },
- "servicios": [
+  "servicios": [
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
-      "titulo": "Mantenimiento Preventivo",
-      "contenido": "Expertos en mantenimiento y restauración de sistemas HVAC para garantizar su óptimo funcionamiento.",
+      "titulo": "Aire acondicionado y climatización",
+      "contenido": "Realizamos la instalación, mantenimiento y reparación de sistemas tipo Split, MultiSplit, Piso-Techo, Cassette, VRF/VRV y sistemas HVAC centralizados.",
       "url": "/servicios/mantenimiento-preventivo",
       "slug": "mantenimiento-preventivo",
       "descripcion_larga": "Nuestro programa de mantenimiento preventivo integral incluye limpieza exhaustiva, calibración de componentes, revisión de sistemas eléctricos y pruebas de rendimiento para garantizar máxima eficiencia energética.",
@@ -35,20 +35,129 @@
       ],
       "icono": "mdi:check-circle-outline",
       "destacado": true,
-      "duracion": "Contratos anuales",
-      "garantia": "12 meses",
       "caracteristicas": [
         "Limpieza profunda de componentes",
         "Calibración de sistemas",
         "Revisión eléctrica completa",
         "Pruebas de rendimiento",
         "Informe técnico detallado"
+      ],
+      "Domestico": [
+        {
+          "id": "D1",
+          "nombre": "Mantenimiento Preventivo Residencial",
+          "tipo": "Split y MultiSplit",
+          "descripcion": "Servicio completo de mantenimiento para sistemas residenciales que incluye limpieza, calibración y revisión de seguridad.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Mantenimiento"
+          ],
+          "incluye": [
+            "Limpieza de filtros y serpentines",
+            "Revisión de carga de refrigerante",
+            "Calibración termostato",
+            "Prueba de funcionamiento",
+            "Informe técnico"
+          ]
+        },
+        {
+          "id": "D2",
+          "nombre": "Instalación Split Residencial",
+          "tipo": "Piso-Techo",
+          "descripcion": "Instalación profesional de sistemas Split con garantía de funcionamiento y eficiencia energética.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Instalación"
+          ],
+          "incluye": [
+            "Estudio técnico previo",
+            "Instalación completa",
+            "Pruebas de funcionamiento",
+            "Capacitación de uso",
+            "Garantía 12 meses"
+          ]
+        }
+      ],
+      "Comercial": [
+        {
+          "id": "C1",
+          "nombre": "Mantenimiento HVAC Comercial",
+          "tipo": "VRF/VRV",
+          "descripcion": "Mantenimiento especializado para sistemas VRF/VRV en centros comerciales, oficinas y edificios corporativos.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Mantenimiento",
+            "Desarrollo"
+          ],
+          "incluye": [
+            "Análisis de eficiencia energética",
+            "Limpieza de sistemas centralizados",
+            "Optimización de parámetros",
+            "Reporte de consumo",
+            "Plan de mantenimiento anual"
+          ]
+        },
+        {
+          "id": "C2",
+          "nombre": "Reparación Cassette Comercial",
+          "tipo": "Cassette",
+          "descripcion": "Servicio de reparación especializada para sistemas Cassette en restaurantes, hoteles y locales comerciales.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Reparación"
+          ],
+          "incluye": [
+            "Diagnóstico técnico avanzado",
+            "Reparación de compresores",
+            "Sustitución de componentes",
+            "Pruebas de presión",
+            "Garantía en reparación"
+          ]
+        }
+      ],
+      "Industrial": [
+        {
+          "id": "I1",
+          "nombre": "Proyecto HVAC Industrial",
+          "tipo": "Sistemas Centralizados",
+          "descripcion": "Desarrollo e implementación completa de sistemas HVAC para plantas industriales y fábricas.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Desarrollo",
+            "Ejecución de Proyecto",
+            "Instalación"
+          ],
+          "incluye": [
+            "Estudio de necesidades",
+            "Diseño ingenieril",
+            "Suministro de equipos",
+            "Instalación certificada",
+            "Puesta en marcha"
+          ]
+        },
+        {
+          "id": "I2",
+          "nombre": "Mantenimiento Industrial Preventivo",
+          "tipo": "Sistemas de Ventilación",
+          "descripcion": "Programa de mantenimiento preventivo para sistemas industriales de gran escala.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Mantenimiento"
+          ],
+          "incluye": [
+            "Inspección completa anual",
+            "Limpieza de ductos industriales",
+            "Calibración de controles",
+            "Pruebas de eficiencia",
+            "Plan de mantenimiento predictivo"
+          ]
+        }
       ]
     },
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
-      "titulo": "Instalación de Sistemas",
-      "contenido": "Instalación profesional de aire acondicionado y ventilación mecánica para todo tipo de espacios.",
+      "titulo": "Refrigeración comercial e industrial",
+      "contenido": "Diseñamos, instalamos y mantenemos cámaras frigoríficas, cuartos fríos, sistemas de congelación, vitrinas, conservadoras y sistemas de refrigeración centralizada.",
       "url": "/servicios/instalacion-sistemas",
       "slug": "instalacion-sistemas",
       "descripcion_larga": "Realizamos instalaciones completas de sistemas HVAC con tecnología de última generación, asegurando cumplimiento de normas y máxima eficiencia energética.",
@@ -61,20 +170,128 @@
       ],
       "icono": "mdi:tools",
       "destacado": true,
-      "duracion": "2-4 semanas",
-      "garantia": "24 meses",
       "caracteristicas": [
         "Estudio técnico previo",
         "Diseño personalizado",
         "Instalación certificada",
         "Puesta en marcha",
         "Capacitación al usuario"
+      ],
+      "Domestico": [
+        {
+          "id": "RD1",
+          "nombre": "Reparación Refrigeradora Familiar",
+          "tipo": "Refrigeradoras",
+          "descripcion": "Servicio de reparación para refrigeradoras domésticas de todas las marcas y modelos.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Reparación"
+          ],
+          "incluye": [
+            "Diagnóstico gratuito",
+            "Reparación de compresor",
+            "Cambio de gas refrigerante",
+            "Revisión eléctrica",
+            "Garantía 6 meses"
+          ]
+        },
+        {
+          "id": "RD2",
+          "nombre": "Mantenimiento Congelador Doméstico",
+          "tipo": "Congeladores",
+          "descripcion": "Mantenimiento preventivo para congeladores domésticos y conservadoras.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Mantenimiento"
+          ],
+          "incluye": [
+            "Limpieza completa interna",
+            "Descongelación programada",
+            "Revisión de sellos",
+            "Prueba de temperatura",
+            "Asesoría de uso"
+          ]
+        }
+      ],
+      "Comercial": [
+        {
+          "id": "RC1",
+          "nombre": "Instalación Vitrina Refrigerada",
+          "tipo": "Vitrinas Exhibidoras",
+          "descripcion": "Instalación profesional de vitrinas refrigeradas para supermercados y negocios de alimentos.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Instalación"
+          ],
+          "incluye": [
+            "Asesoría de ubicación",
+            "Instalación eléctrica",
+            "Montaje de vitrina",
+            "Puesta en marcha",
+            "Capacitación"
+          ]
+        },
+        {
+          "id": "RC2",
+          "nombre": "Proyecto Cámara Fría Comercial",
+          "tipo": "Cámaras Frías",
+          "descripcion": "Desarrollo e instalación de cámaras frigoríficas para restaurantes y comercios.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Desarrollo",
+            "Ejecución de Proyecto"
+          ],
+          "incluye": [
+            "Diseño personalizado",
+            "Suministro de materiales",
+            "Construcción de cámara",
+            "Instalación sistema frío",
+            "Certificación final"
+          ]
+        }
+      ],
+      "Industrial": [
+        {
+          "id": "RI1",
+          "nombre": "Mantenimiento Cuartos Fríos Industriales",
+          "tipo": "Cuartos Fríos Industriales",
+          "descripcion": "Mantenimiento especializado para cuartos fríos de gran capacidad en plantas procesadoras.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Mantenimiento"
+          ],
+          "incluye": [
+            "Revisión de aislamiento",
+            "Mantenimiento compresores",
+            "Calibración controles",
+            "Pruebas de hermeticidad",
+            "Plan preventivo"
+          ]
+        },
+        {
+          "id": "RI2",
+          "nombre": "Instalación Sistema Congelación Industrial",
+          "tipo": "Sistemas de Congelación",
+          "descripcion": "Instalación completa de sistemas de congelación rápida para industria alimentaria.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Instalación",
+            "Ejecución de Proyecto"
+          ],
+          "incluye": [
+            "Ingeniería del proyecto",
+            "Suministro equipos",
+            "Instalación mecánica",
+            "Pruebas de temperatura",
+            "Entrenamiento operativo"
+          ]
+        }
       ]
     },
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
-      "titulo": "Reparación Especializada",
-      "contenido": "Servicio técnico especializado en reparación de equipos de climatización y ventilación.",
+      "titulo": "Consultoría, desarrollo y ejecución de proyectos",
+      "contenido": "Brindamos un servicio integral de consultoría, desarrollo y ejecución de proyectos de climatización y refrigeración, acompañando al cliente en todas las etapas del proceso.",
       "url": "/servicios/reparacion-especializada",
       "slug": "reparacion-especializada",
       "descripcion_larga": "Diagnóstico y reparación de sistemas HVAC por técnicos certificados, con repuestos originales y garantía en todos nuestros trabajos.",
@@ -87,92 +304,123 @@
       ],
       "icono": "mdi:wrench",
       "destacado": true,
-      "duracion": "1-3 días",
-      "garantia": "6 meses en reparaciones",
       "caracteristicas": [
         "Diagnóstico especializado",
         "Reparación de compresores",
         "Mantenimiento eléctrico",
         "Servicio de emergencia",
         "Repuestos originales"
-      ]
-    },
-    {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_21-1280x853.jpg",
-      "titulo": "Ductos y Ventilación",
-      "contenido": "Diseño e instalación de sistemas de ductos para ventilación mecánica eficiente.",
-      "url": "/servicios/ductos-ventilacion",
-      "slug": "ductos-ventilacion",
-      "descripcion_larga": "Especialistas en diseño, fabricación e instalación de sistemas de ductos para ventilación mecánica, garantizando calidad del aire y eficiencia energética.",
-      "beneficios": [
-        "Diseño personalizado según necesidades",
-        "Materiales de alta calidad y durabilidad",
-        "Ahorro energético garantizado",
-        "Cumplimiento de normas de calidad de aire",
-        "Instalación limpia y profesional"
       ],
-      "icono": "mdi:air-filter",
-      "destacado": false,
-      "duracion": "3-5 semanas",
-      "garantia": "18 meses",
-      "caracteristicas": [
-        "Diseño CAD personalizado",
-        "Fabricación in situ",
-        "Materiales aislantes",
-        "Pruebas de hermeticidad",
-        "Certificación de instalación"
-      ]
-    },
-    {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_20-1280x853.jpg",
-      "titulo": "Control de Calidad",
-      "contenido": "Garantizamos la calidad del aire interior con sistemas de filtración y purificación.",
-      "url": "/servicios/control-calidad",
-      "slug": "control-calidad",
-      "descripcion_larga": "Implementamos sistemas de control de calidad del aire interior con tecnología avanzada de filtración y purificación para ambientes saludables y productivos.",
-      "beneficios": [
-        "Mejora significativa de la calidad del aire",
-        "Reducción de alergenos y contaminantes",
-        "Control preciso de humedad y temperatura",
-        "Sistemas de filtración HEPA avanzados",
-        "Monitoreo continuo 24/7"
+      "Domestico": [
+        {
+          "id": "CD1",
+          "nombre": "Consultoría Eficiencia Energética Residencial",
+          "tipo": "Optimización de Sistemas",
+          "descripcion": "Asesoría especializada para mejorar la eficiencia energética de sistemas de climatización en hogares.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Desarrollo"
+          ],
+          "incluye": [
+            "Auditoría energética",
+            "Recomendaciones de mejora",
+            "Análisis de ahorro",
+            "Plan de implementación",
+            "Seguimiento post-asesoría"
+          ]
+        },
+        {
+          "id": "CD2",
+          "nombre": "Proyecto Renovación Sistema HVAC",
+          "tipo": "Renovación Integral",
+          "descripcion": "Gestión completa del proyecto de renovación de sistemas de climatización para viviendas.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Ejecución de Proyecto",
+            "Desarrollo"
+          ],
+          "incluye": [
+            "Estudio de viabilidad",
+            "Gestión de permisos",
+            "Coordinación de trabajos",
+            "Supervisión de instalación",
+            "Entrega llave en mano"
+          ]
+        }
       ],
-      "icono": "mdi:shield-check",
-      "destacado": false,
-      "duracion": "2-3 semanas",
-      "garantia": "12 meses",
-      "caracteristicas": [
-        "Sistemas de filtración HEPA",
-        "Control de humedad",
-        "Purificación UV-C",
-        "Monitoreo en tiempo real",
-        "Informes de calidad de aire"
-      ]
-    },
-    {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_19-1280x853.jpg",
-      "titulo": "Consultoría HVAC",
-      "contenido": "Asesoramiento técnico para proyectos de climatización y ventilación mecánica.",
-      "url": "/servicios/consultoria-hvac",
-      "slug": "consultoria-hvac",
-      "descripcion_larga": "Ofrecemos consultoría especializada para proyectos de climatización, desde diseño hasta implementación y optimización de sistemas HVAC.",
-      "beneficios": [
-        "Asesoría técnica experta y personalizada",
-        "Optimización de sistemas existentes",
-        "Estudios de eficiencia energética",
-        "Planificación integral de proyectos",
-        "Reducción de costos operativos"
+      "Comercial": [
+        {
+          "id": "CC1",
+          "nombre": "Desarrollo Proyecto HVAC Comercial",
+          "tipo": "Proyectos Integrales",
+          "descripcion": "Gestión completa de proyectos HVAC para centros comerciales y edificios de oficinas.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Desarrollo",
+            "Ejecución de Proyecto"
+          ],
+          "incluye": [
+            "Estudio de cargas térmicas",
+            "Diseño de sistema",
+            "Especificación de equipos",
+            "Gestión de instalación",
+            "Puesta en marcha"
+          ]
+        },
+        {
+          "id": "CC2",
+          "nombre": "Consultoría Normativa HVAC",
+          "tipo": "Asesoría Regulatoria",
+          "descripcion": "Asesoría especializada en cumplimiento normativo para sistemas comerciales.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Desarrollo"
+          ],
+          "incluye": [
+            "Revisión de normativas",
+            "Evaluación de cumplimiento",
+            "Plan de adecuación",
+            "Asesoría en certificaciones",
+            "Soporte en inspecciones"
+          ]
+        }
       ],
-      "icono": "mdi:account-tie",
-      "destacado": false,
-      "duracion": "Variable según proyecto",
-      "garantia": "Asesoría continua",
-      "caracteristicas": [
-        "Auditoría energética",
-        "Diseño de sistemas",
-        "Optimización de equipos",
-        "Planificación de proyectos",
-        "Capacitación técnica"
+      "Industrial": [
+        {
+          "id": "CI1",
+          "nombre": "Ejecución Proyecto HVAC Industrial",
+          "tipo": "Proyectos a Gran Escala",
+          "descripcion": "Gestión y ejecución de proyectos HVAC complejos para plantas industriales.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Ejecución de Proyecto",
+            "Desarrollo"
+          ],
+          "incluye": [
+            "Gestión de proyecto completa",
+            "Coordinación multidisciplinaria",
+            "Control de calidad",
+            "Gestión de riesgos",
+            "Entrega certificada"
+          ]
+        },
+        {
+          "id": "CI2",
+          "nombre": "Consultoría Eficiencia Industrial",
+          "tipo": "Optimización Procesos",
+          "descripcion": "Consultoría especializada para optimización energética en sistemas industriales.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "categoria": [
+            "Desarrollo"
+          ],
+          "incluye": [
+            "Análisis de procesos",
+            "Identificación de mejoras",
+            "Cálculo de ROI",
+            "Plan de implementación",
+            "Seguimiento de resultados"
+          ]
+        }
       ]
     }
   ]

@@ -25,34 +25,28 @@ const isHomePage = currentPath === "/";
                         d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
                     ></path>
                 </svg>
-                <span class="hidden sm:inline">MiEmpresa</span>
+                <span class="hidden base:inline">MiEmpresa</span>
             </a>
         </div>
 
         <!-- Navegación Desktop -->
         <nav class="hidden md:flex items-center gap-6">
-            <!-- Inicio -->
-            <a
-                href={isHomePage ? "#Inicio" : "/#Inicio"}
-                class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
-            >
-                Inicio
-            </a>
+            
             
             <!-- Nosotros -->
             <a
                 href={isHomePage ? "#Nosotros" : "/#Nosotros"}
-                class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
+                class="text-base font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
             >
-                Nosotros
+                NOSOTROS
             </a>
 
             <!-- Dropdown Servicios -->
             <div class="relative group">
                 <button
-                    class="flex items-center gap-1 text-sm font-medium transition-colors text-foreground/80 hover:text-foreground"
+                    class="flex items-center gap-1 text-base font-medium transition-colors text-foreground/80 hover:text-foreground"
                 >
-                    Servicios
+                    SERVICIOS
                     <svg
                         class="h-4 w-4 transition-transform group-hover:rotate-180"
                         fill="none"
@@ -68,7 +62,7 @@ const isHomePage = currentPath === "/";
                     </svg>
                 </button>
                 <div
-                    class="absolute left-0 top-full mt-2 w-96 rounded-md border bg-popover p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-lg"
+                    class="absolute left-0 top-full mt-2 w-[50vw] rounded-md border bg-popover p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-lg"
                 >
                     <div class="grid grid-cols-2 gap-2">
                         {datosNosotros.servicios.map((servicio, index) => {
@@ -86,9 +80,9 @@ const isHomePage = currentPath === "/";
                             return (
                                 <a
                                     href={servicio.url || "#"}
-                                    class="px-3 py-2.5 text-sm rounded-md hover:bg-accent hover:text-accent-foreground transition-colors flex items-center gap-2"
+                                    class="px-3 py-2.5 text-base rounded-md hover:bg-accent hover:text-accent-foreground transition-colors flex items-center gap-2"
                                 >
-                                    <Icon name={iconName} class="w-4 h-4" />
+                                    <Icon name={iconName} class="w-5 h-5" />
                                     {servicio.titulo}
                                 </a>
                             );
@@ -96,21 +90,26 @@ const isHomePage = currentPath === "/";
                     </div>
                 </div>
             </div>
-
+ <a
+                href={isHomePage ? "#Inicio" : "/#Inicio"}
+                class="text-2xl  font-bold transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
+            >
+                INICIO
+            </a>
             <!-- Productos -->
             <a
                 href={isHomePage ? "#Productos" : "/#Productos"}
-                class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
+                class="text-base font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
             >
-                Productos
+                PRODUCTOS
             </a>
 
             <!-- Blog -->
             <a
                 href="/Blog"
-                class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
+                class="text-base font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
             >
-                Blog
+                BLOG
             </a>
         </nav>
 
@@ -119,7 +118,7 @@ const isHomePage = currentPath === "/";
             <!-- Botón CONTACTANOS -->
             <a
                 href={isHomePage ? "#contacto" : "/#contacto"}
-                class="hidden sm:inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 gap-2"
+                class="hidden base:inline-flex items-center justify-center rounded-md text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 gap-2"
             >
                 <Icon name="mdi:phone" class="w-4 h-4" />
                 CONTACTANOS

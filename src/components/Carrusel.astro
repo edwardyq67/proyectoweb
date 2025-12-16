@@ -22,14 +22,11 @@ const marcas = CarruselData.marcas;
       <!-- Overlay izquierdo para degradado -->
       <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
       
-      <!-- Overlay derecho para degradado -->
-      <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
-      
       <!-- Carrusel infinito -->
       <div class="flex animate-scroll">
         {marcas.map((marca) => (
           <div 
-            class="flex-shrink-0 w-48 h-32 mx-6 bg-white rounded-xl shadow-sm flex items-center justify-center p-6 border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300"
+            class="flex-shrink-0 mx-6 bg-white rounded-xl shadow-sm flex items-center justify-center p-6 border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300"
           >
             <img 
               src={marca.logo} 
