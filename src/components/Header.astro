@@ -1,11 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
 import datosNosotros from "../lib/Nosotros.json";
+
+// Obtener la URL actual
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === "/";
 ---
 
-<header
-    class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur"
->
+<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
     <div class="container flex h-16 items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center gap-2">
@@ -29,18 +31,19 @@ import datosNosotros from "../lib/Nosotros.json";
 
         <!-- Navegación Desktop -->
         <nav class="hidden md:flex items-center gap-6">
+            <!-- Inicio -->
             <a
-                href="#Inicio"
+                href={isHomePage ? "#Inicio" : "/#Inicio"}
                 class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
             >
-
                 Inicio
             </a>
+            
+            <!-- Nosotros -->
             <a
-                href="#Nosotros"
+                href={isHomePage ? "#Nosotros" : "/#Nosotros"}
                 class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
             >
-
                 Nosotros
             </a>
 
@@ -49,7 +52,6 @@ import datosNosotros from "../lib/Nosotros.json";
                 <button
                     class="flex items-center gap-1 text-sm font-medium transition-colors text-foreground/80 hover:text-foreground"
                 >
-                    
                     Servicios
                     <svg
                         class="h-4 w-4 transition-transform group-hover:rotate-180"
@@ -61,54 +63,53 @@ import datosNosotros from "../lib/Nosotros.json";
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            d="M19 9l-7 7-7-7"></path>
+                            d="M19 9l-7 7-7-7"
+                        ></path>
                     </svg>
                 </button>
                 <div
                     class="absolute left-0 top-full mt-2 w-96 rounded-md border bg-popover p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-lg"
                 >
                     <div class="grid grid-cols-2 gap-2">
-                        {
-                            datosNosotros.servicios.map((servicio, index) => {
-                                // Mapeo de iconos por tipo de servicio
-                                const iconMap = {
-                                    "Mantenimiento Preventivo":
-                                        "mdi:check-circle-outline",
-                                    "Instalación de Sistemas": "mdi:tools",
-                                    "Reparación Especializada": "mdi:wrench",
-                                    "Ductos y Ventilación": "mdi:air-filter",
-                                    "Control de Calidad": "mdi:shield-check",
-                                    "Consultoría HVAC": "mdi:account-tie",
-                                };
+                        {datosNosotros.servicios.map((servicio, index) => {
+                            const iconMap = {
+                                "Mantenimiento Preventivo": "mdi:check-circle-outline",
+                                "Instalación de Sistemas": "mdi:tools",
+                                "Reparación Especializada": "mdi:wrench",
+                                "Ductos y Ventilación": "mdi:air-filter",
+                                "Control de Calidad": "mdi:shield-check",
+                                "Consultoría HVAC": "mdi:account-tie",
+                            };
 
-                                const iconName = iconMap[servicio.titulo as keyof typeof iconMap] || "mdi:cog";
-         
-                                return (
-                                    <a
-                                        href={servicio.url || "#"}
-                                        class="px-3 py-2.5 text-sm rounded-md hover:bg-accent hover:text-accent-foreground transition-colors flex items-center gap-2"
-                                    >
-                                        <Icon name={iconName} class="w-4 h-4" />
-                                        {servicio.titulo}
-                                    </a>
-                                );
-                            })
-                        }
+                            const iconName = iconMap[servicio.titulo as keyof typeof iconMap] || "mdi:cog";
+                            
+                            return (
+                                <a
+                                    href={servicio.url || "#"}
+                                    class="px-3 py-2.5 text-sm rounded-md hover:bg-accent hover:text-accent-foreground transition-colors flex items-center gap-2"
+                                >
+                                    <Icon name={iconName} class="w-4 h-4" />
+                                    {servicio.titulo}
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
 
+            <!-- Productos -->
             <a
-                href="#Productos"
+                href={isHomePage ? "#Productos" : "/#Productos"}
                 class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
             >
                 Productos
             </a>
+
+            <!-- Blog -->
             <a
-                href="/blog"
+                href="/Blog"
                 class="text-sm font-medium transition-colors text-foreground/80 hover:text-foreground flex items-center gap-1"
             >
-
                 Blog
             </a>
         </nav>
@@ -117,7 +118,7 @@ import datosNosotros from "../lib/Nosotros.json";
         <div class="flex items-center gap-4">
             <!-- Botón CONTACTANOS -->
             <a
-                href="/contacto"
+                href={isHomePage ? "#contacto" : "/#contacto"}
                 class="hidden sm:inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 gap-2"
             >
                 <Icon name="mdi:phone" class="w-4 h-4" />
@@ -139,25 +140,10 @@ import datosNosotros from "../lib/Nosotros.json";
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16"></path>
+                        d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
                 </svg>
             </button>
         </div>
     </div>
 </header>
-
-<style>
-    /* Transiciones suaves para el menú */
-    #mobile-menu {
-        transition:
-            opacity 0.2s ease,
-            height 0.2s ease;
-    }
-
-    /* Mejorar accesibilidad del focus */
-    a:focus-visible,
-    button:focus-visible {
-        outline: 2px solid hsl(var(--ring));
-        outline-offset: 2px;
-    }
-</style>

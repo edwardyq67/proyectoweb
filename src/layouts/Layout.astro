@@ -1,22 +1,68 @@
+---
+// Layout.astro
+import { ViewTransitions } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.jsx';
+
+const { title = 'Mi Sitio' } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en" class="light">
+<html lang="es" class="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		
+		<ViewTransitions />
+		
+		<slot name="head" />
 	</head>
 	<body>
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
 <style>
-	html{
+	html {
 		scroll-behavior: smooth;
-	},
+	}
 	body {
 		margin: 0;
+	}
+	
+	/* Estilos opcionales para personalizar las transiciones */
+	::view-transition-old(root) {
+		animation: fade-out 0.3s ease;
+	}
+	
+	::view-transition-new(root) {
+		animation: fade-in 0.3s ease;
+	}
+	
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	
+	@keyframes fade-out {
+		from {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
 	}
 </style>

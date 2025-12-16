@@ -194,20 +194,20 @@
 
   --border: 220 13% 91%;
   --input: 220 13% 91%;
-
-  --primary-50: 240 100% 98%;
-  --primary-100: 243 91% 95%;
-  --primary-200: 243 100% 92%;
-  --primary-300: 244 97% 85%;
-  --primary-400: 247 95% 76%;
-  --primary-500: 250 92% 70%;
-  --primary-600: 254 86% 58%;
-  --primary-700: 255 72% 50%;
-  --primary-800: 255 71% 42%;
-  --primary-900: 255 70% 35%;
-  --primary-950: 255 70% 35%;
-  --primary: 250 92% 70%;
-  --primary-foreground: 240 100% 98%;
+/* Más contraste para mejor accesibilidad */
+--primary-50: 192 100% 98%;
+--primary-100: 192 100% 95%;
+--primary-200: 192 100% 90%;
+--primary-300: 192 100% 82%;
+--primary-400: 192 100% 72%;
+--primary-500: 192 100% 62%;
+--primary-600: 192 85% 52%; /* #1BA1BF */
+--primary-700: 192 100% 42%;
+--primary-800: 192 100% 35%;
+--primary-900: 192 100% 28%;
+--primary-950: 192 100% 22%;
+--primary: 192 85% 52%;
+--primary-foreground: 192 100% 98%;
 
   --secondary: 214.3 31.8% 91.4%;
   --secondary-foreground: 222.2 47.4% 11.2%;

@@ -1,0 +1,99 @@
+{
+  "contacto": {
+    "informacion_contacto": {
+      "telefonos": [
+        {
+          "tipo": "Principal",
+          "numero": "+51 987 654 321",
+          "whatsapp": "https://wa.me/51987654321",
+          "descripcion": "Atención general y ventas"
+        }
+      ],
+      "correos": [
+        {
+          "tipo": "General",
+          "email": "info@tuempresa.com",
+          "descripcion": "Consultas generales"
+        }
+      ],
+      "direcciones": [
+        {
+          "tipo": "Oficina Principal",
+          "direccion": "Av. Ejército 123, San Isidro",
+          "ciudad": "Lima",
+          "pais": "Perú",
+          "mapa": "https://maps.google.com/?q=Av.+Ejercito+123,+San+Isidro,+Lima",
+          "horario": "Lun-Vie: 8:00 AM - 6:00 PM"
+        }
+      ]
+    },
+    "redes_sociales": {
+      "facebook": {
+        "nombre": "Facebook",
+        "icono": "mdi:facebook",
+        "url": "https://facebook.com/tuempresa",
+        "usuario": "@tuempresa",
+        "color": "bg-blue-600"
+      },
+      "instagram": {
+        "nombre": "Instagram",
+        "icono": "mdi:instagram",
+        "url": "https://instagram.com/tuempresa",
+        "usuario": "@tuempresa",
+        "color": "bg-pink-600"
+      },
+      "tiktok": {
+        "nombre": "TikTok",
+        "icono": "mdi:tiktok",
+        "url": "https://tiktok.com/@tuempresa",
+        "usuario": "@tuempresa",
+        "color": "bg-black"
+      }
+    },
+    "formulario_contacto": {
+      "campos": [
+        {
+          "nombre": "nombre",
+          "tipo": "text",
+          "placeholder": "Tu nombre completo",
+          "requerido": true
+        },
+        {
+          "nombre": "email",
+          "tipo": "email",
+          "placeholder": "tu@email.com",
+          "requerido": true
+        },
+        {
+          "nombre": "telefono",
+          "tipo": "tel",
+          "placeholder": "Tu teléfono",
+          "requerido": true
+        },
+        {
+          "nombre": "mensaje",
+          "tipo": "textarea",
+          "placeholder": "Tu mensaje...",
+          "requerido": true,
+          "filas": 4
+        }
+      ],
+      "politica_privacidad": "Acepto la política de privacidad"
+    },
+    "whatsapp_botones": [
+      {
+        "tipo": "Consulta General",
+        "numero": "+51 987 654 321",
+        "mensaje": "Hola, me gustaría hacer una consulta",
+        "color": "bg-green-500",
+        "icono": "mdi:whatsapp"
+      }
+    ],
+    "horarios_atencion": {
+      "general": "Lunes a Viernes: 8:00 AM - 6:00 PM",
+      "sabados": "Sábados: 9:00 AM - 1:00 PM",
+      "domingos": "Domingos: Cerrado",
+      "emergencias": "Emergencias: 24/7"
+    }
+  }
+}

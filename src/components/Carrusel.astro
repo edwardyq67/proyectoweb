@@ -1,0 +1,82 @@
+---
+import CarruselData from '../lib/Carrusel.json';
+
+// Obtener marcas del JSON
+const marcas = CarruselData.marcas;
+---
+
+<!-- Carrusel de Marcas -->
+<section class="py-16 bg-gray-50">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        {CarruselData.metadata.titulo}
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        {CarruselData.metadata.descripcion}
+      </p>
+    </div>
+    
+    <!-- Contenedor del carrusel -->
+    <div class="relative overflow-hidden py-4">
+      <!-- Overlay izquierdo para degradado -->
+      <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+      
+      <!-- Overlay derecho para degradado -->
+      <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+      
+      <!-- Carrusel infinito -->
+      <div class="flex animate-scroll">
+        {marcas.map((marca) => (
+          <div 
+            class="flex-shrink-0 w-48 h-32 mx-6 bg-white rounded-xl shadow-sm flex items-center justify-center p-6 border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300"
+          >
+            <img 
+              src={marca.logo} 
+              alt={marca.nombre}
+              class="max-w-full max-h-full object-contain hover:grayscale-0 transition-all duration-300"
+              title={marca.nombre}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% / 2));
+    }
+  }
+  
+  .animate-scroll {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+  }
+  
+  /* Pausar animación al hacer hover */
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .animate-scroll {
+      animation: scroll 30s linear infinite;
+    }
+    
+    .animate-scroll > div {
+      width: 160px;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+  }
+</style>

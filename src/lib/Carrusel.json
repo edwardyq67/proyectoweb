@@ -1,0 +1,80 @@
+{
+  "marcas": [
+    {
+      "id": 1,
+      "nombre": "Systemair",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/systemair.webp",
+      "slug": "systemair",
+      "descripcion": "Líder mundial en ventilación y calidad del aire interior"
+    },
+    {
+      "id": 2,
+      "nombre": "ColdPoint",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/aire-acondicionado-coldpoint.webp",
+      "slug": "coldpoint",
+      "descripcion": "Aire acondicionado eficiente y de calidad"
+    },
+    {
+      "id": 3,
+      "nombre": "LG",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/lg.webp",
+      "slug": "lg",
+      "descripcion": "Innovación en climatización y electrodomésticos"
+    },
+    {
+      "id": 4,
+      "nombre": "Soler & Palau",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/soler-palau.webp",
+      "slug": "soler-palau",
+      "descripcion": "Especialistas en ventilación residencial e industrial"
+    },
+    {
+      "id": 5,
+      "nombre": "Samsung",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/samsung.webp",
+      "slug": "samsung",
+      "descripcion": "Tecnología avanzada en climatización inteligente"
+    },
+    {
+      "id": 6,
+      "nombre": "Systemair",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/systemair.webp",
+      "slug": "systemair-2",
+      "descripcion": "Líder mundial en ventilación y calidad del aire interior"
+    },
+    {
+      "id": 7,
+      "nombre": "ColdPoint",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/aire-acondicionado-coldpoint.webp",
+      "slug": "coldpoint-2",
+      "descripcion": "Aire acondicionado eficiente y de calidad"
+    },
+    {
+      "id": 8,
+      "nombre": "LG",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/lg.webp",
+      "slug": "lg-2",
+      "descripcion": "Innovación en climatización y electrodomésticos"
+    },
+    {
+      "id": 9,
+      "nombre": "Soler & Palau",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/soler-palau.webp",
+      "slug": "soler-palau-2",
+      "descripcion": "Especialistas en ventilación residencial e industrial"
+    },
+    {
+      "id": 10,
+      "nombre": "Samsung",
+      "logo": "https://friotemp.com.pe/wp-content/uploads/samsung.webp",
+      "slug": "samsung-2",
+      "descripcion": "Tecnología avanzada en climatización inteligente"
+    }
+  ],
+  
+  "metadata": {
+    "titulo": "Marcas que confían en nosotros",
+    "descripcion": "Trabajamos con las mejores marcas del sector de climatización y ventilación",
+    "total_marcas": 10
+  }
+}

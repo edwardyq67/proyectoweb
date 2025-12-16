@@ -1,10 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import datosNosotros from '../lib/Nosotros.json';
 
 ---
-
-<Layout title="Nosotros">
   <!-- Sección principal - Minimalista pero impactante -->
   <section id="Nosotros" class="relative py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-white to-gray-50">
     <!-- Elementos decorativos de fondo -->
@@ -77,46 +74,51 @@ import datosNosotros from '../lib/Nosotros.json';
         </div>
       </div>
       
-      <!-- Servicios en cards compactas -->
-      <div class="mt-20 lg:mt-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {
-            datosNosotros.servicios.map((servicio, index) => (
-              <div 
-                class="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer h-72"
-              >
-             <img 
-  src={servicio.img}
-  alt={servicio.titulo}
-  class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-[1.03] transition-all duration-500 ease-out"
-/>
-                
-                <!-- Overlay con gradiente -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-                
-                <!-- Contenido siempre visible pero con hover -->
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                  <h3 class="text-xl font-bold mb-2 transform group-hover:translate-y-0 transition-transform duration-300">
-                    {servicio.titulo}
-                  </h3>
-                  <p class="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    {servicio.contenido}
-                  </p>
-                  <div class="mt-4 flex items-center text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span class="mr-2">Ver más</span>
-                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+    <!-- Servicios en cards compactas -->
+<div class="mt-20 lg:mt-32">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {
+      datosNosotros.servicios.map((servicio, index) => (
+        <a 
+          href={servicio.url}
+          class="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer h-72 block"
+          style="view-transition-name: card-{index};"
+        >
+          <img 
+            src={servicio.img}
+            alt={servicio.titulo}
+            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-[1.03] transition-all duration-500 ease-out"
+            style={`view-transition-name: servicio-titulo-${index};`}
+          />
+          
+          <!-- Overlay con gradiente -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+          
+          <!-- Contenido siempre visible pero con hover -->
+          <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
+            <h3 
+              class="text-xl font-bold mb-2 transform group-hover:translate-y-0 transition-transform duration-300"
+              style="view-transition-name: servicio-titulo-{index};"
+            >
+              {servicio.titulo}
+            </h3>
+            <p class="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+              {servicio.contenido}
+            </p>
+            <div class="mt-4 flex items-center text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="mr-2">Ver detalles</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>
     </div>
   </section>
-</Layout>
 
 <style>
   /* Animaciones personalizadas */

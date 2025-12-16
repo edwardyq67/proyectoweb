@@ -1,13 +1,13 @@
 {
   "titulo": "Sobre Nosotros",
-  "contenido": "Somos una empresa líder en el sector de aire acondicionado y ventilación mecánica con más de 20 años de experiencia especializada en instalación, mantenimiento y reparación de sistemas HVAC para el sector comercial, industrial y residencial.",
+  "contenido": "Somos una empresa líder en el sector de aire acondicionado y ventilación mecánica con más de 2 años de experiencia especializada en instalación, mantenimiento y reparación de sistemas HVAC para el sector comercial, industrial y residencial.",
   "boton": {
     "texto": "Conoce Nuestra Historia",
     "enlace": "/historia"
   },
   "foto": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg?t=st=1765814318~exp=1765817918~hmac=96ccd6962aa564cb35481940ab3a01f04532196da6702a3413680065fb954541&w=1480",
   "logros": [
-    "Más de 20 años de experiencia",
+    "Más de 2 años de experiencia",
     "Equipo de especialistas certificados",
     "Tecnología de última generación",
     "Soporte técnico 24/7",
@@ -15,45 +15,165 @@
     "Proyectos en todo el país"
   ],
   "sello": {
-    "numero": "20+",
+    "numero": "2+",
     "texto": "Años de experiencia"
   },
-  "servicios": [
+ "servicios": [
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
       "titulo": "Mantenimiento Preventivo",
       "contenido": "Expertos en mantenimiento y restauración de sistemas HVAC para garantizar su óptimo funcionamiento.",
-      "url": "/servicios/mantenimiento-preventivo"
+      "url": "/servicios/mantenimiento-preventivo",
+      "slug": "mantenimiento-preventivo",
+      "descripcion_larga": "Nuestro programa de mantenimiento preventivo integral incluye limpieza exhaustiva, calibración de componentes, revisión de sistemas eléctricos y pruebas de rendimiento para garantizar máxima eficiencia energética.",
+      "beneficios": [
+        "Reducción del consumo energético hasta en 30%",
+        "Prolongación de la vida útil del equipo",
+        "Prevención de fallas inesperadas",
+        "Mejora de la calidad del aire interior",
+        "Cumplimiento de normativas y garantías"
+      ],
+      "icono": "mdi:check-circle-outline",
+      "destacado": true,
+      "duracion": "Contratos anuales",
+      "garantia": "12 meses",
+      "caracteristicas": [
+        "Limpieza profunda de componentes",
+        "Calibración de sistemas",
+        "Revisión eléctrica completa",
+        "Pruebas de rendimiento",
+        "Informe técnico detallado"
+      ]
     },
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
       "titulo": "Instalación de Sistemas",
       "contenido": "Instalación profesional de aire acondicionado y ventilación mecánica para todo tipo de espacios.",
-      "url": "/servicios/instalacion-sistemas"
+      "url": "/servicios/instalacion-sistemas",
+      "slug": "instalacion-sistemas",
+      "descripcion_larga": "Realizamos instalaciones completas de sistemas HVAC con tecnología de última generación, asegurando cumplimiento de normas y máxima eficiencia energética.",
+      "beneficios": [
+        "Instalación profesional certificada",
+        "Cumplimiento de normativas vigentes",
+        "Garantía extendida de 24 meses",
+        "Asesoría técnica personalizada",
+        "Optimización energética garantizada"
+      ],
+      "icono": "mdi:tools",
+      "destacado": true,
+      "duracion": "2-4 semanas",
+      "garantia": "24 meses",
+      "caracteristicas": [
+        "Estudio técnico previo",
+        "Diseño personalizado",
+        "Instalación certificada",
+        "Puesta en marcha",
+        "Capacitación al usuario"
+      ]
     },
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
       "titulo": "Reparación Especializada",
       "contenido": "Servicio técnico especializado en reparación de equipos de climatización y ventilación.",
-      "url": "/servicios/reparacion-especializada"
+      "url": "/servicios/reparacion-especializada",
+      "slug": "reparacion-especializada",
+      "descripcion_larga": "Diagnóstico y reparación de sistemas HVAC por técnicos certificados, con repuestos originales y garantía en todos nuestros trabajos.",
+      "beneficios": [
+        "Diagnóstico preciso y rápido",
+        "Técnicos certificados especializados",
+        "Repuestos originales garantizados",
+        "Servicio de emergencia 24/7",
+        "Garantía en todas las reparaciones"
+      ],
+      "icono": "mdi:wrench",
+      "destacado": true,
+      "duracion": "1-3 días",
+      "garantia": "6 meses en reparaciones",
+      "caracteristicas": [
+        "Diagnóstico especializado",
+        "Reparación de compresores",
+        "Mantenimiento eléctrico",
+        "Servicio de emergencia",
+        "Repuestos originales"
+      ]
     },
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_21-1280x853.jpg",
       "titulo": "Ductos y Ventilación",
       "contenido": "Diseño e instalación de sistemas de ductos para ventilación mecánica eficiente.",
-      "url": "/servicios/ductos-ventilacion"
+      "url": "/servicios/ductos-ventilacion",
+      "slug": "ductos-ventilacion",
+      "descripcion_larga": "Especialistas en diseño, fabricación e instalación de sistemas de ductos para ventilación mecánica, garantizando calidad del aire y eficiencia energética.",
+      "beneficios": [
+        "Diseño personalizado según necesidades",
+        "Materiales de alta calidad y durabilidad",
+        "Ahorro energético garantizado",
+        "Cumplimiento de normas de calidad de aire",
+        "Instalación limpia y profesional"
+      ],
+      "icono": "mdi:air-filter",
+      "destacado": false,
+      "duracion": "3-5 semanas",
+      "garantia": "18 meses",
+      "caracteristicas": [
+        "Diseño CAD personalizado",
+        "Fabricación in situ",
+        "Materiales aislantes",
+        "Pruebas de hermeticidad",
+        "Certificación de instalación"
+      ]
     },
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_20-1280x853.jpg",
       "titulo": "Control de Calidad",
       "contenido": "Garantizamos la calidad del aire interior con sistemas de filtración y purificación.",
-      "url": "/servicios/control-calidad"
+      "url": "/servicios/control-calidad",
+      "slug": "control-calidad",
+      "descripcion_larga": "Implementamos sistemas de control de calidad del aire interior con tecnología avanzada de filtración y purificación para ambientes saludables y productivos.",
+      "beneficios": [
+        "Mejora significativa de la calidad del aire",
+        "Reducción de alergenos y contaminantes",
+        "Control preciso de humedad y temperatura",
+        "Sistemas de filtración HEPA avanzados",
+        "Monitoreo continuo 24/7"
+      ],
+      "icono": "mdi:shield-check",
+      "destacado": false,
+      "duracion": "2-3 semanas",
+      "garantia": "12 meses",
+      "caracteristicas": [
+        "Sistemas de filtración HEPA",
+        "Control de humedad",
+        "Purificación UV-C",
+        "Monitoreo en tiempo real",
+        "Informes de calidad de aire"
+      ]
     },
     {
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_19-1280x853.jpg",
       "titulo": "Consultoría HVAC",
       "contenido": "Asesoramiento técnico para proyectos de climatización y ventilación mecánica.",
-      "url": "/servicios/consultoria-hvac"
+      "url": "/servicios/consultoria-hvac",
+      "slug": "consultoria-hvac",
+      "descripcion_larga": "Ofrecemos consultoría especializada para proyectos de climatización, desde diseño hasta implementación y optimización de sistemas HVAC.",
+      "beneficios": [
+        "Asesoría técnica experta y personalizada",
+        "Optimización de sistemas existentes",
+        "Estudios de eficiencia energética",
+        "Planificación integral de proyectos",
+        "Reducción de costos operativos"
+      ],
+      "icono": "mdi:account-tie",
+      "destacado": false,
+      "duracion": "Variable según proyecto",
+      "garantia": "Asesoría continua",
+      "caracteristicas": [
+        "Auditoría energética",
+        "Diseño de sistemas",
+        "Optimización de equipos",
+        "Planificación de proyectos",
+        "Capacitación técnica"
+      ]
     }
   ]
 }
