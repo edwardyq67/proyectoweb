@@ -14,6 +14,7 @@
     "Certificaciones internacionales",
     "Proyectos en todo el país"
   ],
+  "img": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg",
   "sello": {
     "numero": "2+",
     "texto": "Años de experiencia"
@@ -23,405 +24,607 @@
       "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
       "titulo": "Aire acondicionado y climatización",
       "contenido": "Realizamos la instalación, mantenimiento y reparación de sistemas tipo Split, MultiSplit, Piso-Techo, Cassette, VRF/VRV y sistemas HVAC centralizados.",
-      "url": "/servicios/mantenimiento-preventivo",
-      "slug": "mantenimiento-preventivo",
-      "descripcion_larga": "Nuestro programa de mantenimiento preventivo integral incluye limpieza exhaustiva, calibración de componentes, revisión de sistemas eléctricos y pruebas de rendimiento para garantizar máxima eficiencia energética.",
-      "beneficios": [
-        "Reducción del consumo energético hasta en 30%",
-        "Prolongación de la vida útil del equipo",
-        "Prevención de fallas inesperadas",
-        "Mejora de la calidad del aire interior",
-        "Cumplimiento de normativas y garantías"
-      ],
-      "icono": "mdi:check-circle-outline",
-      "destacado": true,
-      "caracteristicas": [
-        "Limpieza profunda de componentes",
-        "Calibración de sistemas",
-        "Revisión eléctrica completa",
-        "Pruebas de rendimiento",
-        "Informe técnico detallado"
+      "url": "/servicios/aire-acondicionado-climatizacion",
+      "slug": "aire-acondicionado-climatizacion",
+      "descripcion_larga": "En Teknisolutions, somos especialistas en ofrecer un servicio integral de climatización y ventilación en Lima, proporcionando la instalación de una amplia gama de equipos como Split Pared, Ducto, Cassette, VRF, Paquete (Rooftop) y Chillers, adaptados a las necesidades de viviendas, oficinas, locales comerciales e instalaciones industriales. Nuestra propuesta combina tecnología de vanguardia y equipos de alta eficiencia energética para garantizar ambientes frescos, máximo confort y ahorro operativo en cada proyecto.",
+      "icono": "mdi:snowflake",
+      "VentilacionClimatizacion": {
+        "titulo": "Ventilación y Climatización",
+        "img": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg",
+        "servicios": [
+          {
+            "nombre": "Extractores Axiales",
+            "descripcion": "Suministramos e instalamos ventiladores axiales de placa, tubo axiales de uso industrial y minero.",
+            "icono": "mdi:fan"
+          },
+          {
+            "nombre": "Extractores Centrífugos",
+            "descripcion": "Ofrecemos ventiladores de simple y doble aspiración, álabes hacia adelante y atrás.",
+            "icono": "mdi:cog"
+          },
+          {
+            "nombre": "Extractores Eólicos",
+            "descripcion": "Suministramos equipos eólicos que no necesitan motor y por ende no tienen consumo eléctrico.",
+            "icono": "mdi:wind-power"
+          },
+          {
+            "nombre": "Mantenimiento",
+            "descripcion": "Realizamos mantenimiento de equipos de ventilación, mantén tus ventiladores siempre en buenas condiciones.",
+            "icono": "mdi:wrench"
+          }
+        ]
+      },
+      "marcas": [
+        {
+          "id": 1,
+          "nombre": "Systemair",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/systemair.webp",
+          "slug": "systemair",
+          "descripcion": "Líder mundial en ventilación y calidad del aire interior"
+        },
+        {
+          "id": 2,
+          "nombre": "ColdPoint",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/aire-acondicionado-coldpoint.webp",
+          "slug": "coldpoint",
+          "descripcion": "Aire acondicionado eficiente y de calidad"
+        },
+        {
+          "id": 3,
+          "nombre": "LG",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/lg.webp",
+          "slug": "lg",
+          "descripcion": "Innovación en climatización y electrodomésticos"
+        },
+        {
+          "id": 4,
+          "nombre": "Soler & Palau",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/soler-palau.webp",
+          "slug": "soler-palau",
+          "descripcion": "Especialistas en ventilación residencial e industrial"
+        },
+        {
+          "id": 5,
+          "nombre": "Samsung",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/samsung.webp",
+          "slug": "samsung",
+          "descripcion": "Tecnología avanzada en climatización inteligente"
+        }
       ],
       "Domestico": [
         {
           "id": "D1",
-          "nombre": "Mantenimiento Preventivo Residencial",
-          "tipo": "Split y MultiSplit",
-          "descripcion": "Servicio completo de mantenimiento para sistemas residenciales que incluye limpieza, calibración y revisión de seguridad.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Split Pared",
+          "tipo": "Aire Acondicionado",
+          "descripcion": "Sistema split de pared ideal para habitaciones residenciales, disponible en versiones solo frío o frío/calor, con alta eficiencia energética.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
           "categoria": [
-            "Mantenimiento"
-          ],
-          "incluye": [
-            "Limpieza de filtros y serpentines",
-            "Revisión de carga de refrigerante",
-            "Calibración termostato",
-            "Prueba de funcionamiento",
-            "Informe técnico"
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
           ]
         },
         {
           "id": "D2",
-          "nombre": "Instalación Split Residencial",
-          "tipo": "Piso-Techo",
-          "descripcion": "Instalación profesional de sistemas Split con garantía de funcionamiento y eficiencia energética.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Mini Split",
+          "tipo": "Aire Acondicionado",
+          "descripcion": "Sistemas compactos y silenciosos perfectos para espacios reducidos en hogares, con opciones decorativas y de fácil instalación.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
           "categoria": [
-            "Instalación"
-          ],
-          "incluye": [
-            "Estudio técnico previo",
-            "Instalación completa",
-            "Pruebas de funcionamiento",
-            "Capacitación de uso",
-            "Garantía 12 meses"
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "D3",
+          "nombre": "Split Decorativo Piso/Techo",
+          "tipo": "Aire Acondicionado",
+          "descripcion": "Unidades estéticas que se integran al diseño de interiores, ideales para salas y espacios residenciales importantes.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
+          "categoria": [
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
           ]
         }
       ],
       "Comercial": [
         {
           "id": "C1",
-          "nombre": "Mantenimiento HVAC Comercial",
-          "tipo": "VRF/VRV",
-          "descripcion": "Mantenimiento especializado para sistemas VRF/VRV en centros comerciales, oficinas y edificios corporativos.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Split Ducto",
+          "tipo": "Aire Acondicionado",
+          "descripcion": "Sistemas de conductos ocultos para climatización uniforme en espacios comerciales como oficinas y locales, con distribución de aire a través de rejillas.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
           "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
             "Mantenimiento",
-            "Desarrollo"
-          ],
-          "incluye": [
-            "Análisis de eficiencia energética",
-            "Limpieza de sistemas centralizados",
-            "Optimización de parámetros",
-            "Reporte de consumo",
-            "Plan de mantenimiento anual"
+            "Reparación"
           ]
         },
         {
           "id": "C2",
-          "nombre": "Reparación Cassette Comercial",
-          "tipo": "Cassette",
-          "descripcion": "Servicio de reparación especializada para sistemas Cassette en restaurantes, hoteles y locales comerciales.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Cassette",
+          "tipo": "Aire Acondicionado",
+          "descripcion": "Unidades empotradas en cielorraso ideales para restaurantes, hoteles y centros comerciales, con distribución de aire en 4 direcciones.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
           "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
             "Reparación"
-          ],
-          "incluye": [
-            "Diagnóstico técnico avanzado",
-            "Reparación de compresores",
-            "Sustitución de componentes",
-            "Pruebas de presión",
-            "Garantía en reparación"
+          ]
+        },
+        {
+          "id": "C3",
+          "nombre": "VRF/VRV",
+          "tipo": "Sistema de Climatización",
+          "descripcion": "Sistemas de Flujo de Refrigerante Variable para edificios comerciales, permitiendo control individual de zonas con alta eficiencia energética.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "C4",
+          "nombre": "Fan Coil",
+          "tipo": "Unidad Terminal",
+          "descripcion": "Unidades de ventilador y batería conectadas a sistemas de agua helada, ideales para centros comerciales y edificios de oficinas.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "C5",
+          "nombre": "Ductos",
+          "tipo": "Sistema de Distribución",
+          "descripcion": "Diseño, fabricación e instalación de redes de ductos personalizados para distribución óptima de aire en proyectos comerciales.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
           ]
         }
       ],
       "Industrial": [
         {
           "id": "I1",
-          "nombre": "Proyecto HVAC Industrial",
-          "tipo": "Sistemas Centralizados",
-          "descripcion": "Desarrollo e implementación completa de sistemas HVAC para plantas industriales y fábricas.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Chiller",
+          "tipo": "Enfriador de Agua",
+          "descripcion": "Sistemas de refrigeración centralizada por agua para grandes instalaciones industriales, con alta capacidad de enfriamiento.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
           "categoria": [
-            "Desarrollo",
-            "Ejecución de Proyecto",
-            "Instalación"
-          ],
-          "incluye": [
-            "Estudio de necesidades",
-            "Diseño ingenieril",
-            "Suministro de equipos",
-            "Instalación certificada",
-            "Puesta en marcha"
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
           ]
         },
         {
           "id": "I2",
-          "nombre": "Mantenimiento Industrial Preventivo",
-          "tipo": "Sistemas de Ventilación",
-          "descripcion": "Programa de mantenimiento preventivo para sistemas industriales de gran escala.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Paquete (Rooftop)",
+          "tipo": "Unidad Completa",
+          "descripcion": "Unidades autónomas montadas en techos para climatización industrial, ideales para naves industriales y plantas de producción.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
           "categoria": [
-            "Mantenimiento"
-          ],
-          "incluye": [
-            "Inspección completa anual",
-            "Limpieza de ductos industriales",
-            "Calibración de controles",
-            "Pruebas de eficiencia",
-            "Plan de mantenimiento predictivo"
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "I3",
+          "nombre": "HVAC",
+          "tipo": "Sistema Integral",
+          "descripcion": "Sistemas completos de Calefacción, Ventilación y Aire Acondicionado a escala industrial para plantas y fábricas.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "I4",
+          "nombre": "MultiV",
+          "tipo": "Sistema Multi-Zona",
+          "descripcion": "Sistemas VRF de múltiples zonas para complejos industriales que requieren control de temperatura diferenciado.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "I5",
+          "nombre": "Sistema de Ventilación Industrial",
+          "tipo": "Ventilación Mecánica",
+          "descripcion": "Extractores axiales, centrífugos y eólicos para ventilación y extracción de gases en ambientes industriales.",
+          "imagen": "https://friotemp.com.pe/wp-content/uploads/split-pared-york-r410a-1-1.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
           ]
         }
       ]
     },
     {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
       "titulo": "Refrigeración comercial e industrial",
-      "contenido": "Diseñamos, instalamos y mantenemos cámaras frigoríficas, cuartos fríos, sistemas de congelación, vitrinas, conservadoras y sistemas de refrigeración centralizada.",
-      "url": "/servicios/instalacion-sistemas",
-      "slug": "instalacion-sistemas",
-      "descripcion_larga": "Realizamos instalaciones completas de sistemas HVAC con tecnología de última generación, asegurando cumplimiento de normas y máxima eficiencia energética.",
-      "beneficios": [
-        "Instalación profesional certificada",
-        "Cumplimiento de normativas vigentes",
-        "Garantía extendida de 24 meses",
-        "Asesoría técnica personalizada",
-        "Optimización energética garantizada"
-      ],
-      "icono": "mdi:tools",
-      "destacado": true,
-      "caracteristicas": [
-        "Estudio técnico previo",
-        "Diseño personalizado",
-        "Instalación certificada",
-        "Puesta en marcha",
-        "Capacitación al usuario"
-      ],
-      "Domestico": [
+      "contenido": "En Teknisolutions, nos especializamos en soluciones integrales de refrigeración industrial y comercial, diseñando e implementando cámaras frigoríficas, túneles de enfriamiento y sistemas de congelamiento de alto rendimiento.",
+      "url": "/servicios/refrigeracion-comercial-industrial",
+      "slug": "refrigeracion-comercial-industrial",
+      "descripcion_larga": "En Teknisolutions, nos especializamos en soluciones integrales de refrigeración industrial y comercial, diseñando e implementando cámaras frigoríficas, túneles de enfriamiento y sistemas de congelamiento de alto rendimiento. Gracias a nuestra tecnología de vanguardia y un equipo de ingeniería experto, optimizamos la climatización de salas de procesos y la operación de plantas de hielo, garantizando sistemas eficientes, confiables y con un control térmico riguroso para la conservación y procesamiento de sus productos.",
+      "icono": "mdi:snowflake-thermometer",
+      "VentilacionClimatizacion": {},
+      "marcas": [
         {
-          "id": "RD1",
-          "nombre": "Reparación Refrigeradora Familiar",
-          "tipo": "Refrigeradoras",
-          "descripcion": "Servicio de reparación para refrigeradoras domésticas de todas las marcas y modelos.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Reparación"
-          ],
-          "incluye": [
-            "Diagnóstico gratuito",
-            "Reparación de compresor",
-            "Cambio de gas refrigerante",
-            "Revisión eléctrica",
-            "Garantía 6 meses"
-          ]
+          "id": 1,
+          "nombre": "Systemair",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/systemair.webp",
+          "slug": "systemair",
+          "descripcion": "Líder mundial en ventilación y calidad del aire interior"
         },
         {
-          "id": "RD2",
-          "nombre": "Mantenimiento Congelador Doméstico",
-          "tipo": "Congeladores",
-          "descripcion": "Mantenimiento preventivo para congeladores domésticos y conservadoras.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Mantenimiento"
-          ],
-          "incluye": [
-            "Limpieza completa interna",
-            "Descongelación programada",
-            "Revisión de sellos",
-            "Prueba de temperatura",
-            "Asesoría de uso"
-          ]
+          "id": 2,
+          "nombre": "ColdPoint",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/aire-acondicionado-coldpoint.webp",
+          "slug": "coldpoint",
+          "descripcion": "Aire acondicionado eficiente y de calidad"
+        },
+        {
+          "id": 3,
+          "nombre": "LG",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/lg.webp",
+          "slug": "lg",
+          "descripcion": "Innovación en climatización y electrodomésticos"
+        },
+        {
+          "id": 4,
+          "nombre": "Soler & Palau",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/soler-palau.webp",
+          "slug": "soler-palau",
+          "descripcion": "Especialistas en ventilación residencial e industrial"
+        },
+        {
+          "id": 5,
+          "nombre": "Samsung",
+          "logo": "https://friotemp.com.pe/wp-content/uploads/samsung.webp",
+          "slug": "samsung",
+          "descripcion": "Tecnología avanzada en climatización inteligente"
         }
       ],
+      "Domestico": [],
       "Comercial": [
         {
           "id": "RC1",
-          "nombre": "Instalación Vitrina Refrigerada",
-          "tipo": "Vitrinas Exhibidoras",
-          "descripcion": "Instalación profesional de vitrinas refrigeradas para supermercados y negocios de alimentos.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Visicooler",
+          "tipo": "Refrigeración Comercial",
+          "descripcion": "Exhibidores refrigerados con puertas de vidrio para máxima visibilidad de productos, ideales para tiendas y supermercados.",
+          "imagen": "https://example.com/visicooler.jpg",
           "categoria": [
-            "Instalación"
-          ],
-          "incluye": [
-            "Asesoría de ubicación",
-            "Instalación eléctrica",
-            "Montaje de vitrina",
-            "Puesta en marcha",
-            "Capacitación"
+            "Mantenimiento",
+            "Reparación"
           ]
         },
         {
           "id": "RC2",
-          "nombre": "Proyecto Cámara Fría Comercial",
-          "tipo": "Cámaras Frías",
-          "descripcion": "Desarrollo e instalación de cámaras frigoríficas para restaurantes y comercios.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Exhibidor",
+          "tipo": "Refrigeración Comercial",
+          "descripcion": "Muebles refrigerados para exhibición de productos perecederos en comercios minoristas y tiendas de conveniencia.",
+          "imagen": "https://example.com/exhibidor.jpg",
           "categoria": [
-            "Desarrollo",
-            "Ejecución de Proyecto"
-          ],
-          "incluye": [
-            "Diseño personalizado",
-            "Suministro de materiales",
-            "Construcción de cámara",
-            "Instalación sistema frío",
-            "Certificación final"
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RC3",
+          "nombre": "Congelador Vertical",
+          "tipo": "Refrigeración Comercial",
+          "descripcion": "Congeladores de puerta vertical para almacenamiento comercial de productos congelados, optimizando espacio en tiendas.",
+          "imagen": "https://example.com/congelador-vertical.jpg",
+          "categoria": [
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RC4",
+          "nombre": "Congelador Horizontal",
+          "tipo": "Refrigeración Comercial",
+          "descripcion": "Congeladores de tapa superior para exposición y venta de helados y productos congelados en comercios.",
+          "imagen": "https://example.com/congelador-horizontal.jpg",
+          "categoria": [
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RC5",
+          "nombre": "Cámara Frigorífica",
+          "tipo": "Refrigeración Comercial",
+          "descripcion": "Cámaras frigoríficas modulares para almacenamiento a media temperatura en supermercados y centros de distribución.",
+          "imagen": "https://example.com/camara-frigorifica-comercial.jpg",
+          "categoria": [
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RC6",
+          "nombre": "Máquinas de Hielo",
+          "tipo": "Refrigeración Comercial",
+          "descripcion": "Equipos productores de hielo en cubos, escamas o cilindros para restaurantes, hoteles y comercios de alimentos.",
+          "imagen": "https://example.com/maquinas-hielo-comercial.jpg",
+          "categoria": [
+            "Mantenimiento",
+            "Reparación"
           ]
         }
       ],
       "Industrial": [
         {
           "id": "RI1",
-          "nombre": "Mantenimiento Cuartos Fríos Industriales",
-          "tipo": "Cuartos Fríos Industriales",
-          "descripcion": "Mantenimiento especializado para cuartos fríos de gran capacidad en plantas procesadoras.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Hidrocooler",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Sistemas de enfriamiento por agua para procesamiento rápido de frutas y verduras después de la cosecha.",
+          "imagen": "https://example.com/hidrocooler.jpg",
           "categoria": [
-            "Mantenimiento"
-          ],
-          "incluye": [
-            "Revisión de aislamiento",
-            "Mantenimiento compresores",
-            "Calibración controles",
-            "Pruebas de hermeticidad",
-            "Plan preventivo"
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
           ]
         },
         {
           "id": "RI2",
-          "nombre": "Instalación Sistema Congelación Industrial",
-          "tipo": "Sistemas de Congelación",
-          "descripcion": "Instalación completa de sistemas de congelación rápida para industria alimentaria.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
+          "nombre": "Chillers",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Enfriadoras de agua industrial para procesos de refrigeración a gran escala en plantas de producción.",
+          "imagen": "https://example.com/chillers-industrial.jpg",
           "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
             "Instalación",
-            "Ejecución de Proyecto"
-          ],
-          "incluye": [
-            "Ingeniería del proyecto",
-            "Suministro equipos",
-            "Instalación mecánica",
-            "Pruebas de temperatura",
-            "Entrenamiento operativo"
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RI3",
+          "nombre": "Cuarto Frío",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Cuartos refrigerados industriales para almacenamiento masivo de productos a temperatura controlada.",
+          "imagen": "https://example.com/cuarto-frio-industrial.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RI4",
+          "nombre": "Cámara Frigorífica",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Cámaras de congelación y refrigeración industrial para almacenamiento logístico de productos perecederos.",
+          "imagen": "https://example.com/camara-frigorifica-industrial.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RI5",
+          "nombre": "Túnel de Enfriamiento",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Sistemas de túnel para enfriamiento rápido de productos alimenticios en procesos industriales continuos.",
+          "imagen": "https://example.com/tunel-enfriamiento.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RI6",
+          "nombre": "Sala de Proceso",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Salas con climatización controlada para procesos específicos en la industria alimentaria y farmacéutica.",
+          "imagen": "https://example.com/sala-proceso.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RI7",
+          "nombre": "Enfriadores",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Equipos de enfriamiento por aire para procesos industriales que requieren control térmico preciso.",
+          "imagen": "https://example.com/enfriadores-industriales.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
+          ]
+        },
+        {
+          "id": "RI8",
+          "nombre": "Máquinas de Hielo",
+          "tipo": "Refrigeración Industrial",
+          "descripcion": "Plantas productoras de hielo industrial para pesca, procesamiento de alimentos y aplicaciones industriales.",
+          "imagen": "https://example.com/maquinas-hielo-industrial.jpg",
+          "categoria": [
+            "Consultoría",
+            "Desarrollo de Proyecto",
+            "Ejecución",
+            "Instalación",
+            "Mantenimiento",
+            "Reparación"
           ]
         }
       ]
     },
     {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
-      "titulo": "Consultoría, desarrollo y ejecución de proyectos",
-      "contenido": "Brindamos un servicio integral de consultoría, desarrollo y ejecución de proyectos de climatización y refrigeración, acompañando al cliente en todas las etapas del proceso.",
-      "url": "/servicios/reparacion-especializada",
-      "slug": "reparacion-especializada",
-      "descripcion_larga": "Diagnóstico y reparación de sistemas HVAC por técnicos certificados, con repuestos originales y garantía en todos nuestros trabajos.",
-      "beneficios": [
-        "Diagnóstico preciso y rápido",
-        "Técnicos certificados especializados",
-        "Repuestos originales garantizados",
-        "Servicio de emergencia 24/7",
-        "Garantía en todas las reparaciones"
-      ],
-      "icono": "mdi:wrench",
-      "destacado": true,
-      "caracteristicas": [
-        "Diagnóstico especializado",
-        "Reparación de compresores",
-        "Mantenimiento eléctrico",
-        "Servicio de emergencia",
-        "Repuestos originales"
-      ],
-      "Domestico": [
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
+      "titulo": "Consultoría de desarrollo y ejecución de proyecto",
+      "contenido": "Diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida.",
+      "url": "/servicios/consultoria-desarrollo-ejecucion-proyecto",
+      "slug": "consultoria-desarrollo-ejecucion-proyecto",
+      "descripcion_larga": "En Teknisolutions, diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida. Nuestro equipo de ingenieros especializados gestiona cada etapa del proceso, desde el cálculo de redes de ductos y selección de equipos hasta la implementación final, garantizando el cumplimiento normativo, la eficiencia energética y la puntualidad en cada entrega.",
+      "icono": "mdi:clipboard-check",
+      "secciones": [
         {
-          "id": "CD1",
-          "nombre": "Consultoría Eficiencia Energética Residencial",
-          "tipo": "Optimización de Sistemas",
-          "descripcion": "Asesoría especializada para mejorar la eficiencia energética de sistemas de climatización en hogares.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Desarrollo"
-          ],
-          "incluye": [
-            "Auditoría energética",
-            "Recomendaciones de mejora",
-            "Análisis de ahorro",
-            "Plan de implementación",
-            "Seguimiento post-asesoría"
+          "titulo": "Soluciones Especializadas por Sector",
+          "contenido": "Desarrollamos proyectos personalizados adaptados a las exigencias críticas de diversos entornos:",
+          "items": [
+            {
+              "titulo": "Sector Salud y Hospitalario",
+              "descripcion": "Sistemas de climatización con filtrado especial y control de presión para hospitales y clínicas."
+            },
+            {
+              "titulo": "Industria Farmacéutica",
+              "descripcion": "Diseño de almacenes especializados para medicamentos, cámaras de frío con monitoreo térmico y sistemas de climatización para laboratorios bajo estrictos estándares de bioseguridad."
+            },
+            {
+              "titulo": "Industria Alimentaria",
+              "descripcion": "Diseño de cámaras frigoríficas, cuartos fríos, túneles de congelamiento y climatización de salas de procesos."
+            },
+            {
+              "titulo": "Corporativo y Comercial",
+              "descripcion": "Soluciones de aire acondicionado para oficinas, edificios y restaurantes, optimizando el confort y el consumo eléctrico."
+            },
+            {
+              "titulo": "Residencial",
+              "descripcion": "Instalaciones de alta eficiencia para hogares modernos."
+            }
           ]
         },
         {
-          "id": "CD2",
-          "nombre": "Proyecto Renovación Sistema HVAC",
-          "tipo": "Renovación Integral",
-          "descripcion": "Gestión completa del proyecto de renovación de sistemas de climatización para viviendas.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Ejecución de Proyecto",
-            "Desarrollo"
-          ],
-          "incluye": [
-            "Estudio de viabilidad",
-            "Gestión de permisos",
-            "Coordinación de trabajos",
-            "Supervisión de instalación",
-            "Entrega llave en mano"
-          ]
-        }
-      ],
-      "Comercial": [
-        {
-          "id": "CC1",
-          "nombre": "Desarrollo Proyecto HVAC Comercial",
-          "tipo": "Proyectos Integrales",
-          "descripcion": "Gestión completa de proyectos HVAC para centros comerciales y edificios de oficinas.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Desarrollo",
-            "Ejecución de Proyecto"
-          ],
-          "incluye": [
-            "Estudio de cargas térmicas",
-            "Diseño de sistema",
-            "Especificación de equipos",
-            "Gestión de instalación",
-            "Puesta en marcha"
+          "titulo": "Nuestro Portafolio de Servicios",
+          "items": [
+            "Sistemas HVAC: Instalación de equipos Split (Pared, Ducto, Cassette), sistemas VRF, unidades Paquete (Rooftop), Chillers y Fan Coils.",
+            "Ventilación y Seguridad: Diseño de sistemas de ventilación mecánica, extracción de monóxido y presurización de escaleras contra incendios.",
+            "Ingeniería de Ductos: Fabricación e instalación de ductos personalizados para garantizar un flujo de aire óptimo y duradero.",
+            "Mantenimiento Especializado: Planes preventivos y correctivos para asegurar el rendimiento continuo y prolongar la vida útil de sus activos."
           ]
         },
         {
-          "id": "CC2",
-          "nombre": "Consultoría Normativa HVAC",
-          "tipo": "Asesoría Regulatoria",
-          "descripcion": "Asesoría especializada en cumplimiento normativo para sistemas comerciales.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Desarrollo"
-          ],
-          "incluye": [
-            "Revisión de normativas",
-            "Evaluación de cumplimiento",
-            "Plan de adecuación",
-            "Asesoría en certificaciones",
-            "Soporte en inspecciones"
-          ]
-        }
-      ],
-      "Industrial": [
-        {
-          "id": "CI1",
-          "nombre": "Ejecución Proyecto HVAC Industrial",
-          "tipo": "Proyectos a Gran Escala",
-          "descripcion": "Gestión y ejecución de proyectos HVAC complejos para plantas industriales.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Ejecución de Proyecto",
-            "Desarrollo"
-          ],
-          "incluye": [
-            "Gestión de proyecto completa",
-            "Coordinación multidisciplinaria",
-            "Control de calidad",
-            "Gestión de riesgos",
-            "Entrega certificada"
+          "titulo": "Metodología de Trabajo",
+          "items": [
+            "Análisis Detallado: Evaluamos los requerimientos técnicos y expectativas de cada proyecto.",
+            "Diseño e Ingeniería: Trazamos soluciones eficientes que maximizan el rendimiento y minimizan costos operativos.",
+            "Ejecución y Gestión: Implementamos tecnología de vanguardia bajo estrictos estándares de seguridad y calidad."
           ]
         },
         {
-          "id": "CI2",
-          "nombre": "Consultoría Eficiencia Industrial",
-          "tipo": "Optimización Procesos",
-          "descripcion": "Consultoría especializada para optimización energética en sistemas industriales.",
-          "imagen": "https://friotemp.com.pe/wp-content/uploads/img-productos-aire-acondicionado-split-pared.avif",
-          "categoria": [
-            "Desarrollo"
-          ],
-          "incluye": [
-            "Análisis de procesos",
-            "Identificación de mejoras",
-            "Cálculo de ROI",
-            "Plan de implementación",
-            "Seguimiento de resultados"
-          ]
+          "titulo": "Productos Relacionados",
+          "contenido": "Cámara frigorífica, túnel de enfriamiento, sala de proceso, aire acondicionado y climatización (ductos, HVAC, VRF, VRV, MultiV)"
         }
-      ]
+      ],
+      "VentilacionClimatizacion": {},
+      "marcas": [],
+      "Domestico": [],
+      "Comercial": [],
+      "Industrial": []
+    },
+    {
+      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
+      "titulo": "Servicio especial de cámara frigorífica",
+      "contenido": "Soluciones integrales de refrigeración industrial y comercial diseñadas para maximizar la eficiencia y confiabilidad en la conservación de productos.",
+      "url": "/servicios/servicio-especial-camara-frigorifica",
+      "slug": "servicio-especial-camara-frigorifica",
+      "descripcion_larga": "En Teknisolutions, nos especializamos en ofrecer soluciones integrales de refrigeración industrial y comercial, diseñadas para maximizar la eficiencia y confiabilidad en la conservación de sus productos. Proporcionamos un servicio completo que abarca desde el diseño técnico hasta la instalación de infraestructura de alta precisión.",
+      "icono": "mdi:clipboard-check",
+      "secciones": [
+        {
+          "titulo": "Equipamiento e Infraestructura de Alto Rendimiento",
+          "contenido": "Contamos con un catálogo robusto de tecnología avanzada para cubrir cada etapa de la cadena de frío:",
+          "items": [
+            "Almacenamiento Térmico: Diseño e instalación de cámaras frigoríficas, cámaras de congelación y túneles de congelado rápido.",
+            "Unidades de Potencia: Implementación de sistemas de racks de compresores, unidades condensadoras y sistemas de Chillers.",
+            "Componentes Especializados: Suministro de paneles aislantes, puertas para cámaras frigoríficas y unidades enfriadoras de aire (evaporadores).",
+            "Ingeniería de Salas: Climatización precisa para salas de procesamiento, garantizando estándares óptimos de higiene y temperatura."
+          ]
+        },
+        {
+          "titulo": "Sectores de Especialización",
+          "contenido": "Colaboramos estrechamente con contratistas y usuarios finales en diversos sectores estratégicos, adaptándonos a las exigencias de cada industria:",
+          "items": [
+            "Retail y Horeca: Soluciones para supermercados, hoteles y cadenas de restaurantes.",
+            "Agroindustria: Sistemas especializados para la conservación de flores y productos perecederos.",
+            "Procesamiento: Equipamiento para plantas industriales de alimentos y centros de distribución.",
+            "Industria Farmacéutica: Diseño de almacenes especializados para medicamentos, cámaras de frío con monitoreo térmico y sistemas de climatización para laboratorios bajo estrictos estándares de bioseguridad.",
+            "Sector Salud y Hospitalario: Climatización de salas de operaciones, unidades de cuidados intensivos y centros médicos con sistemas de filtrado de aire de alta eficiencia."
+          ]
+        },
+        {
+          "titulo": "Compromiso con la Eficiencia",
+          "contenido": "Nuestro equipo de ingenieros garantiza instalaciones profesionales que optimizan el consumo energético y aseguran la continuidad operativa. En Teknisolutions, no solo instalamos equipos; diseñamos soluciones eficientes que protegen la calidad de su inversión."
+        }
+      ],
+      "VentilacionClimatizacion": {},
+      "marcas": [],
+      "Domestico": [],
+      "Comercial": [],
+      "Industrial": []
     }
   ]
 }
