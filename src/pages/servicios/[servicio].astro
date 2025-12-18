@@ -28,7 +28,7 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
 
 <Layout title={servicioEncontrado.titulo}>
   <!-- Hero Section -->
-  <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+  <section class="relative py-16 min-h-[50vh] flex items-center justify-center overflow-hidden">
     <div 
       class="absolute inset-0 z-0"
       style={`
@@ -38,7 +38,7 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
         background-repeat: no-repeat;
       `}
     >
-      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
+      <div class="absolute inset-0 bg-black/70"></div>
     </div>
     
     <div class="container relative z-10 px-4">
@@ -46,9 +46,6 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
           {servicioEncontrado.titulo}
         </h1>
-        <p class="text-xl md:text-2xl text-white/90 mb-8">
-          {servicioEncontrado.contenido}
-        </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
             href="/contacto"
@@ -74,20 +71,19 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
     <div class="container">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="relative">
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-            <img 
-              src={servicioEncontrado.img}
-              alt={servicioEncontrado.titulo}
-              class="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-700"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-          </div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl">
+  <img 
+    src={servicioEncontrado.img}
+    alt={servicioEncontrado.titulo}
+    class="w-full h-auto object-cover"
+  />
+</div>
           <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-primary/5 rounded-full -z-10"></div>
         </div>
 
         <div>
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Soluciones Integrales de Climatización
+            {servicioEncontrado.titulo}
           </h2>
           <p class="text-lg text-gray-600 mb-6 leading-relaxed">
             {servicioEncontrado.descripcion_larga}
@@ -128,83 +124,50 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
       </div>
     </div>
   </section>
-
-  <!-- SECCIÓN DE VENTILACIÓN Y CLIMATIZACIÓN - DISEÑO MEJORADO -->
-  {Object.keys(servicioEncontrado.VentilacionClimatizacion).length > 0 && servicioEncontrado.VentilacionClimatizacion.servicios && (
-    <section class="py-16 lg:py-24 bg-gradient-to-b from-blue-50 to-white">
+{Object.keys(servicioEncontrado.VentilacionClimatizacion).length > 0 && servicioEncontrado.VentilacionClimatizacion.servicios && (
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-primary-950 to-primary-950">
       <div class="container">
         <div class="text-center mb-12">
-          <div class="inline-flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center">
-              <Icon name="mdi:fan" class="w-7 h-7 text-white" />
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-              {servicioEncontrado.VentilacionClimatizacion.titulo}
-            </h2>
-          </div>
-          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            Soluciones especializadas en ventilación mecánica y calidad del aire interior
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            {servicioEncontrado.VentilacionClimatizacion.titulo}
+          </h2>
+          <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+            Sistemas especializados para calidad del aire y confort ambiental
           </p>
         </div>
 
-        <!-- Diseño tipo tabla/dashboard para servicios -->
-        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <div class="p-6 border-b border-gray-100">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Nuestros Servicios de Ventilación</h3>
-            <p class="text-gray-600">Equipos de alta eficiencia para cada necesidad específica</p>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="relative order-2 lg:order-1">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={servicioEncontrado.VentilacionClimatizacion.img || servicioEncontrado.img}
+                alt={servicioEncontrado.VentilacionClimatizacion.titulo}
+                class="w-full h-auto object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-600/20 to-transparent"></div>
+            </div>
+            <div class="absolute -top-6 -left-6 w-40 h-40 bg-primary-500/5 rounded-full -z-10"></div>
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-full -z-10"></div>
           </div>
-          
-          <div class="divide-y divide-gray-100">
-            {servicioEncontrado.VentilacionClimatizacion.servicios.map((servicioVent, index) => (
-              <div class="p-6 hover:bg-blue-50/50 transition-colors duration-300">
-                <div class="flex flex-col md:flex-row md:items-center gap-4">
-                  <!-- Icono y número -->
-                  <div class="flex items-center gap-4 md:w-1/4">
-                    <div class="flex items-center justify-center">
-                      <div class="relative">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                          <Icon name={servicioVent.icono} class="w-7 h-7 text-white" />
-                        </div>
-                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-blue-400 text-white text-xs font-bold rounded-full flex items-center justify-center">
-                          {index + 1}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="md:hidden">
-                      <h4 class="font-bold text-gray-900 text-lg">{servicioVent.nombre}</h4>
-                    </div>
+
+          <!-- Contenido -->
+          <div class="order-1 lg:order-2">
+            
+            <!-- Servicios de Ventilación -->
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              {servicioEncontrado.VentilacionClimatizacion.servicios.map((servicioVent, index) => (
+                <div class="bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+                  <div class="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mb-3">
+                    <Icon name={servicioVent.icono} class="w-6 h-6 text-primary-600" />
                   </div>
-                  
-                  <!-- Contenido -->
-                  <div class="md:w-3/4">
-                    <div class="hidden md:block mb-3">
-                      <h4 class="font-bold text-gray-900 text-lg">{servicioVent.nombre}</h4>
-                    </div>
-                    <p class="text-gray-600 mb-4">{servicioVent.descripcion}</p>
-                    
-                    <!-- Características adicionales (ejemplo) -->
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-blue-100 text-blue-800 px-3 py-1.5 rounded-full">Alta eficiencia</span>
-                      <span class="text-xs bg-green-100 text-green-800 px-3 py-1.5 rounded-full">Bajo consumo</span>
-                      <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1.5 rounded-full">Instalación profesional</span>
-                    </div>
-                  </div>
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    {servicioVent.nombre}
+                  </h4>
+                  <p class="text-gray-600 text-sm">
+                    {servicioVent.descripcion}
+                  </p>
                 </div>
-              </div>
-            ))}
-          </div>
-          
-          <!-- Footer de la tabla -->
-          <div class="bg-gray-50 p-6 border-t border-gray-100">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p class="text-gray-600 text-sm">Todos nuestros equipos incluyen garantía y servicio técnico especializado</p>
-              <a 
-                href="/contacto" 
-                class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
-              >
-                <Icon name="mdi:chat-processing" class="w-5 h-5" />
-                Solicitar Asesoría Técnica
-              </a>
+              ))}
             </div>
           </div>
         </div>
@@ -212,119 +175,137 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
     </section>
   )}
 
-  <!-- SECCIÓN DE SECCIONES - CONTENIDO INFORMATIVO -->
-  {servicioEncontrado.secciones && servicioEncontrado.secciones.length > 0 && (
-    <section class="py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div class="container">
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center">
-              <Icon name="mdi:book-information-variant" class="w-7 h-7 text-white" />
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-              Información Especializada
-            </h2>
-          </div>
-          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            Conoce nuestros procesos, metodologías y soluciones sectoriales
+<!-- SECCIÓN DE SECCIONES - CONTENIDO INFORMATIVO -->
+{servicioEncontrado.secciones && servicioEncontrado.secciones.length > 0 && (
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="container">
+      <!-- Encabezado de la sección -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-medium mb-4">
+          <Icon name="mdi:chart-box" class="w-4 h-4" />
+          Información Especializada
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          {servicioEncontrado.secciones[0].titulo}
+        </h2>
+        {servicioEncontrado.secciones[0].contenido && (
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+            {servicioEncontrado.secciones[0].contenido}
           </p>
-        </div>
+        )}
+      </div>
 
-        <div class="space-y-8">
-          {servicioEncontrado.secciones.map((seccion, index) => (
-            <div 
-              key={index}
-              class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <!-- Encabezado de la sección -->
-              <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-8 border-b border-gray-200">
-                <div class="flex items-center gap-4">
-                  <div class="p-4 bg-amber-500 text-white rounded-xl">
-                    <Icon 
-                      name={seccion.titulo.includes("Sector") ? "mdi:account-group" : 
-                            seccion.titulo.includes("Portafolio") ? "mdi:briefcase" :
-                            seccion.titulo.includes("Metodología") ? "mdi:cogs" :
-                            seccion.titulo.includes("Productos") ? "mdi:package-variant" :
-                            "mdi:information"} 
-                      class="w-8 h-8" 
-                    />
-                  </div>
-                  <div>
-                    <h3 class="text-2xl font-bold text-gray-900">{seccion.titulo}</h3>
-                    {seccion.contenido && (
-                      <p class="text-gray-600 mt-2 max-w-3xl">{seccion.contenido}</p>
-                    )}
-                  </div>
-                </div>
-              </div>
+      <!-- Contenido de la sección - Layout mejorado -->
+      {servicioEncontrado.secciones[0].items && Array.isArray(servicioEncontrado.secciones[0].items) && 
+       servicioEncontrado.secciones[0].items.length > 0 && (
+        <div class="max-w-6xl mx-auto">
+          <!-- Para 5 items, diseño especial -->
+          {servicioEncontrado.secciones[0].items.length === 5 ? (
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
               
-              <!-- Contenido de la sección -->
-              <div class="p-8">
-                {/* Para items con estructura de objeto */}
-                {seccion.items && Array.isArray(seccion.items) && seccion.items.length > 0 && typeof seccion.items[0] === 'object' ? (
-                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {seccion.items.map((item, idx) => (
-                      <div 
-                        key={idx}
-                        class="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-xl p-6 hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-                      >
-                        <div class="flex items-start gap-3 mb-4">
-                          <div class="p-2 bg-amber-100 text-amber-600 rounded-lg mt-1">
-                            <Icon 
-                              name={item.titulo.includes("Salud") ? "mdi:hospital" :
-                                    item.titulo.includes("Farmacéutica") ? "mdi:pill" :
-                                    item.titulo.includes("Alimentaria") ? "mdi:food" :
-                                    item.titulo.includes("Corporativo") ? "mdi:office-building" :
-                                    "mdi:home"}
-                              class="w-6 h-6"
-                            />
-                          </div>
-                          <h4 class="font-bold text-gray-900 text-lg">{item.titulo}</h4>
+              <!-- Items restantes (4 items) -->
+              {servicioEncontrado.secciones[0].items.map((item, idx) => {
+                // Función para determinar el ícono basado en el título
+                const getIconName = (titulo:any) => {
+                  if (!titulo) return "mdi:information";
+                  if (titulo.includes("Salud") || titulo.includes("Hospitalario")) return "mdi:medical-bag";
+                  if (titulo.includes("Farmacéutica")) return "mdi:pill";
+                  if (titulo.includes("Alimentaria") || titulo.includes("Procesamiento")) return "mdi:food-apple";
+                  if (titulo.includes("Corporativo") || titulo.includes("Comercial")) return "mdi:office-building";
+                  if (titulo.includes("Residencial")) return "mdi:home";
+                  if (titulo.includes("Retail")) return "mdi:store";
+                  if (titulo.includes("Horeca")) return "mdi:chef-hat";
+                  return "mdi:information";
+                };
+                
+                return (
+                  <div 
+  class="bg-gradient-to-br from-primary-50 to-white border border-gray-100 rounded-xl p-6 hover:border-primary-200 hover:shadow-lg transition-all duration-300"
+>
+                    <div class="flex items-start gap-4">
+                      <div class="flex-shrink-0 mt-1">
+                        <div class="w-12 h-12 rounded-lg bg-primary-50 flex items-center justify-center">
+                          <Icon 
+                            name={getIconName(item?.titulo)}
+                            class="w-6 h-6 text-primary-600" 
+                          />
                         </div>
-                        <p class="text-gray-600 leading-relaxed">{item.descripcion}</p>
                       </div>
-                    ))}
-                  </div>
-                ) : seccion.items && Array.isArray(seccion.items) && seccion.items.length > 0 ? (
-                  /* Para items como strings */
-                  <div class="space-y-4">
-                    {seccion.items.map((item, idx) => (
-                      <div 
-                        key={idx}
-                        class="flex items-start gap-4 p-5 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
-                      >
-                        <div class="p-2 bg-amber-500 text-white rounded-lg mt-1 flex-shrink-0">
-                          <Icon name="mdi:check-circle" class="w-5 h-5" />
-                        </div>
-                        <p class="text-gray-700 leading-relaxed">{item}</p>
+                      <div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">
+                          {item?.titulo || "Sector especializado"}
+                        </h4>
+                        <p class="text-gray-600">
+                          {item?.descripcion || "Información especializada del sector"}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                ) : seccion.contenido && !seccion.items ? (
-                  /* Para contenido simple sin items */
-                  <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
-                    <div class="flex items-center gap-3 mb-4">
-                      <Icon name="mdi:lightbulb-on" class="w-6 h-6 text-blue-600" />
-                      <h4 class="font-bold text-gray-900">Información Destacada</h4>
                     </div>
-                    <p class="text-gray-700 text-lg leading-relaxed">{seccion.contenido}</p>
                   </div>
-                ) : null}
-              </div>
+                );
+              })}
             </div>
-          ))}
+          ) : (
+            <!-- Layout estándar para otros números de items -->
+            <div class="grid grid-cols-1 lg:grid-cols-2  gap-6">
+              {servicioEncontrado.secciones[0].items.map((item, idx) => {
+                // Función para determinar el ícono basado en el título
+                const getIconName = (titulo:any) => {
+                  if (!titulo) return "mdi:information";
+                  if (titulo.includes("Salud") || titulo.includes("Hospitalario")) return "mdi:hospital";
+                  if (titulo.includes("Farmacéutica")) return "mdi:pill";
+                  if (titulo.includes("Alimentaria") || titulo.includes("Procesamiento")) return "mdi:food";
+                  if (titulo.includes("Corporativo") || titulo.includes("Comercial")) return "mdi:briefcase";
+                  if (titulo.includes("Residencial")) return "mdi:home";
+                  if (titulo.includes("Retail")) return "mdi:store";
+                  if (titulo.includes("Horeca")) return "mdi:chef-hat";
+                  return "mdi:information";
+                };
+                
+                return (
+                  <div 
+                    class="flex flex-col cursor-pointer hover:border-primary-200 hover:shadow-lg transition-all duration-300 md:flex-row items-start gap-6 bg-gradient-to-br from-primary-50 to-white rounded-2xl p-8 md:p-10 border border-primary-100"
+                  >
+                    <!-- Icono -->
+                    <div class="mb-4">
+                      <div class="w-14 h-14 rounded-xl from-primary-50 to-primary-100 flex items-center justify-center group-hover:from-primary-100 group-hover:to-primary-200 transition-all duration-300">
+                        <Icon 
+                          name={getIconName(item?.titulo)}
+                          class="w-7 h-7 text-primary-600" 
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <!-- Contenido -->
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors">
+                      {item?.titulo || "Sector especializado"}
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                      {item?.descripcion || "Información especializada del sector"}
+                    </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
-      </div>
-    </section>
-  )}
-  
-  <!-- Carrusel de Marcas -->
-  {servicioEncontrado.marcas && (
-    <Carrusel marcas={servicioEncontrado.marcas} />
-  )}
+      )}
+    </div>
+  </section>
+)}
+{(servicioEncontrado.Domestico.length > 0 || 
+  servicioEncontrado.Comercial.length > 0 || 
+  servicioEncontrado.Industrial.length > 0) && ( 
+  <Carrusel />
+)}
  
-  <Productos client:load servicioSlug={servicioSlugParaProductos} />
 
+{(servicioEncontrado.Domestico.length > 0 || 
+  servicioEncontrado.Comercial.length > 0 || 
+  servicioEncontrado.Industrial.length > 0) && (
+  <Productos client:load servicioSlug={servicioSlugParaProductos} />
+)}
   <!-- Otros servicios relacionados -->
   <section class="py-16 lg:py-24 bg-gray-50">
     <div class="container">

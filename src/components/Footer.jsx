@@ -29,13 +29,6 @@ const Footer = () => {
   const [email, setEmail] = useState('');
   const datos = ContactoData.contacto || {};
 
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    console.log('Newsletter suscrito:', email);
-    alert('¡Gracias por suscribirte!');
-    setEmail('');
-  };
-
   // Mapeo de iconos de servicios
   const iconMap = {
     "Mantenimiento Preventivo": FaCheckCircle,
@@ -286,26 +279,28 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      <div className="hidden md:flex">
+        {/* Botón flotante de WhatsApp (derecha) */}
+        {whatsappBotones.length > 0 && (
+          <a
+            href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl group"
+            aria-label="Contactar por WhatsApp"
+          >
+            <FaWhatsapp className="w-7 h-7" />
+            <div className="absolute flex flex-col right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+              <span>¿Necesitas ayuda? </span>
+              <span>{whatsappBotones[0].numero}</span>
+            </div>
+          </a>
+        )}
+      </div>
 
-      {/* Botón flotante de WhatsApp (derecha) */}
-      {whatsappBotones.length > 0 && (
-        <a
-          href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl group"
-          aria-label="Contactar por WhatsApp"
-        >
-          <FaWhatsapp className="w-7 h-7" />
-          <div className="absolute flex flex-col right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-            <span>¿Necesitas ayuda? </span>
-            <span>{whatsappBotones[0].numero}</span>
-          </div>
-        </a>
-      )}
 
       {/* Botón flotante de Redes Sociales (izquierda) */}
-      <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+      <div className="hidden md:fixed bottom-6 left-6 z-50 md:flex flex-col gap-3">
         {/* Mapeo dinámico de redes sociales flotantes */}
         {Object.entries(redesSociales).map(([key, red]) => {
           const IconComponent = socialIcons[key];

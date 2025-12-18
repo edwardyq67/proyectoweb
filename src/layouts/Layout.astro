@@ -1,7 +1,7 @@
 ---
 // Layout.astro
 import { ViewTransitions } from 'astro:transitions';
-import Header from '../components/Header.astro';
+import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
 const { title = 'Mi Sitio' } = Astro.props;
@@ -21,7 +21,7 @@ const { title = 'Mi Sitio' } = Astro.props;
 		<slot name="head" />
 	</head>
 	<body>
-		<Header />
+		<Header client:load/>
 		<slot />
 		<Footer />
 	</body>

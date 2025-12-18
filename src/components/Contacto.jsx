@@ -199,30 +199,6 @@ const Contacto = () => {
                   </div>
                   <span className="text-foreground text-sm">{horariosAtencion.general}</span>
                 </div>
-
-                <div className="flex items-center justify-between py-1.5 border-t border-border">
-                  <div className="flex items-center gap-1.5">
-                    <FaCalendarDay className="text-primary" />
-                    <span className="text-foreground text-sm">Sábados</span>
-                  </div>
-                  <span className="text-foreground text-sm">{horariosAtencion.sabados}</span>
-                </div>
-
-                <div className="flex items-center justify-between py-1.5 border-t border-border">
-                  <div className="flex items-center gap-1.5">
-                    <FaCalendarTimes className="text-primary" />
-                    <span className="text-foreground text-sm">Domingos</span>
-                  </div>
-                  <span className="text-foreground text-sm">{horariosAtencion.domingos}</span>
-                </div>
-
-                <div className="flex items-center justify-between py-1.5 border-t border-border">
-                  <div className="flex items-center gap-1.5">
-                    <FaExclamationCircle className="text-destructive" />
-                    <span className="text-foreground text-sm">Emergencias</span>
-                  </div>
-                  <span className="text-destructive text-sm">{horariosAtencion.emergencias}</span>
-                </div>
               </div>
             </div>
 

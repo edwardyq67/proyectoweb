@@ -1,43 +1,28 @@
 ---
 // Carrusel.astro
-interface Props {
-  marcas?: Array<{
-    id: number;
-    nombre: string;
-    logo: string;
-    slug: string;
-    descripcion: string;
-  }>;
-  metadata?: {
-    titulo?: string;
-    descripcion?: string;
-  };
-}
+import carruselData from '../lib/carrusel.json';
 
-const { marcas = [], metadata = {} } = Astro.props;
-
-// Configuración por defecto
-const defaultMetadata = {
-  titulo: "Trabajamos con las Mejores Marcas",
-  descripcion: "Equipos de calidad garantizada para cada proyecto"
-};
-
-const config = {
-  ...defaultMetadata,
-  ...metadata
-};
-
-// Si no hay marcas en las props, usar las del archivo JSON
-let marcasAMostrar = marcas;
+// Obtener marcas del JSON
+const marcas = carruselData.marcas;
+const metadata = carruselData.metadata;
 
 // Solo mostrar la sección si hay marcas
-const mostrarSeccion = marcasAMostrar && marcasAMostrar.length > 0;
+const mostrarSeccion = marcas && marcas.length > 0;
 ---
 
 {mostrarSeccion && (
   <!-- Carrusel de Marcas -->
-  <section class="pb-16 bg-gray-50">
+  <section class="py-16 bg-gray-50">
     <div class="container">
+      <!-- Título y descripción -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {metadata.titulo}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          {metadata.descripcion}
+        </p>
+      </div>
       
       <!-- Contenedor del carrusel -->
       <div class="relative overflow-hidden py-4">
@@ -46,9 +31,9 @@ const mostrarSeccion = marcasAMostrar && marcasAMostrar.length > 0;
         
         <!-- Carrusel infinito -->
         <div class="flex animate-scroll">
-          {marcasAMostrar.map((marca) => (
+          {marcas.map((marca) => (
             <div 
-              class="flex-shrink-0 mx-6 bg-white rounded-xl shadow-sm flex items-center justify-center p-6 border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300"
+              class="flex-shrink-0 mx-6 bg-white rounded-xl shadow-sm flex items-center justify-center p-6 transition-all duration-300 "
             >
               <img 
                 src={marca.logo} 
@@ -56,24 +41,24 @@ const mostrarSeccion = marcasAMostrar && marcasAMostrar.length > 0;
                 class="max-w-full max-h-full object-contain hover:grayscale-0 transition-all duration-300"
                 title={marca.nombre}
                 loading="lazy"
-                width="300"
+                width="200"
                 height="60"
               />
             </div>
           ))}
           <!-- Duplicar las marcas para efecto infinito continuo -->
-          {marcasAMostrar.map((marca) => (
+          {marcas.map((marca) => (
             <div 
-              class="flex-shrink-0 mx-6 bg-white rounded-xl shadow-sm flex items-center justify-center p-6 border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300"
+              class=" mx-6 bg-white rounded-xl flex items-center justify-center p-6  transition-all duration-300 "
               aria-hidden="true"
             >
               <img 
                 src={marca.logo} 
                 alt={`${marca.nombre} (duplicado)`}
-                class="max-w-full max-h-full object-contain hover:grayscale-0 transition-all duration-300"
+                class="max-w-full max-h-full cu object-contain hover:grayscale-0 transition-all duration-300"
                 title={marca.nombre}
                 loading="lazy"
-                width="300"
+                width="200"
                 height="60"
               />
             </div>
@@ -101,7 +86,7 @@ const mostrarSeccion = marcasAMostrar && marcasAMostrar.length > 0;
     .animate-scroll {
       display: flex;
       width: max-content;
-      animation: scroll 40s linear infinite;
+      animation: scroll 80s linear infinite;
     }
     
     /* Pausar animación al hacer hover */

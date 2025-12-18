@@ -28,7 +28,7 @@ import datosNosotros from '../lib/Nosotros.json';
             {
               datosNosotros.logros.map((logro, index) => (
                 <div 
-                  class="flex items-center p-3 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow opacity-0"
+                  class="flex items-center p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow opacity-0"
                   style={`animation: fade-in-up 0.6s ease-out ${0.3 + index * 0.1}s forwards`}
                 >
                   <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
@@ -42,7 +42,7 @@ import datosNosotros from '../lib/Nosotros.json';
             }
           </div>
           
-          <!-- Botón con efecto moderno -->
+          <!-- Botón con efecto moderno 
           <a 
             href={datosNosotros.boton.enlace}
             class="group relative inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95"
@@ -50,7 +50,7 @@ import datosNosotros from '../lib/Nosotros.json';
             <span class="relative z-10">{datosNosotros.boton.texto}</span>
             <div class="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div class="absolute -inset-1 bg-gradient-to-r from-primary via-purple-500 to-primary rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-          </a>
+          </a>-->
         </div>
         
         <!-- Imagen con efecto flotante -->
@@ -76,7 +76,7 @@ import datosNosotros from '../lib/Nosotros.json';
       
     <!-- Servicios en cards compactas -->
 <div class="mt-20 lg:mt-32">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {
       datosNosotros.servicios.map((servicio, index) => (
         <a 
