@@ -48,19 +48,13 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
         </h1>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
-            href="/contacto"
+            href="/#contacto"
             class="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <Icon name="mdi:calendar-check" class="w-5 h-5 mr-2" />
             Solicitar Cotización
           </a>
-          <a 
-            href="tel:+1234567890"
-            class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
-          >
-            <Icon name="mdi:phone" class="w-5 h-5 mr-2" />
-            Llamar Ahora
-          </a>
+          
         </div>
       </div>
     </div>
@@ -380,3 +374,27 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
     }
   }
 </style>
+<script>
+// Script para manejar la navegación inteligente
+document.addEventListener('DOMContentLoaded', function() {
+  const cotizacionBtn = document.querySelector('a[href="/#contacto"]');
+  
+  if (cotizacionBtn) {
+    cotizacionBtn.addEventListener('click', function(e) {
+      // Si estamos en la página de inicio
+      if (window.location.pathname === '/') {
+        // Navegar al hash en la misma página
+        e.preventDefault();
+        const contactoSection = document.getElementById('contacto');
+        if (contactoSection) {
+          contactoSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          // Si no existe la sección, redirigir con hash
+          window.location.hash = 'contacto';
+        }
+      }
+      // Si NO estamos en la página de inicio, el enlace normal funcionará
+    });
+  }
+});
+</script>
