@@ -1,5 +1,7 @@
 // Contacto.jsx
 import React, { useState } from 'react';
+import axios from 'axios';
+
 import {
   FaPhone,
   FaWhatsapp,
@@ -31,7 +33,8 @@ const Contacto = () => {
     nombre: '',
     email: '',
     telefono: '',
-    mensaje: ''
+    mensaje: '',
+    estado: 'Solicita Servicio'
   });
 
   const handleInputChange = (e) => {
@@ -42,17 +45,47 @@ const Contacto = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Formulario enviado:', formData);
-    alert('¡Mensaje enviado! Te contactaremos pronto.');
-    setFormData({
-      nombre: '',
-      email: '',
-      telefono: '',
-      mensaje: ''
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer re_AHHLiMU1_LfimuogHTq2eBTjJKYV1Bftb`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "from": "Contacto Web <onboarding@resend.dev>",
+        "to": "edwardyq67@gmail.com",
+        "subject": "Prueba desde React",
+        "html": "<h1>Prueba exitosa</h1><p>Este email fue enviado desde React</p>"
+      })
     });
-  };
+    
+    const data = await response.json();
+    console.log('Respuesta Resend:', data);
+    
+    if (response.ok) {
+      alert('✅ Email enviado! ID: ' + data.id);
+    } else {
+      alert('❌ Error: ' + JSON.stringify(data));
+    }
+    
+  } catch (error) {
+    console.error('Error completo:', error);
+    alert('Error de conexión: ' + error.message);
+  }
+  
+  // Restablecer formulario
+  setFormData({
+    nombre: '',
+    email: '',
+    telefono: '',
+    mensaje: '',
+    estado: 'Solicita Servicio'
+  });
+};
 
   // Configuración de iconos para redes sociales
   const socialIcons = {
@@ -212,9 +245,9 @@ const Contacto = () => {
                 {Object.entries(redesSociales).map(([key, red]) => {
                   const IconComponent = socialIcons[key];
                   const colorClass = socialColors[key] || 'bg-gray-600 hover:bg-gray-700';
-                  
+
                   if (!IconComponent) return null;
-                  
+
                   return (
                     <a
                       key={key}
@@ -228,7 +261,7 @@ const Contacto = () => {
                     </a>
                   );
                 })}
-                
+
                 {whatsappBotones.length > 0 && (
                   <a
                     href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}

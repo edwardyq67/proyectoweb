@@ -285,31 +285,21 @@ export default function Productos({ servicioSlug = null }) {
               className="group cursor-pointer bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out flex flex-col"
             >
               {/* CONTENEDOR DE img CON ALTURA FIJA */}
-              <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex-shrink-0">
-                <div className="absolute inset-0">
+              <div className="relative h-64 overflow-hidden bg-gradient-to-br from-white to-white flex-shrink-0">
+                <div className="absolute inset-0 flex items-center justify-center p-4">
                   {producto.img ? (
                     <img
                       src={producto.img}
                       alt={producto.nombre || producto.tipo}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
                       loading="lazy"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                      }}
                     />
                   ) : producto.servicioImg ? (
                     <img
                       src={producto.servicioImg}
                       alt={producto.servicio}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out opacity-40"
+                      className="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out opacity-40"
                       loading="lazy"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                      }}
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">

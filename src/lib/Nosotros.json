@@ -21,7 +21,7 @@
   },
   "servicios": [
     {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
+      "img": "/Servicios/AireAcodicionadoClimatizacion.webp",
       "titulo": "Aire acondicionado y climatización",
       "contenido": "Realizamos la instalación, mantenimiento y reparación de sistemas tipo Split, MultiSplit, Piso-Techo, Cassette, VRF/VRV y sistemas HVAC centralizados.",
       "url": "/servicios/aire-acondicionado-climatizacion",
@@ -59,7 +59,7 @@
       "Industrial": [1,2,3,4,5,6,7,8,9,11,12,13,14]
     },
     {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
+      "img": "/Servicios/RefrigeracionComercialEIndustrial.webp",
       "titulo": "Refrigeración comercial e industrial",
       "contenido": "En Teknisolutions, nos especializamos en soluciones integrales de refrigeración industrial y comercial, diseñando e implementando cámaras frigoríficas, túneles de enfriamiento y sistemas de congelamiento de alto rendimiento.",
       "url": "/servicios/refrigeracion-comercial-industrial",
@@ -74,7 +74,7 @@
 
     },
     {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
+      "img": "/Servicios/CamaraFrigorificas.webp",
       "titulo": "Consultoría de desarrollo y ejecución de proyecto",
       "contenido": "Diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida.",
       "url": "/servicios/consultoria-desarrollo-ejecucion-proyecto",
@@ -141,7 +141,7 @@
       "Industrial": []
     },
     {
-      "img": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
+      "img": "/Servicios/Asesoramiento.webp",
       "titulo": "Servicio especial de cámara frigorífica",
       "contenido": "Soluciones integrales de refrigeración industrial y comercial diseñadas para maximizar la eficiencia y confiabilidad en la conservación de productos.",
       "url": "/servicios/servicio-especial-camara-frigorifica",
