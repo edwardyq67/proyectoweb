@@ -5,7 +5,7 @@
     "texto": "Conoce Nuestra Historia",
     "enlace": "/historia"
   },
-  "foto": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg?t=st=1765814318~exp=1765817918~hmac=96ccd6962aa564cb35481940ab3a01f04532196da6702a3413680065fb954541&w=1480",
+  "foto": "/Nosotros/FOTO-2.webp",
   "logros": [
     "Más de 2 años de experiencia",
     "Equipo de especialistas certificados",
@@ -30,7 +30,7 @@
       "icono": "mdi:snowflake",
       "VentilacionClimatizacion": {
         "titulo": "Ventilación y Climatización",
-        "img": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg",
+        "img": "/Servicios/Ventilación y Climatización.webp",
         "servicios": [
           {
             "nombre": "Extractores Axiales",
@@ -111,7 +111,7 @@
       ],
       "VentilacionClimatizacion": {
         "titulo": "Nuestro Portafolio de Servicios",
-        "img": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg",
+        "img": "/Servicios/camaraFrio.webp",
         "servicios": [
           {
             "nombre": "Sistemas HVAC",
@@ -174,7 +174,7 @@
       ],
       "VentilacionClimatizacion": {
         "titulo": "Sectores de Especialización",
-        "img": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg",
+        "img": "/Servicios/Nuestro Portafolio de Servicios.webp",
         "servicios": [
           {
             "nombre": "Almacenamiento Térmico",

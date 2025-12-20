@@ -78,10 +78,12 @@ const Footer = () => {
             {/* Columna 1: Logo y descripción */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-10 w-10 text-primary">
-                  <FaBuilding className="w-10 h-10" />
-                </div>
-                <span className="text-2xl font-bold">MiEmpresa</span>
+                <img
+                  src="/transparente.png"
+                  alt="Logo de la empresa"
+                  className="w-52 h-auto max-w-full"
+                  loading="lazy"
+                />
               </div>
               <p className="text-gray-400 mb-6">
                 Especialistas en sistemas de climatización y ventilación
