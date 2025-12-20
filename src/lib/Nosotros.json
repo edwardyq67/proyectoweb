@@ -74,7 +74,7 @@
 
     },
     {
-      "img": "/Servicios/CamaraFrigorificas.webp",
+      "img": "/Servicios/Asesoramiento.webp",
       "titulo": "Consultoría de desarrollo y ejecución de proyecto",
       "contenido": "Diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida.",
       "url": "/servicios/consultoria-desarrollo-ejecucion-proyecto",
@@ -111,7 +111,7 @@
       ],
       "VentilacionClimatizacion": {
         "titulo": "Nuestro Portafolio de Servicios",
-        "img": "/Servicios/camaraFrio.webp",
+        "img": "/Servicios/Nuestro Portafolio de Servicios.webp",
         "servicios": [
           {
             "nombre": "Sistemas HVAC",
@@ -141,7 +141,7 @@
       "Industrial": []
     },
     {
-      "img": "/Servicios/Asesoramiento.webp",
+      "img": "/Servicios/CamaraFrigorificas.webp",
       "titulo": "Servicio especial de cámara frigorífica",
       "contenido": "Soluciones integrales de refrigeración industrial y comercial diseñadas para maximizar la eficiencia y confiabilidad en la conservación de productos.",
       "url": "/servicios/servicio-especial-camara-frigorifica",
