@@ -1,12 +1,7 @@
-// Contacto.jsx
 import React, { useState } from 'react';
-import axios from 'axios';
-
 import {
-  FaPhone,
   FaWhatsapp,
   FaEnvelope,
-  FaMapMarkerAlt,
   FaClock,
   FaFacebook,
   FaInstagram,
@@ -14,80 +9,51 @@ import {
   FaYoutube,
   FaLinkedin,
   FaTwitter,
-  FaArrowRight,
   FaExclamationCircle,
   FaPaperPlane,
   FaMapMarkedAlt,
   FaCalendarWeek,
-  FaCalendarDay,
-  FaCalendarTimes,
   FaCommentAlt,
   FaUser,
-  FaMobileAlt
+  FaMobileAlt,
+  FaCheck,
+  FaSpinner
 } from 'react-icons/fa';
 import ContactoData from '../lib/Contacto.json';
 
 const Contacto = () => {
   const datos = ContactoData.contacto;
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    mensaje: '',
-    estado: 'Solicita Servicio'
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
   
-  try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer re_AHHLiMU1_LfimuogHTq2eBTjJKYV1Bftb`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "from": "Contacto Web <onboarding@resend.dev>",
-        "to": "edwardyq67@gmail.com",
-        "subject": "Prueba desde React",
-        "html": "<h1>Prueba exitosa</h1><p>Este email fue enviado desde React</p>"
-      })
-    });
-    
-    const data = await response.json();
-    console.log('Respuesta Resend:', data);
-    
-    if (response.ok) {
-      alert('✅ Email enviado! ID: ' + data.id);
-    } else {
-      alert('❌ Error: ' + JSON.stringify(data));
+  // 1. Crear FormData
+  const formData = new FormData(e.target);
+  
+  // 2. Enviar con fetch
+  const response = await fetch('/api/send', {
+    method: 'POST',
+    body: formData
+  });
+  
+  // 3. IMPORTANTE: Detener la propagación del evento
+  e.stopPropagation();
+  
+  // 4. Manejar la respuesta
+  if (response.ok) {
+    const result = await response.json();
+    if (result.success) {
+      alert('✅ Mensaje enviado');
+      e.target.reset();
     }
-    
-  } catch (error) {
-    console.error('Error completo:', error);
-    alert('Error de conexión: ' + error.message);
   }
   
-  // Restablecer formulario
-  setFormData({
-    nombre: '',
-    email: '',
-    telefono: '',
-    mensaje: '',
-    estado: 'Solicita Servicio'
-  });
+  // 5. Prevenir comportamiento por defecto del formulario
+  return false;
 };
 
-  // Configuración de iconos para redes sociales
   const socialIcons = {
     facebook: FaFacebook,
     instagram: FaInstagram,
@@ -97,7 +63,6 @@ const handleSubmit = async (e) => {
     twitter: FaTwitter
   };
 
-  // Configuración de colores para redes sociales
   const socialColors = {
     facebook: 'bg-blue-600 hover:bg-blue-700',
     instagram: 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700',
@@ -107,7 +72,6 @@ const handleSubmit = async (e) => {
     twitter: 'bg-blue-400 hover:bg-blue-500'
   };
 
-  // Asegurar que los datos existan
   const informacionContacto = datos.informacion_contacto || {};
   const telefonos = informacionContacto.telefonos || [];
   const correos = informacionContacto.correos || [];
@@ -129,11 +93,8 @@ const handleSubmit = async (e) => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Columna Izquierda: Información de Contacto Compacta */}
           <div className="space-y-6">
-            {/* Teléfonos y Correos juntos */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Teléfonos */}
               <div>
                 <div className="space-y-2">
                   {telefonos.map((telefono, index) => (
@@ -162,7 +123,6 @@ const handleSubmit = async (e) => {
                 </div>
               </div>
 
-              {/* Correos */}
               <div>
                 <div className="space-y-2">
                   {correos.map((correo, index) => (
@@ -188,7 +148,6 @@ const handleSubmit = async (e) => {
               </div>
             </div>
 
-            {/* Direcciones Compactas */}
             <div>
               <div className="space-y-3">
                 {direcciones.map((direccion, index) => (
@@ -218,7 +177,6 @@ const handleSubmit = async (e) => {
               </div>
             </div>
 
-            {/* Horarios de Atención */}
             <div>
               <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
                 <FaClock className="text-primary" />
@@ -235,7 +193,6 @@ const handleSubmit = async (e) => {
               </div>
             </div>
 
-            {/* Redes Sociales Compactas - Versión circular */}
             <div>
               <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
                 <FaCommentAlt className="text-primary" />
@@ -277,7 +234,6 @@ const handleSubmit = async (e) => {
             </div>
           </div>
 
-          {/* Columna Derecha: Formulario */}
           <div className="lg:sticky lg:top-4">
             <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
               <h3 className="text-xl font-bold text-card-foreground mb-2">
@@ -286,6 +242,30 @@ const handleSubmit = async (e) => {
               <p className="text-muted-foreground text-sm mb-6">
                 Completa el formulario y te contactaremos pronto
               </p>
+
+              {submitStatus === 'success' && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center gap-2 text-green-700">
+                    <FaCheck className="text-green-600" />
+                    <span className="font-medium">¡Mensaje enviado con éxito!</span>
+                  </div>
+                  <p className="text-green-600 text-sm mt-1">
+                    Te contactaremos pronto. Gracias por escribirnos.
+                  </p>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="flex items-center gap-2 text-red-700">
+                    <FaExclamationCircle className="text-red-600" />
+                    <span className="font-medium">Error al enviar el mensaje</span>
+                  </div>
+                  <p className="text-red-600 text-sm mt-1">
+                    Por favor, intenta nuevamente o contáctanos por teléfono.
+                  </p>
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -302,8 +282,6 @@ const handleSubmit = async (e) => {
                       placeholder="Tu nombre completo"
                       className="w-full pl-10 pr-4 py-2.5 border border-input bg-background rounded-md focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-sm"
                       required
-                      value={formData.nombre}
-                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -322,8 +300,6 @@ const handleSubmit = async (e) => {
                       placeholder="tu@email.com"
                       className="w-full pl-10 pr-4 py-2.5 border border-input bg-background rounded-md focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-sm"
                       required
-                      value={formData.email}
-                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -342,8 +318,6 @@ const handleSubmit = async (e) => {
                       placeholder="Tu número de teléfono"
                       className="w-full pl-10 pr-4 py-2.5 border border-input bg-background rounded-md focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-sm"
                       required
-                      value={formData.telefono}
-                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -358,10 +332,10 @@ const handleSubmit = async (e) => {
                     rows={3}
                     className="w-full px-3 py-2.5 border border-input bg-background rounded-md focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all resize-none text-sm"
                     required
-                    value={formData.mensaje}
-                    onChange={handleInputChange}
                   />
                 </div>
+
+                <input type="hidden" name="estado" value="Solicita Servicio" />
 
                 <div className="flex items-start gap-2">
                   <input
@@ -377,10 +351,24 @@ const handleSubmit = async (e) => {
 
                 <button
                   type="submit"
-                  className="w-full py-2.5 bg-primary text-primary-foreground font-bold rounded-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 text-sm"
+                  disabled={isSubmitting}
+                  className={`w-full py-2.5 font-bold rounded-md transition-colors flex items-center justify-center gap-2 text-sm ${
+                    isSubmitting 
+                      ? 'bg-primary/70 cursor-not-allowed' 
+                      : 'bg-primary hover:bg-primary/90 text-primary-foreground'
+                  }`}
                 >
-                  <FaPaperPlane />
-                  Enviar Mensaje
+                  {isSubmitting ? (
+                    <>
+                      <FaSpinner className="animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane />
+                      Enviar Mensaje
+                    </>
+                  )}
                 </button>
               </form>
             </div>
