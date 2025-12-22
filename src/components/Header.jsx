@@ -39,14 +39,6 @@ const Header = () => {
 
   const isHomePage = currentPath === "/";
 
-  // Función para determinar el enlace según la ruta - CORREGIDA
-  const getLink = (section) => {
-    if (isHomePage) {
-      return `#${section}`;
-    } else {
-      return `/#${section}`;
-    }
-  };
 
   // Mapeo de iconos usando componentes de react-icons
   const getIconForService = (title) => {

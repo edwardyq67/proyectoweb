@@ -3,7 +3,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
-
+import "../styles/global.css";
 const { title = 'Mi Sitio' } = Astro.props;
 ---
 
@@ -23,7 +23,7 @@ const { title = 'Mi Sitio' } = Astro.props;
 	<body>
 		<Header client:load/>
 		<slot />
-		<Footer />
+		<Footer client:load/>
 	</body>
 </html>
 

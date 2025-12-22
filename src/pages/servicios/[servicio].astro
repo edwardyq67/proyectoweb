@@ -42,22 +42,36 @@ const servicioSlugParaProductos = servicioEncontrado?.slug || null;
     </div>
     
     <div class="container relative z-10 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-          {servicioEncontrado.titulo}
-        </h1>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+      {servicioEncontrado.titulo}
+    </h1>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a 
+        href="/#contacto"
+        class="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      >
+        <Icon name="mdi:calendar-check" class="w-5 h-5 mr-2" />
+        Solicitar Cotización
+      </a>
+      
+      {
+        (servicioEncontrado.titulo === "Aire acondicionado y climatización" || 
+         servicioEncontrado.titulo === "Refrigeración comercial e industrial") && (
           <a 
-            href="/#contacto"
-            class="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            href={`https://wa.me/51912909920?text=${encodeURIComponent(`Hola, quiero un asesoramiento para: ${servicioEncontrado.titulo}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
-            <Icon name="mdi:calendar-check" class="w-5 h-5 mr-2" />
-            Solicitar Cotización
+            <Icon name="mdi:whatsapp" class="w-5 h-5 mr-2" />
+            Asesoramiento por WhatsApp
           </a>
-          
-        </div>
-      </div>
+        )
+      }
     </div>
+  </div>
+</div>
   </section>
 
   <!-- Sección de Descripción -->

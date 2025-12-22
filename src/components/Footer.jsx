@@ -216,11 +216,14 @@ const Footer = () => {
 
             {/* Columna 4: Newsletter */}
             <div>
-              <div className="p-3 cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg">
+              <div
+                className="p-3 cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg hover:from-gray-800 hover:to-gray-700 transition-all duration-300"
+                onClick={() => window.location.href = '/reclamaciones'}
+              >
                 <img
                   src="https://friotemp.com.pe/wp-content/uploads/libroreclamaciones-blanco.avif"
                   alt="Libro de Reclamaciones"
-                  className="h-20 w-auto"
+                  className="h-20 w-auto hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
               </div>

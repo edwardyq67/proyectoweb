@@ -1,7 +1,7 @@
 {
-  "fondo": "/Inicio/FOTO-1.gif",
+  "fondos":["/Inicio/imagen-web-1---22.12.gif","/Inicio/horno.avif"],
   "titulo": "Bienvenido a Nuestra Empresa",
-  "subtitulo": "Soluciones industriales de alta calidad con más de 2 años de experiencia",
+  "subtitulo": "Soluciones domesticas, comerciales e industriales de alta calidad, con +2 años de experiencia",
   "botones": {
     "contacto": {
       "texto": "CONTACTANOS",

@@ -5,7 +5,7 @@
     "texto": "Conoce Nuestra Historia",
     "enlace": "/historia"
   },
-  "foto": "/Nosotros/FOTO-2.webp",
+  "foto": "/Nosotros/Foto04-casco.gif",
   "logros": [
     "Más de 2 años de experiencia",
     "Equipo de especialistas certificados",
@@ -14,7 +14,7 @@
     "Certificaciones internacionales",
     "Proyectos en todo el país"
   ],
-  "img": "https://img.freepik.com/foto-gratis/personas-equipo-seguridad-trabajo_23-2148976330.jpg",
+  "img": "/Nosotros/Foto04-casco.webp",
   "sello": {
     "numero": "2+",
     "texto": "Años de experiencia"

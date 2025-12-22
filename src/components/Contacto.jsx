@@ -26,33 +26,41 @@ const Contacto = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  // 1. Crear FormData
-  const formData = new FormData(e.target);
-  
-  // 2. Enviar con fetch
-  const response = await fetch('/api/send', {
-    method: 'POST',
-    body: formData
-  });
-  
-  // 3. IMPORTANTE: Detener la propagación del evento
-  e.stopPropagation();
-  
-  // 4. Manejar la respuesta
-  if (response.ok) {
-    const result = await response.json();
-    if (result.success) {
-      alert('✅ Mensaje enviado');
-      e.target.reset();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Si ya está enviando, no hacer nada
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const formData = new FormData(e.target);
+      
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success) {
+          setSubmitStatus('success');
+          e.target.reset();
+        } else {
+          setSubmitStatus('error');
+        }
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
-  }
-  
-  // 5. Prevenir comportamiento por defecto del formulario
-  return false;
-};
+  };
 
   const socialIcons = {
     facebook: FaFacebook,
@@ -94,6 +102,7 @@ const Contacto = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
+            {/* ... (código anterior del lado izquierdo permanece igual) ... */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <div className="space-y-2">
@@ -158,9 +167,7 @@ const Contacto = () => {
                         <p className="text-foreground text-sm">{direccion.direccion}</p>
                         <p className="text-muted-foreground text-xs">{direccion.ciudad}, {direccion.pais}</p>
                       </div>
-                      <div className="w-6 h-6 bg-success/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <FaClock className="text-success" />
-                      </div>
+     
                     </div>
 
                     <a
@@ -249,9 +256,6 @@ const Contacto = () => {
                     <FaCheck className="text-green-600" />
                     <span className="font-medium">¡Mensaje enviado con éxito!</span>
                   </div>
-                  <p className="text-green-600 text-sm mt-1">
-                    Te contactaremos pronto. Gracias por escribirnos.
-                  </p>
                 </div>
               )}
 
@@ -261,9 +265,6 @@ const Contacto = () => {
                     <FaExclamationCircle className="text-red-600" />
                     <span className="font-medium">Error al enviar el mensaje</span>
                   </div>
-                  <p className="text-red-600 text-sm mt-1">
-                    Por favor, intenta nuevamente o contáctanos por teléfono.
-                  </p>
                 </div>
               )}
 
