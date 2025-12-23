@@ -1,0 +1,15 @@
+---
+import "../styles/global.css";
+import LoginForm from "./login/Login.jsx";
+---
+
+<div class="min-h-screen flex items-center justify-center p-4">
+    <LoginForm client:load />
+
+</div>
+
+<style>
+  .min-h-screen {
+    background: linear-gradient(135deg, hsl(var(--primary-400)) 0%, hsl(var(--primary-600)) 100%);
+  }
+</style>

@@ -5,11 +5,13 @@ import Nosotros from '../components/Nosotros.astro';
 import Productos from '../components/Productos.jsx';
 import Layout from '../layouts/Layout.astro';
 import Contacto from '../components/Contacto.jsx';
+import History from '../components/history/History.jsx';
 
 ---
 
 <Layout title="Inicio - Mi Sitio">
 	<Inicio />
+	<History client:load/>
 	<Nosotros />
 	<Carrusel />
 	<Productos client:load/>
