@@ -7,11 +7,12 @@ export default function Agregar({ onStoryAdded, onClose }) {
         urlMedia: '',
         urlMiniatura: '',
         tipoMedia: 'IMAGEN',
-        enlacePermanente: ''
+        enlacePermanente: '',
+        fechaPublicacion: new Date().toISOString().slice(0, 16), // Fecha y hora actual
+        esDestacada: false
     })
     const [uploading, setUploading] = useState(false)
-console.log(newStory)
-    // Función para agregar nueva historia
+
     const handleAddStory = async () => {
         if (!newStory.titulo || !newStory.urlMedia) {
             alert('Por favor, completa al menos el título y la URL del media')
@@ -23,42 +24,49 @@ console.log(newStory)
         try {
             const token = localStorage.getItem('token')
             
-            const response = await fetch('/api/v1/history', {
+            if (!token) {
+                alert('No estás autenticado. Por favor, inicia sesión.')
+                return
+            }
+
+            // Usar el endpoint de Astro (/api/history) no directamente el backend
+            const response = await fetch('/api/history', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify(newStory)
+                body: JSON.stringify({
+                    ...newStory,
+                    fechaPublicacion: new Date(newStory.fechaPublicacion).toISOString()
+                })
             })
 
+            const data = await response.json()
+
             if (response.ok) {
-                const data = await response.json()
-                
-                // Notificar al componente padre que se agregó una historia
                 if (onStoryAdded) {
                     onStoryAdded(data)
                 }
                 
-                // Limpiar el formulario
                 setNewStory({
                     titulo: '',
                     descripcion: '',
                     urlMedia: '',
                     urlMiniatura: '',
                     tipoMedia: 'IMAGEN',
-                    enlacePermanente: ''
+                    enlacePermanente: '',
+                    fechaPublicacion: new Date().toISOString().slice(0, 16),
+                    esDestacada: false
                 })
                 
-                // Cerrar modal
                 if (onClose) {
                     onClose()
                 }
                 
                 alert('✅ Historia agregada exitosamente')
             } else {
-                const error = await response.json()
-                alert(`Error: ${error.message || 'No se pudo agregar la historia'}`)
+                alert(`Error: ${data.error || 'No se pudo agregar la historia'}`)
             }
         } catch (error) {
             console.error('Error al agregar historia:', error)
@@ -71,7 +79,6 @@ console.log(newStory)
     return (
         <div className="bg-card rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
-                {/* ENCABEZADO DEL MODAL */}
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold text-foreground">Agregar Nueva Historia</h2>
                     <button
@@ -82,9 +89,7 @@ console.log(newStory)
                     </button>
                 </div>
 
-                {/* FORMULARIO */}
                 <div className="space-y-4">
-                    {/* TÍTULO */}
                     <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                             Título *
@@ -99,7 +104,6 @@ console.log(newStory)
                         />
                     </div>
 
-                    {/* DESCRIPCIÓN */}
                     <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                             Descripción
@@ -112,7 +116,6 @@ console.log(newStory)
                         />
                     </div>
 
-                    {/* URL MEDIA */}
                     <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                             URL del Media (imagen o video) *
@@ -127,7 +130,6 @@ console.log(newStory)
                         />
                     </div>
 
-                    {/* URL MINIATURA */}
                     <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                             URL de Miniatura (opcional)
@@ -141,7 +143,6 @@ console.log(newStory)
                         />
                     </div>
 
-                    {/* TIPO MEDIA */}
                     <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                             Tipo de Media
@@ -170,7 +171,6 @@ console.log(newStory)
                         </div>
                     </div>
 
-                    {/* ENLACE PERMANENTE */}
                     <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                             Enlace Permanente (opcional)
@@ -184,7 +184,32 @@ console.log(newStory)
                         />
                     </div>
 
-                    {/* BOTONES */}
+                    {/* NUEVO CAMPO: Fecha de Publicación */}
+                    <div>
+                        <label className="block text-sm font-medium text-foreground mb-2">
+                            Fecha de Publicación
+                        </label>
+                        <input
+                            type="datetime-local"
+                            value={newStory.fechaPublicacion}
+                            onChange={(e) => setNewStory({...newStory, fechaPublicacion: e.target.value})}
+                            className="w-full px-4 py-2.5 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                        />
+                    </div>
+
+                    {/* NUEVO CAMPO: Destacada */}
+                    <div>
+                        <label className="flex items-center">
+                            <input
+                                type="checkbox"
+                                checked={newStory.esDestacada}
+                                onChange={(e) => setNewStory({...newStory, esDestacada: e.target.checked})}
+                                className="mr-2"
+                            />
+                            <span className="text-foreground">Marcar como destacada</span>
+                        </label>
+                    </div>
+
                     <div className="flex gap-3 pt-4">
                         <button
                             onClick={onClose}

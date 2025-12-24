@@ -4,7 +4,9 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
-  const API_URL = 'http://localhost:8080/api/v1/user/login';
+  // Usar variable de entorno o valor por defecto
+  const API_BASE_URL = import.meta.env.ASTRO_PUBLIC_API_BASE_URL;
+  const API_URL = `${API_BASE_URL}user/login`;
   
   try {
     const body = await request.json();
