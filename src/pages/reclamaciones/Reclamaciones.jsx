@@ -136,15 +136,15 @@ export default function Reclamaciones  ()  {
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <p className="text-sm font-semibold text-gray-700">Razón social del proveedor:</p>
-            <p className="text-lg font-bold text-gray-900">SOFLENDIL S.A.C.</p>
+            <p className="text-lg font-bold text-gray-900">Teknisolutions S.A.C</p>
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-700">R.U.C.:</p>
-            <p className="text-lg font-bold text-gray-900">N° 20605848444</p>
+            <p className="text-lg font-bold text-gray-900">N° 20611923679</p>
           </div>
           <div className="md:col-span-2">
             <p className="text-sm font-semibold text-gray-700">Dirección del Establecimiento:</p>
-            <p className="text-gray-900">CAL.SANTA ELENA NORTE NRO. 155 URB. CENTRO COMERCIAL MONTERRICO LIMA - LIMA - SANTIAGO DE SURCO</p>
+            <p className="text-gray-900">CAL.MARIA JOSE DE ARCE NRO. 261 URB. MARANGA ET. UNO LIMA - LIMA - SAN MIGUEL</p>
           </div>
         </div>
       </div>
@@ -518,7 +518,7 @@ export default function Reclamaciones  ()  {
             
             <p className="flex items-start gap-2">
               <FaRegCheckCircle className="text-green-600 mt-1" />
-              <span><strong>Declaración:</strong> Con el envío del presente formulario, EL USUARIO valida la información consignada y declara haber sido debidamente informado por SOFLENDIL S.A.C. sobre el procedimiento, plazo de atención y medio de respuesta correspondiente.</span>
+              <span><strong>Declaración:</strong> Con el envío del presente formulario, EL USUARIO valida la información consignada y declara haber sido debidamente informado por Teknisolutions S.A.C sobre el procedimiento, plazo de atención y medio de respuesta correspondiente.</span>
             </p>
             
             <p className="flex items-start gap-2">
@@ -552,7 +552,7 @@ export default function Reclamaciones  ()  {
               MUCHAS GRACIAS POR SU COMUNICACIÓN,
             </p>
             <p className="text-center text-blue-800 font-bold text-xl mt-2">
-              Atentamente, SOFLENDIL S.A.C.
+              Atentamente, Teknisolutions S.A.C
             </p>
           </div>
         </div>
@@ -573,7 +573,7 @@ export default function Reclamaciones  ()  {
             </label>
             <p className="text-sm text-gray-700">
               <strong>Declaro que los datos consignados son correctos y fiel expresión de la verdad.</strong> 
-              Autorizo expresamente a SOFLENDIL S.A.C. al tratamiento de mis datos personales para los fines relacionados 
+              Autorizo expresamente a Teknisolutions S.A.C al tratamiento de mis datos personales para los fines relacionados 
               con la atención de mi reclamo o queja, conforme a lo establecido en la Ley de Protección de Datos Personales 
               (Ley N° 29733) y su Reglamento. Confirmo que he sido informado sobre mis derechos ARCO (Acceso, Rectificación, 
               Cancelación y Oposición) y que conozco la política de privacidad de la empresa.

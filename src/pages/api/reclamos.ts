@@ -40,9 +40,9 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.formData()
     
-    // Datos de la empresa (fijos según SOFLENDIL S.A.C.)
+    // Datos de la empresa (fijos según Teknisolutions S.A.C)
     const empresa = {
-      razonSocial: 'SOFLENDIL S.A.C.',
+      razonSocial: 'Teknisolutions S.A.C',
       ruc: '20605848444',
       direccion: 'CAL.SANTA ELENA NORTE NRO. 155 URB. CENTRO COMERCIAL MONTERRICO LIMA - LIMA - SANTIAGO DE SURCO',
       telefono: '(01) 123-4567',
@@ -314,7 +314,7 @@ export const POST: APIRoute = async ({ request }) => {
               <p>• Código único para seguimiento: <strong>${codigoReclamo}</strong></p>
               <p>• Fecha y hora de registro: ${fechaRegistro}</p>
               <hr>
-              <p><em>SOFLENDIL S.A.C. - Sistema de Libro de Reclamaciones Virtual</em></p>
+              <p><em>Teknisolutions S.A.C - Sistema de Libro de Reclamaciones Virtual</em></p>
             </div>
           </div>
         </body>
@@ -382,7 +382,7 @@ export const POST: APIRoute = async ({ request }) => {
         • Fecha y hora de registro: ${fechaRegistro}
         
         ---
-        SOFLENDIL S.A.C. - Sistema de Libro de Reclamaciones Virtual
+        Teknisolutions S.A.C - Sistema de Libro de Reclamaciones Virtual
       `
     })
     

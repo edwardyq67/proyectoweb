@@ -1,5 +1,5 @@
 // Footer.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   FaBuilding,
   FaFacebook,
@@ -20,14 +20,108 @@ import {
   FaNewspaper,
   FaTiktok,
   FaYoutube,
-  FaLinkedin
+  FaLinkedin,
+  FaTimes
 } from 'react-icons/fa';
 import datosNosotros from '../lib/Nosotros.json';
 import ContactoData from '../lib/Contacto.json';
+import SatisfechoData from '../lib/Satisfecho.json';
+import ProductosData from '../lib/Productos.json';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
   const datos = ContactoData.contacto || {};
+  const [currentNotification, setCurrentNotification] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [allCombinations, setAllCombinations] = useState([]);
+
+  // Función para generar TODAS las combinaciones posibles
+  const generateAllCombinations = useCallback(() => {
+    const combinations = [];
+    
+    // Usar todos los nombres de clientes (200 aprox)
+    const clientes = SatisfechoData.clientes_nombres || [];
+    const adjetivos = SatisfechoData.adjetivos || [];
+    const verbos = SatisfechoData.verbos || [];
+    const productos = ProductosData.productos || [];
+    
+    // Crear combinaciones aleatorias únicas
+    for (let i = 0; i < clientes.length; i++) {
+      const cliente = clientes[i];
+      const adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];
+      const verbo = verbos[Math.floor(Math.random() * verbos.length)];
+      const producto = productos[Math.floor(Math.random() * productos.length)];
+      
+      combinations.push({
+        id: i,
+        cliente,
+        adjetivo,
+        verbo,
+        producto,
+        timestamp: Date.now() + i // Para hacerlos únicos
+      });
+    }
+    
+    return combinations;
+  }, []);
+
+  // Inicializar combinaciones
+  useEffect(() => {
+    const combinations = generateAllCombinations();
+    setAllCombinations(combinations);
+  }, [generateAllCombinations]);
+
+  // Función para mostrar una notificación aleatoria
+  const showRandomNotification = useCallback(() => {
+    if (allCombinations.length === 0) return;
+    
+    // Seleccionar una combinación aleatoria
+    const randomIndex = Math.floor(Math.random() * allCombinations.length);
+    const notification = allCombinations[randomIndex];
+    
+    // Mostrar la notificación con animación
+    setCurrentNotification(notification);
+    setIsVisible(true);
+    
+    // Ocultar después de 5 segundos
+    const hideTimeout = setTimeout(() => {
+      setIsVisible(false);
+      
+      // Eliminar después de que termine la animación
+      const removeTimeout = setTimeout(() => {
+        setCurrentNotification(null);
+      }, 500); // Tiempo de la animación de salida
+      
+      return () => clearTimeout(removeTimeout);
+    }, 5000); // Mostrar por 5 segundos
+    
+    return () => clearTimeout(hideTimeout);
+  }, [allCombinations]);
+
+  // Efecto para mostrar notificaciones periódicamente
+  useEffect(() => {
+    // Mostrar primera notificación después de 3 segundos
+    const initialDelay = setTimeout(() => {
+      showRandomNotification();
+    }, 3000);
+    
+    // Configurar intervalo para mostrar notificaciones cada 10-20 segundos
+    const interval = setInterval(() => {
+      showRandomNotification();
+    }, 10000 + Math.random() * 10000); // Entre 10 y 20 segundos
+    
+    return () => {
+      clearTimeout(initialDelay);
+      clearInterval(interval);
+    };
+  }, [showRandomNotification]);
+
+  // Función para cerrar manualmente la notificación
+  const closeNotification = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      setCurrentNotification(null);
+    }, 500);
+  };
 
   // Mapeo de iconos de servicios
   const iconMap = {
@@ -284,49 +378,87 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="hidden md:flex">
-        {/* Botón flotante de WhatsApp (derecha) */}
-        {whatsappBotones.length > 0 && (
-          <a
-            href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl group"
-            aria-label="Contactar por WhatsApp"
-          >
-            <FaWhatsapp className="w-7 h-7" />
-            <div className="absolute flex flex-col right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-              <span>¿Necesitas ayuda? </span>
-              <span>{whatsappBotones[0].numero}</span>
-            </div>
-          </a>
-        )}
-      </div>
 
+      {/* Botón flotante de WhatsApp (derecha) */}
+      {whatsappBotones.length > 0 && (
+        <a
+          href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:fixed md:flex bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl group"
+          aria-label="Contactar por WhatsApp"
+        >
+          <FaWhatsapp className="w-7 h-7" />
+          <div className="absolute flex flex-col right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+            <span>¿Necesitas ayuda? </span>
+            <span>{whatsappBotones[0].numero}</span>
+          </div>
+        </a>
+      )}
 
-      {/* Botón flotante de Redes Sociales (izquierda) */}
-      <div className="hidden md:fixed bottom-6 left-6 z-50 md:flex flex-col gap-3">
-        {/* Mapeo dinámico de redes sociales flotantes */}
-        {Object.entries(redesSociales).map(([key, red]) => {
-          const IconComponent = socialIcons[key];
-          const colorClass = socialColors[key] || 'bg-gray-600 hover:bg-gray-700';
-
-          if (!IconComponent) return null;
-
-          return (
-            <a
-              key={key}
-              href={red.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${colorClass} text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl group relative`}
-              aria-label={red.nombre}
+      {/* Notificación emergente de "Cliente satisfecho" (izquierda) */}
+      {currentNotification && (
+        <div className={`hidden md:fixed md:flex bottom-6 left-6 z-40 transition-all duration-500 transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
+          <div className='relative bg-white border border-gray-300 rounded-lg shadow-xl p-3 max-w-64'>
+            {/* Botón para cerrar */}
+            <button
+              onClick={closeNotification}
+              className="absolute -top-2 cursor-pointer  -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
+              aria-label="Cerrar notificación"
             >
-              <IconComponent className="w-6 h-6" />
-            </a>
-          );
-        })}
-      </div>
+              <FaTimes />
+            </button>
+            
+            <div className='flex gap-3 items-start mt-1'>
+              {/* Imagen del producto */}
+              <div className='flex-shrink-0'>
+                <img 
+                  src={currentNotification.producto?.img || "/default-product.jpg"} 
+                  className='w-12 h-12 object-cover rounded-md border border-gray-200' 
+                  alt={currentNotification.producto?.titulo || "Producto"}
+                  onError={(e) => {
+                    e.target.src = "/default-product.jpg";
+                  }}
+                />
+              </div>
+              
+              {/* Información del cliente */}
+              <div className='flex-1 min-w-0'>
+                {/* Encabezado con icono y tiempo */}
+                <div className='flex items-center justify-between mb-1'>
+                  <div className='flex items-center gap-1'>
+                    <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
+                    <span className='text-xs text-gray-500 font-medium'>Ahora</span>
+                  </div>
+                  <span className='text-xs text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full'>
+                    Solicitó servicio
+                  </span>
+                </div>
+                
+                {/* Nombre del cliente */}
+                <h1 className='font-semibold text-gray-800 text-sm mb-1'>
+                  {currentNotification.cliente}
+                </h1>
+                
+                {/* Mensaje de la solicitud */}
+                <p className='text-xs text-gray-600 leading-tight'>
+                  {currentNotification.adjetivo} {currentNotification.verbo} el servicio de{" "}
+                  <span className='font-medium text-gray-800'>
+                    {currentNotification.producto?.titulo || "nuestro servicio"}
+                  </span>
+                </p>
+                
+                {/* Tiempo transcurrido (ficticio) */}
+                <div className='mt-2 pt-2 border-t border-gray-100'>
+                  <span className='text-xs text-gray-500'>
+                    Hace {Math.floor(Math.random() * 5) + 1} minutos
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

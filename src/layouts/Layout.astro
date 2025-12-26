@@ -4,7 +4,13 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import "../styles/global.css";
-const { title = 'Mi Sitio' } = Astro.props;
+
+const { 
+  title = 'Teknisolutions - Especialistas en Climatización y Refrigeración', 
+  description = 'Soluciones integrales en aire acondicionado, refrigeración industrial, cámaras frigoríficas y sistemas HVAC en Lima, Perú.',
+  image = '/Servicios/AireAcodicionadoClimatizacion.webp',
+  canonical = Astro.url
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -12,9 +18,30 @@ const { title = 'Mi Sitio' } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="TS Group - Soluciones Integrales" href="/TS-Group-logo-Color.webp" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>TS Group</title>
+		
+		<!-- Meta tags SEO -->
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:url" content={canonical} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image} />
+		
+		<!-- Schema Markup -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "HVACBusiness",
+				"name": "Teknisolutions",
+				"image": "/TS-Group-logo-Color.webp",
+				"description": "{description}"
+			}
+		</script>
 		
 		<ViewTransitions />
 		
