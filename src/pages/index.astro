@@ -1,5 +1,5 @@
 ---
-import Carrusel from '../components/Carrusel.astro';
+import Carrusel from '../components/Carrusel.jsx';
 import Inicio from '../components/Inicio.astro';
 import Nosotros from '../components/Nosotros.astro';
 import Productos from '../components/Productos.jsx';
@@ -10,7 +10,9 @@ import Contacto from '../components/Contacto.jsx';
 <Layout title="Inicio - Mi Sitio">
 	<Inicio />
 	<Nosotros />
-	<Carrusel />
-	<Productos client:load/>
-	<Contacto client:load/>
+	
+	<!-- Estos NO se renderizarán en el servidor -->
+	<Carrusel client:only="react"/>
+	<Productos client:only="react" />
+	<Contacto client:only="react" tipo="Informacion" />
 </Layout>

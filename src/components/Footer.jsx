@@ -1,7 +1,6 @@
 // Footer.jsx
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import {
-  FaBuilding,
   FaFacebook,
   FaInstagram,
   FaTwitter,
@@ -9,137 +8,29 @@ import {
   FaMapMarkerAlt,
   FaPhone,
   FaEnvelope,
-  FaWrench,
-  FaFilter,
-  FaShieldAlt,
-  FaUserTie,
   FaCheckCircle,
-  FaPaperPlane,
-  FaTools,
-  FaCog,
-  FaNewspaper,
-  FaTiktok,
-  FaYoutube,
-  FaLinkedin,
-  FaTimes
+  FaCog
 } from 'react-icons/fa';
 import datosNosotros from '../lib/Nosotros.json';
 import ContactoData from '../lib/Contacto.json';
-import SatisfechoData from '../lib/Satisfecho.json';
-import ProductosData from '../lib/Productos.json';
 
 const Footer = () => {
   const datos = ContactoData.contacto || {};
-  const [currentNotification, setCurrentNotification] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [allCombinations, setAllCombinations] = useState([]);
-
-  // Función para generar TODAS las combinaciones posibles
-  const generateAllCombinations = useCallback(() => {
-    const combinations = [];
-    
-    // Usar todos los nombres de clientes (200 aprox)
-    const clientes = SatisfechoData.clientes_nombres || [];
-    const adjetivos = SatisfechoData.adjetivos || [];
-    const verbos = SatisfechoData.verbos || [];
-    const productos = ProductosData.productos || [];
-    
-    // Crear combinaciones aleatorias únicas
-    for (let i = 0; i < clientes.length; i++) {
-      const cliente = clientes[i];
-      const adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];
-      const verbo = verbos[Math.floor(Math.random() * verbos.length)];
-      const producto = productos[Math.floor(Math.random() * productos.length)];
-      
-      combinations.push({
-        id: i,
-        cliente,
-        adjetivo,
-        verbo,
-        producto,
-        timestamp: Date.now() + i // Para hacerlos únicos
-      });
-    }
-    
-    return combinations;
-  }, []);
-
-  // Inicializar combinaciones
-  useEffect(() => {
-    const combinations = generateAllCombinations();
-    setAllCombinations(combinations);
-  }, [generateAllCombinations]);
-
-  // Función para mostrar una notificación aleatoria
-  const showRandomNotification = useCallback(() => {
-    if (allCombinations.length === 0) return;
-    
-    // Seleccionar una combinación aleatoria
-    const randomIndex = Math.floor(Math.random() * allCombinations.length);
-    const notification = allCombinations[randomIndex];
-    
-    // Mostrar la notificación con animación
-    setCurrentNotification(notification);
-    setIsVisible(true);
-    
-    // Ocultar después de 5 segundos
-    const hideTimeout = setTimeout(() => {
-      setIsVisible(false);
-      
-      // Eliminar después de que termine la animación
-      const removeTimeout = setTimeout(() => {
-        setCurrentNotification(null);
-      }, 500); // Tiempo de la animación de salida
-      
-      return () => clearTimeout(removeTimeout);
-    }, 5000); // Mostrar por 5 segundos
-    
-    return () => clearTimeout(hideTimeout);
-  }, [allCombinations]);
-
-  // Efecto para mostrar notificaciones periódicamente
-  useEffect(() => {
-    // Mostrar primera notificación después de 3 segundos
-    const initialDelay = setTimeout(() => {
-      showRandomNotification();
-    }, 3000);
-    
-    // Configurar intervalo para mostrar notificaciones cada 10-20 segundos
-    const interval = setInterval(() => {
-      showRandomNotification();
-    }, 10000 + Math.random() * 10000); // Entre 10 y 20 segundos
-    
-    return () => {
-      clearTimeout(initialDelay);
-      clearInterval(interval);
-    };
-  }, [showRandomNotification]);
-
-  // Función para cerrar manualmente la notificación
-  const closeNotification = () => {
-    setIsVisible(false);
-    setTimeout(() => {
-      setCurrentNotification(null);
-    }, 500);
-  };
 
   // Mapeo de iconos de servicios
   const iconMap = {
     "Mantenimiento Preventivo": FaCheckCircle,
-    "Instalación de Sistemas": FaTools,
-    "Reparación Especializada": FaWrench,
-    "Ductos y Ventilación": FaFilter,
-    "Control de Calidad": FaShieldAlt,
-    "Consultoría HVAC": FaUserTie,
+    "Instalación de Sistemas": FaCheckCircle,
+    "Reparación Especializada": FaCheckCircle,
+    "Ductos y Ventilación": FaCheckCircle,
+    "Control de Calidad": FaCheckCircle,
+    "Consultoría HVAC": FaCheckCircle,
   };
 
   // Configuración de iconos para redes sociales
   const socialIcons = {
     facebook: FaFacebook,
     instagram: FaInstagram,
-    tiktok: FaTiktok,
-    youtube: FaYoutube,
-    linkedin: FaLinkedin,
     twitter: FaTwitter
   };
 
@@ -147,9 +38,6 @@ const Footer = () => {
   const socialColors = {
     facebook: 'bg-blue-600 hover:bg-blue-700',
     instagram: 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700',
-    tiktok: 'bg-black hover:bg-gray-800',
-    youtube: 'bg-red-600 hover:bg-red-700',
-    linkedin: 'bg-blue-700 hover:bg-blue-800',
     twitter: 'bg-blue-400 hover:bg-blue-500'
   };
 
@@ -343,7 +231,7 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               {/* Copyright */}
               <div className="text-gray-500 text-sm">
-                &copy; {new Date().getFullYear()} MiEmpresa. Todos los derechos
+                &copy; {new Date().getFullYear()} TS GROUP. Todos los derechos
                 reservados.
               </div>
 
@@ -355,24 +243,7 @@ const Footer = () => {
                 >
                   Política de Privacidad
                 </a>
-                <a
-                  href="/terminos"
-                  className="text-gray-400 hover:text-primary transition-colors text-sm"
-                >
-                  Términos de Servicio
-                </a>
-                <a
-                  href="/cookies"
-                  className="text-gray-400 hover:text-primary transition-colors text-sm"
-                >
-                  Cookies
-                </a>
-                <a
-                  href="/sitemap.xml"
-                  className="text-gray-400 hover:text-primary transition-colors text-sm"
-                >
-                  Mapa del Sitio
-                </a>
+              
               </div>
             </div>
           </div>
@@ -394,70 +265,6 @@ const Footer = () => {
             <span>{whatsappBotones[0].numero}</span>
           </div>
         </a>
-      )}
-
-      {/* Notificación emergente de "Cliente satisfecho" (izquierda) */}
-      {currentNotification && (
-        <div className={`hidden md:fixed md:flex bottom-6 left-6 z-40 transition-all duration-500 transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
-          <div className='relative bg-white border border-gray-300 rounded-lg shadow-xl p-3 max-w-64'>
-            {/* Botón para cerrar */}
-            <button
-              onClick={closeNotification}
-              className="absolute -top-2 cursor-pointer  -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
-              aria-label="Cerrar notificación"
-            >
-              <FaTimes />
-            </button>
-            
-            <div className='flex gap-3 items-start mt-1'>
-              {/* Imagen del producto */}
-              <div className='flex-shrink-0'>
-                <img 
-                  src={currentNotification.producto?.img || "/default-product.jpg"} 
-                  className='w-12 h-12 object-cover rounded-md border border-gray-200' 
-                  alt={currentNotification.producto?.titulo || "Producto"}
-                  onError={(e) => {
-                    e.target.src = "/default-product.jpg";
-                  }}
-                />
-              </div>
-              
-              {/* Información del cliente */}
-              <div className='flex-1 min-w-0'>
-                {/* Encabezado con icono y tiempo */}
-                <div className='flex items-center justify-between mb-1'>
-                  <div className='flex items-center gap-1'>
-                    <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
-                    <span className='text-xs text-gray-500 font-medium'>Ahora</span>
-                  </div>
-                  <span className='text-xs text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full'>
-                    Solicitó servicio
-                  </span>
-                </div>
-                
-                {/* Nombre del cliente */}
-                <h1 className='font-semibold text-gray-800 text-sm mb-1'>
-                  {currentNotification.cliente}
-                </h1>
-                
-                {/* Mensaje de la solicitud */}
-                <p className='text-xs text-gray-600 leading-tight'>
-                  {currentNotification.adjetivo} {currentNotification.verbo} el servicio de{" "}
-                  <span className='font-medium text-gray-800'>
-                    {currentNotification.producto?.titulo || "nuestro servicio"}
-                  </span>
-                </p>
-                
-                {/* Tiempo transcurrido (ficticio) */}
-                <div className='mt-2 pt-2 border-t border-gray-100'>
-                  <span className='text-xs text-gray-500'>
-                    Hace {Math.floor(Math.random() * 5) + 1} minutos
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       )}
     </>
   );

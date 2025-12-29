@@ -22,19 +22,20 @@ import {
 } from 'react-icons/fa';
 import ContactoData from '../lib/Contacto.json';
 
-const Contacto = () => {
+const Contacto = ({ tipo  }) => {
   const datos = ContactoData.contacto;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [showTermsModal, setShowTermsModal] = useState(false);
+  
   const handleOpenTermsModal = (e) => {
     e.preventDefault();
     setShowTermsModal(true);
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Si ya está enviando, no hacer nada
     if (isSubmitting) return;
 
     setIsSubmitting(true);
@@ -66,9 +67,11 @@ const Contacto = () => {
       setIsSubmitting(false);
     }
   };
+  
   const handleCloseTermsModal = () => {
     setShowTermsModal(false);
   };
+  
   const socialIcons = {
     facebook: FaFacebook,
     instagram: FaInstagram,
@@ -343,7 +346,8 @@ const Contacto = () => {
                   />
                 </div>
 
-                <input type="hidden" name="estado" value="Solicita Servicio" />
+                {/* CAMBIO IMPORTANTE: Enviar como "estado" no "tipo" */}
+                <input type="hidden" name="estado" value={tipo} />
 
                 <div className="flex items-start gap-2">
                   <input

@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import serviciosData from "../lib/Nosotros.json";
 import productosData from "../lib/Productos.json";
 import {
   FaHome,
   FaBuilding,
   FaIndustry,
-  FaCalculator,
   FaArrowRight,
   FaTools,
   FaUserTie,
+  FaWhatsapp
 } from "react-icons/fa";
 
 const categoriasInfo = {
@@ -38,98 +38,229 @@ const categoriasInfo = {
   }
 };
 
-export default function Productos({ servicioSlug = null }) {
+// Componente memoizado para ProductoCard
+const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
+  // Función para generar el mensaje de WhatsApp
+  const generarMensajeWhatsApp = useCallback((producto) => {
+    let mensaje = `Hola, estoy interesado en obtener información sobre:\n\n`;
+    
+    mensaje += `📋 *Producto/Servicio:* ${producto.nombre}\n`;
+    mensaje += `🏷️ *Tipo:* ${producto.tipo}\n`;
+    
+    if (producto.servicio && producto.servicio !== "General") {
+      mensaje += `🔧 *Servicio relacionado:* ${producto.servicio}\n`;
+    }
+    
+    if (producto.descripcion) {
+      mensaje += `\n📝 *Descripción:*\n${producto.descripcion.substring(0, 100)}...\n`;
+    }
+    
+    if (producto.puntos && producto.puntos.length > 0) {
+      mensaje += `\n✅ *Características destacadas:*\n`;
+      producto.puntos.slice(0, 3).forEach(punto => {
+        mensaje += `• ${punto.substring(0, 50)}\n`;
+      });
+    }
+    
+    mensaje += `\n📍 *Categoría:* ${categoriaActiva}\n`;
+    mensaje += `\nPor favor, envíenme más información y una cotización.`;
+    
+    return encodeURIComponent(mensaje);
+  }, [categoriaActiva]);
+
+  return (
+    <div className="group cursor-pointer bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out flex flex-col">
+      {/* CONTENEDOR DE img CON ALTURA FIJA */}
+      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-white to-white flex-shrink-0">
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          {producto.img ? (
+            <img
+              src={producto.img}
+              alt={producto.nombre || producto.tipo}
+              className="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+          ) : producto.servicioImg ? (
+            <img
+              src={producto.servicioImg}
+              alt={producto.servicio}
+              className="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out opacity-40"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+              <div className="text-gray-400">
+                {categoriaActiva === "Especialistas" ? (
+                  <FaUserTie className="text-5xl" />
+                ) : (
+                  <FaTools className="text-5xl" />
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* CONTENIDO */}
+      <div className="p-6 flex flex-col flex-grow">
+        {!servicioActual && producto.servicio !== "General" && (
+          <div className="mb-2">
+            <span className="text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+              {producto.servicio}
+            </span>
+          </div>
+        )}
+
+        <div className="mb-3">
+          <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1.5 rounded-full">
+            {producto.tipo}
+          </span>
+        </div>
+
+        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+          {producto.nombre.toUpperCase() || producto.tipo.toUpperCase()}
+        </h3>
+
+        {producto.puntos && producto.puntos.length > 0 && (
+          <div className="mb-4 flex-grow">
+            <ul className="space-y-1">
+              {producto.puntos.slice(0, 3).map((punto, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                  <span className="text-primary mt-1">•</span>
+                  <span className="line-clamp-2">{punto}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {producto.categoria && producto.categoria.length > 0 && (
+          <div className="mb-6">
+            <div className="flex flex-wrap gap-2">
+              {producto.categoria.map((cat, idx) => (
+                <span
+                  key={idx}
+                  className="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full hover:bg-gray-200 transition-colors duration-300"
+                >
+                  {cat}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <a
+          href={`https://wa.me/51912909920?text=${generarMensajeWhatsApp(producto)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:gap-3 mt-auto"
+        >
+          <FaWhatsapp className="text-lg" />
+          Consultar por WhatsApp
+          <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+        </a>
+      </div>
+    </div>
+  );
+});
+
+ProductoCard.displayName = 'ProductoCard';
+
+const Productos = memo(({ servicioSlug = null }) => {
+  console.log('🔍 Productos se está re-renderizando');
+
   const [categoriaActiva, setCategoriaActiva] = useState("Domestico");
   const [categoriasDisponibles, setCategoriasDisponibles] = useState([]);
   const [mostrarSeccion, setMostrarSeccion] = useState(false);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
 
-  useEffect(() => {
-    const calcularCategoriasYProductos = () => {
-      const productosDeData = productosData.productos || [];
+  // Memoizar función para calcular categorías
+  const calcularCategoriasYProductos = useCallback(() => {
+    const productosDeData = productosData.productos || [];
+    let productosFiltradosPorCategoria = productosDeData;
 
-      let productosFiltradosPorCategoria = productosDeData;
-
-      const mapeoCategorias = {
-        'aire-acondicionado-climatizacion': 'ac-comercial',
-        'refrigeracion-comercial-industrial': 'refrigeracion-industrial',
-      };
-
-      if (servicioSlug && mapeoCategorias[servicioSlug]) {
-        const categoriaFiltro = mapeoCategorias[servicioSlug];
-        productosFiltradosPorCategoria = productosDeData.filter(
-          producto => producto.categoria === categoriaFiltro
-        );
-      }
-
-      setProductosFiltrados(productosFiltradosPorCategoria);
-
-      const serviciosFiltrados = servicioSlug
-        ? serviciosData.servicios.filter(s => s.slug === servicioSlug)
-        : serviciosData.servicios;
-
-      const categoriasConProductos = [];
-      let hayProductosEnTotal = false;
-
-      Object.keys(categoriasInfo).forEach(categoriaKey => {
-        let tieneProductos = false;
-
-        for (const servicio of serviciosFiltrados) {
-          if (categoriaKey === "Especialistas") {
-            if (servicio[categoriaKey] &&
-              Array.isArray(servicio[categoriaKey]) &&
-              servicio[categoriaKey].length > 0) {
-              tieneProductos = true;
-              hayProductosEnTotal = true;
-              break;
-            }
-          } else {
-            if (servicio[categoriaKey] &&
-              Array.isArray(servicio[categoriaKey]) &&
-              servicio[categoriaKey].length > 0) {
-              tieneProductos = true;
-              hayProductosEnTotal = true;
-              break;
-            }
-          }
-        }
-
-        if (tieneProductos) {
-          categoriasConProductos.push(categoriaKey);
-        }
-      });
-
-      if (productosFiltradosPorCategoria.length > 0) {
-        hayProductosEnTotal = true;
-        if (!categoriasConProductos.includes('Comercial')) {
-          categoriasConProductos.push('Comercial');
-        }
-      }
-
-      setMostrarSeccion(hayProductosEnTotal);
-
-      if (categoriasConProductos.length > 0) {
-        setCategoriasDisponibles(categoriasConProductos);
-
-        if (!categoriasConProductos.includes(categoriaActiva)) {
-          setCategoriaActiva(categoriasConProductos[0]);
-        }
-      } else {
-        setCategoriasDisponibles([]);
-      }
+    const mapeoCategorias = {
+      'aire-acondicionado-climatizacion': 'ac-comercial',
+      'refrigeracion-comercial-industrial': 'refrigeracion-industrial',
     };
 
-    calcularCategoriasYProductos();
+    if (servicioSlug && mapeoCategorias[servicioSlug]) {
+      const categoriaFiltro = mapeoCategorias[servicioSlug];
+      productosFiltradosPorCategoria = productosDeData.filter(
+        producto => producto.categoria === categoriaFiltro
+      );
+    }
+
+    setProductosFiltrados(productosFiltradosPorCategoria);
+
+    const serviciosFiltrados = servicioSlug
+      ? serviciosData.servicios.filter(s => s.slug === servicioSlug)
+      : serviciosData.servicios;
+
+    const categoriasConProductos = [];
+    let hayProductosEnTotal = false;
+
+    Object.keys(categoriasInfo).forEach(categoriaKey => {
+      let tieneProductos = false;
+
+      for (const servicio of serviciosFiltrados) {
+        if (categoriaKey === "Especialistas") {
+          if (servicio[categoriaKey] &&
+            Array.isArray(servicio[categoriaKey]) &&
+            servicio[categoriaKey].length > 0) {
+            tieneProductos = true;
+            hayProductosEnTotal = true;
+            break;
+          }
+        } else {
+          if (servicio[categoriaKey] &&
+            Array.isArray(servicio[categoriaKey]) &&
+            servicio[categoriaKey].length > 0) {
+            tieneProductos = true;
+            hayProductosEnTotal = true;
+            break;
+          }
+        }
+      }
+
+      if (tieneProductos) {
+        categoriasConProductos.push(categoriaKey);
+      }
+    });
+
+    if (productosFiltradosPorCategoria.length > 0) {
+      hayProductosEnTotal = true;
+      if (!categoriasConProductos.includes('Comercial')) {
+        categoriasConProductos.push('Comercial');
+      }
+    }
+
+    setMostrarSeccion(hayProductosEnTotal);
+
+    if (categoriasConProductos.length > 0) {
+      setCategoriasDisponibles(categoriasConProductos);
+
+      if (!categoriasConProductos.includes(categoriaActiva)) {
+        setCategoriaActiva(categoriasConProductos[0]);
+      }
+    } else {
+      setCategoriasDisponibles([]);
+    }
   }, [servicioSlug, categoriaActiva]);
 
-  const obtenerProductos = () => {
+  // Solo ejecutar una vez al cargar
+  useEffect(() => {
+    calcularCategoriasYProductos();
+  }, [calcularCategoriasYProductos]);
+
+  // Memoizar la función para obtener productos
+  const obtenerProductos = useCallback(() => {
     if (!mostrarSeccion) return [];
 
     // Para categoría Comercial, mostrar productos agrupados por servicio
     if (categoriaActiva === "Comercial" && productosFiltrados.length > 0) {
       const productosAgrupados = {};
 
-      // Primero agrupar los productos por su servicio
       productosFiltrados.forEach((producto, index) => {
         const slugServicio = producto.servicioSlug || "general";
         const nombreServicio = producto.servicio || "General";
@@ -158,7 +289,6 @@ export default function Productos({ servicioSlug = null }) {
         });
       });
 
-      // Convertir el objeto agrupado a un array plano para renderizar
       const productosPlanos = [];
       Object.values(productosAgrupados).forEach(grupo => {
         grupo.productos.forEach(producto => {
@@ -215,21 +345,63 @@ export default function Productos({ servicioSlug = null }) {
     });
 
     return productos;
-  };
+  }, [mostrarSeccion, categoriaActiva, productosFiltrados, servicioSlug]);
 
-  const productos = obtenerProductos();
-  const servicioActual = servicioSlug
-    ? serviciosData.servicios.find(s => s.slug === servicioSlug)
-    : null;
+  // Memoizar productos
+  const productos = useMemo(() => {
+    return obtenerProductos();
+  }, [obtenerProductos]);
+
+  // Memoizar categorías
+  const renderCategorias = useMemo(() => {
+    return categoriasDisponibles.map((categoriaKey) => {
+      const info = categoriasInfo[categoriaKey];
+      return (
+        <button
+          key={categoriaKey}
+          onClick={() => setCategoriaActiva(categoriaKey)}
+          className={`flex cursor-pointer items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 
+            w-full md:w-auto md:flex-1 
+            md:max-w-xs mx-auto sm:mx-0 md:min-w-[200px]
+            ${categoriaActiva === categoriaKey
+              ? `${info.color} text-white shadow-lg`
+              : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300"
+            }`}
+        >
+          <div className={`p-2 rounded-lg ${categoriaActiva === categoriaKey ? 'bg-white/20' : 'bg-gray-100'}`}>
+            {info.icon}
+          </div>
+          <div className="text-left flex-1">
+            <div className="font-bold">{info.nombre}</div>
+          </div>
+        </button>
+      );
+    });
+  }, [categoriasDisponibles, categoriaActiva]);
+
+  // Memoizar productos renderizados
+  const renderProductos = useMemo(() => {
+    return productos.map((producto, index) => (
+      <ProductoCard
+        key={producto.id || index}
+        producto={producto}
+        categoriaActiva={categoriaActiva}
+        servicioActual={servicioSlug ? serviciosData.servicios.find(s => s.slug === servicioSlug) : null}
+      />
+    ));
+  }, [productos, categoriaActiva, servicioSlug]);
 
   if (!mostrarSeccion) {
     return null;
   }
 
+  const servicioActual = servicioSlug
+    ? serviciosData.servicios.find(s => s.slug === servicioSlug)
+    : null;
+
   return (
     <section className="py-16 bg-gradient-to-b from-gray-50 to-white" id="Productos">
       <div className="container mx-auto px-4 max-w-7xl">
-
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             {servicioActual
@@ -248,136 +420,19 @@ export default function Productos({ servicioSlug = null }) {
         {categoriasDisponibles.length > 0 && (
           <div className="mb-12">
             <div className="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
-              {categoriasDisponibles.map((categoriaKey) => {
-                const info = categoriasInfo[categoriaKey];
-                return (
-                  <button
-                    key={categoriaKey}
-                    onClick={() => setCategoriaActiva(categoriaKey)}
-                    className={`flex cursor-pointer items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 
-              /* En móvil: 100% ancho */
-              w-full md:w-auto md:flex-1 
-              /* Tamaño máximo solo en desktop */
-              md:max-w-xs mx-auto sm:mx-0 md:min-w-[200px]
-              ${categoriaActiva === categoriaKey
-                        ? `${info.color} text-white shadow-lg`
-                        : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300"
-                      }
-            `}
-                  >
-                    <div className={`p-2 rounded-lg ${categoriaActiva === categoriaKey ? 'bg-white/20' : 'bg-gray-100'}`}>
-                      {info.icon}
-                    </div>
-                    <div className="text-left flex-1">
-                      <div className="font-bold">{info.nombre}</div>
-                    </div>
-                  </button>
-                );
-              })}
+              {renderCategorias}
             </div>
           </div>
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productos.map((producto, index) => (
-            <div
-              key={producto.id || index}
-              className="group cursor-pointer bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out flex flex-col"
-            >
-              {/* CONTENEDOR DE img CON ALTURA FIJA */}
-              <div className="relative h-64 overflow-hidden bg-gradient-to-br from-white to-white flex-shrink-0">
-                <div className="absolute inset-0 flex items-center justify-center p-4">
-                  {producto.img ? (
-                    <img
-                      src={producto.img}
-                      alt={producto.nombre || producto.tipo}
-                      className="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                      loading="lazy"
-                    />
-                  ) : producto.servicioImg ? (
-                    <img
-                      src={producto.servicioImg}
-                      alt={producto.servicio}
-                      className="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out opacity-40"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                      <div className="text-gray-400">
-                        {categoriaActiva === "Especialistas" ? (
-                          <FaUserTie className="text-5xl" />
-                        ) : (
-                          <FaTools className="text-5xl" />
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-              </div>
-
-              {/* CONTENIDO - Se expande para llenar el espacio restante */}
-              <div className="p-6 flex flex-col flex-grow">
-                {!servicioActual && producto.servicio !== "General" && (
-                  <div className="mb-2">
-                    <span className="text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                      {producto.servicio}
-                    </span>
-                  </div>
-                )}
-
-                <div className="mb-3">
-                  <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1.5 rounded-full">
-                    {producto.tipo}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
-                  {producto.nombre.toUpperCase() || producto.tipo.toUpperCase()}
-                </h3>
-
-                {producto.puntos && producto.puntos.length > 0 && (
-                  <div className="mb-4 flex-grow">
-                    <ul className="space-y-1">
-                      {producto.puntos.slice(0, 3).map((punto, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                          <span className="text-primary mt-1">•</span>
-                          <span className="line-clamp-2">{punto}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {producto.categoria && producto.categoria.length > 0 && (
-                  <div className="mb-6">
-                    <div className="flex flex-wrap gap-2">
-                      {producto.categoria.map((cat, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full hover:bg-gray-200 transition-colors duration-300"
-                        >
-                          {cat}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <a
-                  href="/contacto"
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:gap-3 mt-auto"
-                >
-                  <FaCalculator />
-                  {categoriaActiva === "Especialistas" ? "Solicitar Consultoría" : "Solicitar Información"}
-                  <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
-              </div>
-            </div>
-          ))}
+          {renderProductos}
         </div>
-
       </div>
     </section>
   );
-}
+});
+
+Productos.displayName = 'Productos';
+
+export default Productos;

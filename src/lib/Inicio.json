@@ -10,7 +10,7 @@
     },
     "servicios": {
       "texto": "SERVICIOS",
-      "enlace": "/servicios",
+      "enlace": "",
       "estilo": "secondary"
     }
   }

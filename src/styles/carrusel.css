@@ -1,0 +1,33 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 500s linear infinite;
+}
+
+/* Pausar animación al hacer hover */
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .animate-scroll {
+    animation: scroll 100s linear infinite;
+  }
+  
+  .animate-scroll > div {
+    width: 140px;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    height: 100px;
+  }
+}
