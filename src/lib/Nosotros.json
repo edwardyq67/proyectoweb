@@ -21,7 +21,7 @@
   },
   "servicios": [
     {
-      "img": "/AireAcodicionadoClimatizacion.webp",
+      "img": "/Servicios/AireAcodicionadoClimatizacion.webp",
       "titulo": "Aire acondicionado y climatización",
       "contenido": "Realizamos la instalación, mantenimiento y reparación de sistemas tipo Split, MultiSplit, Piso-Techo, Cassette, VRF/VRV y sistemas HVAC centralizados.",
       "url": "/aire-acondicionado-climatizacion",
@@ -30,7 +30,7 @@
       "icono": "mdi:snowflake",
       "VentilacionClimatizacion": {
         "titulo": "Ventilación y Climatización",
-        "img": "/Ventilación y Climatización.webp",
+        "img": "/Servicios/Ventilación y Climatización.webp",
         "servicios": [
           {
             "nombre": "Extractores Axiales",
@@ -59,10 +59,10 @@
       "Industrial": [1,2,3,4,5,6,7,8,9,11,12,13,14]
     },
     {
-      "img": "/RefrigeracionComercialEIndustrial.webp",
+      "img": "/Servicios/RefrigeracionComercialEIndustrial.webp",
       "titulo": "Refrigeración comercial e industrial",
       "contenido": "En Teknisolutions, nos especializamos en soluciones integrales de refrigeración industrial y comercial, diseñando e implementando cámaras frigoríficas, túneles de enfriamiento y sistemas de congelamiento de alto rendimiento.",
-      "url": "/refrigeracion-comercial-industrial",
+     "url": "/refrigeracion-comercial-industrial",
       "slug": "refrigeracion-comercial-industrial",
       "descripcion_larga": "En Teknisolutions, nos especializamos en soluciones integrales de refrigeración industrial y comercial, diseñando e implementando cámaras frigoríficas, túneles de enfriamiento y sistemas de congelamiento de alto rendimiento. Gracias a nuestra tecnología de vanguardia y un equipo de ingeniería experto, optimizamos la climatización de salas de procesos y la operación de plantas de hielo, garantizando sistemas eficientes, confiables y con un control térmico riguroso para la conservación y procesamiento de sus productos.",
       "icono": "mdi:snowflake-thermometer",
@@ -74,10 +74,10 @@
 
     },
     {
-      "img": "/Asesoramiento.webp",
+      "img": "/Servicios/Asesoramiento.webp",
       "titulo": "Consultoría de desarrollo y ejecución de proyecto",
       "contenido": "Diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida.",
-      "url": "/consultoria-desarrollo-ejecucion-proyecto",
+     "url": "/consultoria-desarrollo-ejecucion-proyecto",
       "slug": "consultoria-desarrollo-ejecucion-proyecto",
       "descripcion_larga": "En Teknisolutions, diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida. Nuestro equipo de ingenieros especializados gestiona cada etapa del proceso, desde el cálculo de redes de ductos y selección de equipos hasta la implementación final, garantizando el cumplimiento normativo, la eficiencia energética y la puntualidad en cada entrega.",
       "icono": "mdi:clipboard-check",
@@ -111,7 +111,7 @@
       ],
       "VentilacionClimatizacion": {
         "titulo": "Nuestro Portafolio de Servicios",
-        "img": "/Nuestro Portafolio de Servicios.webp",
+        "img": "/Servicios/Nuestro Portafolio de Servicios.webp",
         "servicios": [
           {
             "nombre": "Sistemas HVAC",
@@ -141,10 +141,10 @@
       "Industrial": []
     },
     {
-      "img": "/CamaraFrigorificas.webp",
+      "img": "/Servicios/CamaraFrigorificas.webp",
       "titulo": "Servicio especial de cámara frigorífica",
       "contenido": "Soluciones integrales de refrigeración industrial y comercial diseñadas para maximizar la eficiencia y confiabilidad en la conservación de productos.",
-      "url": "/servicio-especial-camara-frigorifica",
+     "url": "/servicio-especial-camara-frigorifica",
       "slug": "servicio-especial-camara-frigorifica",
       "descripcion_larga": "En Teknisolutions, nos especializamos en ofrecer soluciones integrales de refrigeración industrial y comercial, diseñadas para maximizar la eficiencia y confiabilidad en la conservación de sus productos. Proporcionamos un servicio completo que abarca desde el diseño técnico hasta la instalación de infraestructura de alta precisión.",
       "icono": "mdi:clipboard-check",
@@ -174,7 +174,7 @@
       ],
       "VentilacionClimatizacion": {
         "titulo": "Sectores de Especialización",
-        "img": "/Nuestro Portafolio de Servicios.webp",
+        "img": "/Servicios/Nuestro Portafolio de Servicios.webp",
         "servicios": [
           {
             "nombre": "Almacenamiento Térmico",

@@ -1,0 +1,25 @@
+---
+// refrigeracion-comercial-industrial.astro
+import Layout from '../layouts/Layout.astro';
+import Servicios from "../components/ServicioDetalle.astro";
+import serviciosData from '../lib/Nosotros.json';
+
+// Buscar el servicio específico por slug
+const slug = "refrigeracion-comercial-industrial"; // o el slug correcto
+const servicioEncontrado = serviciosData.servicios.find(
+  s => s.slug === slug
+);
+
+// Redirigir si no existe
+if (!servicioEncontrado) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={servicioEncontrado.titulo}>
+  <!-- Pasar los datos necesarios al componente -->
+  <Servicios 
+    servicioEncontrado={servicioEncontrado}
+    serviciosData={serviciosData}
+  />
+</Layout>

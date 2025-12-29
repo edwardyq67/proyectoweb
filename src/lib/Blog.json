@@ -4,9 +4,16 @@
     "descripcion": "Consejos, noticias y guías sobre climatización, ventilación y eficiencia energética",
     "eslogan": "Expertos en climatización y calidad del aire",
     "total_articulos": 12,
-    "categorias": ["Mantenimiento", "Instalación", "Eficiencia Energética", "Novedades", "Consejos Prácticos", "Ventilación", "Salud"]
+    "categorias": [
+      "Mantenimiento",
+      "Instalación",
+      "Eficiencia Energética",
+      "Novedades",
+      "Consejos Prácticos",
+      "Ventilación",
+      "Salud"
+    ]
   },
-  
   "categorias": [
     {
       "id": 1,
@@ -54,7 +61,6 @@
       "total_articulos": 2
     }
   ],
-  
   "autores": [
     {
       "id": 1,
@@ -90,140 +96,359 @@
       }
     }
   ],
-  
   "articulos": [
     {
       "id": 1,
-      "slug": "mantenimiento-preventivo-aire-acondicionado",
-      "titulo": "Guía Completa de Mantenimiento Preventivo para Aire Acondicionado",
-      "descripcion_corta": "Aprende los pasos esenciales para mantener tu equipo funcionando eficientemente",
-      "contenido": "El mantenimiento preventivo es crucial para prolongar la vida útil de tu equipo de aire acondicionado. Debes limpiar los filtros mensualmente durante la temporada de uso, revisar las bobinas del evaporador y condensador, verificar los niveles de refrigerante, y asegurarte de que las aspas del ventilador estén limpias y balanceadas. Un mantenimiento adecuado puede mejorar la eficiencia energética hasta en un 15%.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
+      "slug": "cumplimiento-normativo-sistemas-hvac-clinicas-farmacias",
+      "titulo": "Cumplimiento Normativo en Sistemas HVAC: ¿Qué Requieren Clínicas y Farmacias?",
+      "descripcion_corta": "Explica las normativas locales e internacionales que deben seguir establecimientos con sistemas HVAC para evitar sanciones y riesgos operativos.",
+      "img_principal": "/Blog/1.webp",
       "fecha_publicacion": "2024-01-15",
-      "tiempo_lectura": "8 min",
-      "autor_id": 1,
-      "categorias": [1],
-      "tags": ["mantenimiento", "eficiencia", "ahorro", "durabilidad"],
-      "destacado": true,
-      "vistas": 1245
+      "tags": [
+        "MANTENIMIENTO",
+        "SALUD Y CONFORT"
+      ],
+      "destacado": true
     },
     {
       "id": 2,
-      "slug": "ventilacion-mecanica-hospitales",
-      "titulo": "Sistemas de Ventilación Mecánica en Hospitales: Normativas y Especificaciones",
-      "descripcion_corta": "Requisitos técnicos para sistemas de ventilación en entornos hospitalarios",
-      "contenido": "Los hospitales requieren sistemas de ventilación especializados que mantengan la calidad del aire y prevengan la propagación de infecciones. Las normativas exigen cambios de aire por hora específicos, presión negativa en quirófanos, y filtros HEPA en áreas críticas. Los sistemas deben incluir recuperadores de calor para eficiencia energética y controles automatizados para monitoreo constante.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
-      "fecha_publicacion": "2024-01-20",
-      "tiempo_lectura": "12 min",
-      "autor_id": 1,
-      "categorias": [4, 5],
-      "tags": ["hospitales", "normativas", "HEPA", "control-infecciones"],
-      "destacado": true,
-      "vistas": 876
+      "slug": "como-asegurar-eficiencia-rendimiento-camaras-frigorificas",
+      "titulo": "Cómo Asegurar la Eficiencia y Rendimiento de Cámaras Frigoríficas",
+      "descripcion_corta": "Recomendaciones para cámaras frigoríficas con máxima eficiencia, reduciendo fallas y pérdidas.",
+      "img_principal": "/Blog/2.webp",
+      "fecha_publicacion": "2024-01-18",
+      "tags": [
+        "MANTENIMIENTO",
+        "EFICIENCIA ENERGÉTICA"
+      ],
+      "destacado": false
     },
     {
       "id": 3,
-      "slug": "ahorro-energetico-climatizacion",
-      "titulo": "10 Estrategias para Ahorrar Energía en la Climatización de tu Hogar",
-      "descripcion_corta": "Consejos prácticos para reducir tu factura eléctrica sin sacrificar confort",
-      "contenido": "1. Programa el termostato para ajustar la temperatura cuando no estés en casa. 2. Utiliza persianas o cortinas para bloquear el calor solar. 3. Sella puertas y ventanas para evitar fugas. 4. Mantén los filtros limpios. 5. Considera el uso de ventiladores de techo. 6. Instala un termostato inteligente. 7. Realiza mantenimiento anual. 8. Considera la zonificación en casas grandes. 9. Utiliza equipos con certificación Energy Star. 10. Aísla adecuadamente tu hogar.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_21-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_21-1280x853.jpg",
-      "fecha_publicacion": "2024-01-25",
-      "tiempo_lectura": "6 min",
-      "autor_id": 2,
-      "categorias": [3],
-      "tags": ["ahorro", "energía", "termostato", "eficiencia"],
-      "destacado": false,
-      "vistas": 1543
+      "slug": "guia-practica-elegir-sistema-aire-acondicionado-perfecto",
+      "titulo": "Guía Práctica para Elegir el Sistema de Aire Acondicionado Perfecto",
+      "descripcion_corta": "Cómo seleccionar un sistema de aire acondicionado según espacio, uso y eficiencia.",
+      "img_principal": "/Blog/3.webp",
+      "fecha_publicacion": "2024-01-21",
+      "tags": [
+        "INSTALACIÓN",
+        "EFICIENCIA ENERGÉTICA"
+      ],
+      "destacado": false
     },
     {
       "id": 4,
-      "slug": "instalacion-split-correcta",
-      "titulo": "Errores Comunes en la Instalación de Equipos Split y Cómo Evitarlos",
-      "descripcion_corta": "Problemas frecuentes que afectan el rendimiento de tu aire acondicionado",
-      "contenido": "Los errores más comunes incluyen: 1) Ubicación incorrecta de la unidad exterior que limita el flujo de aire, 2) Longitud excesiva de tuberías de refrigerante, 3) Mal vacío del sistema, 4) Conexiones eléctricas inadecuadas, 5) Drenaje incorrecto del condensado. Cada uno de estos problemas puede reducir la eficiencia del equipo en más del 20% y acortar su vida útil significativamente.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_20-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_20-1280x853.jpg",
-      "fecha_publicacion": "2024-02-01",
-      "tiempo_lectura": "10 min",
-      "autor_id": 1,
-      "categorias": [2],
-      "tags": ["instalación", "split", "errores", "rendimiento"],
-      "destacado": true,
-      "vistas": 932
+      "slug": "marcas-aire-acondicionado-empresas-calidad",
+      "titulo": "Las Mejores Marcas de Aire Acondicionado para Empresas: Calidad y Durabilidad",
+      "descripcion_corta": "Análisis de marcas industriales destacadas por su confiabilidad y rendimiento.",
+      "img_principal": "/Blog/4.webp",
+      "fecha_publicacion": "2024-01-24",
+      "tags": [
+        "SALUD Y CONFORT"
+      ],
+      "destacado": false
     },
     {
       "id": 5,
-      "slug": "calidad-aire-interior-salud",
-      "titulo": "Impacto de la Calidad del Aire Interior en la Salud Respiratoria",
-      "descripcion_corta": "Cómo los sistemas de ventilación afectan nuestra salud día a día",
-      "contenido": "La calidad del aire interior es fundamental para prevenir alergias, asma y otras enfermedades respiratorias. Los sistemas de ventilación adecuados pueden reducir la concentración de alérgenos, humedad que favorece el moho, y compuestos orgánicos volátiles. Recomendamos: 1) Ventilación mecánica con recuperación de calor, 2) Filtros MERV 13 o superiores, 3) Control de humedad entre 40-60%, 4) Purificadores de aire con filtros HEPA en dormitorios.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_19-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_19-1280x853.jpg",
-      "fecha_publicacion": "2024-02-05",
-      "tiempo_lectura": "9 min",
-      "autor_id": 3,
-      "categorias": [4, 5],
-      "tags": ["salud", "calidad-aire", "alergias", "filtros"],
-      "destacado": true,
-      "vistas": 1102
+      "slug": "mantenimiento-preventivo-hvac-claves",
+      "titulo": "¿Por Qué el Mantenimiento Preventivo Aumenta la Productividad?",
+      "descripcion_corta": "Impacto del mantenimiento preventivo en la reducción de fallas y costos.",
+      "img_principal": "/Blog/5.webp",
+      "fecha_publicacion": "2024-01-27",
+      "tags": [
+        "INSTALACIÓN",
+        "EFICIENCIA ENERGÉTICA"
+      ],
+      "destacado": false
     },
     {
       "id": 6,
-      "slug": "tecnologia-inverter-ventajas",
-      "titulo": "Tecnología Inverter: ¿Realmente Ahorra Energía?",
-      "descripcion_corta": "Análisis comparativo entre equipos convencionales y tecnología inverter",
-      "contenido": "Los equipos con tecnología inverter pueden ahorrar hasta un 40% de energía comparados con los convencionales. Esto se debe a que ajustan continuamente la velocidad del compresor en lugar de encender y apagar constantemente. Las ventajas incluyen: 1) Temperatura más estable, 2) Menor ruido, 3) Vida útil más larga del compresor, 4) Menor pico de corriente al arranque. La inversión inicial se recupera generalmente en 2-3 años a través del ahorro energético.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_24-1280x853.jpg",
-      "fecha_publicacion": "2024-02-10",
-      "tiempo_lectura": "7 min",
-      "autor_id": 2,
-      "categorias": [3],
-      "tags": ["inverter", "tecnología", "ahorro", "compresor"],
-      "destacado": false,
-      "vistas": 765
+      "slug": "checklist-revisar-sistema-refrigeracion",
+      "titulo": "Checklist: ¿Qué Revisar en tu Sistema de Refrigeración Antes de una Emergencia?",
+      "descripcion_corta": "Puntos clave para anticipar fallas críticas en sistemas de refrigeración.",
+      "img_principal": "/Blog/6.webp",
+      "fecha_publicacion": "2024-01-30",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
     },
     {
       "id": 7,
-      "slug": "limpieza-conductos-aire",
-      "titulo": "¿Cuándo y Por Qué Limpiar los Conductos de Aire Acondicionado?",
-      "descripcion_corta": "Guía para identificar cuándo es necesaria la limpieza de ductos",
-      "contenido": "Los conductos de aire deben limpiarse cada 3-5 años, o antes si se observan señales como: 1) Polvo visible saliendo de las rejillas, 2) Olores desagradables al encender el equipo, 3) Incremento en alergias o síntomas respiratorios, 4) Reducción en el flujo de aire. La limpieza profesional elimina ácaros, moho, bacterias y partículas que afectan la calidad del aire y la eficiencia del sistema.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_23-1280x853.jpg",
-      "fecha_publicacion": "2024-02-15",
-      "tiempo_lectura": "5 min",
-      "autor_id": 2,
-      "categorias": [1, 5],
-      "tags": ["conductos", "limpieza", "calidad-aire", "alergias"],
-      "destacado": false,
-      "vistas": 643
+      "slug": "optimizar-consumo-energetico-climatizacion",
+      "titulo": "Cómo Optimizar tu Consumo Energético con Equipos de Climatización",
+      "descripcion_corta": "Consejos para reducir el consumo energético y costos operativos.",
+      "img_principal": "/Blog/7.webp",
+      "fecha_publicacion": "2024-02-02",
+      "tags": [
+        "EFICIENCIA ENERGÉTICA"
+      ],
+      "destacado": true
     },
     {
       "id": 8,
-      "slug": "sistemas-vrf-ventajas",
-      "titulo": "Sistemas VRF: Solución Ideal para Edificios Comerciales",
-      "descripcion_corta": "Ventajas de los sistemas de flujo de refrigerante variable en grandes instalaciones",
-      "contenido": "Los sistemas VRF (Variable Refrigerant Flow) ofrecen flexibilidad, eficiencia y control individualizado por zona. Ventajas principales: 1) Hasta 30% más eficientes que sistemas convencionales, 2) Permiten climatizar diferentes zonas con temperaturas independientes, 3) Menor espacio requerido para equipos, 4) Control centralizado inteligente, 5) Menor impacto estético al no requerir ductos grandes. Ideales para oficinas, hoteles y centros comerciales.",
-      "img_principal": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
-      "img_miniatura": "https://carnot.pe/wp-content/uploads/2018/10/gallery_projects_22-1280x853.jpg",
+      "slug": "beneficios-contratos-mantenimiento-mensual",
+      "titulo": "Beneficios de los Contratos de Mantenimiento Mensuales",
+      "descripcion_corta": "Cómo un contrato mensual reduce gastos, estabiliza costos y evita emergencias.",
+      "img_principal": "/Blog/8.webp",
+      "fecha_publicacion": "2024-02-05",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": true
+    },
+    {
+      "id": 9,
+      "slug": "tendencias-refrigeracion-comercial-industrial",
+      "titulo": "Tendencias en Refrigeración Comercial e Industrial",
+      "descripcion_corta": "Innovaciones tecnológicas y normativas del sector refrigeración.",
+      "img_principal": "/Blog/9.webp",
+      "fecha_publicacion": "2024-02-08",
+      "tags": [
+        "EFICIENCIA ENERGÉTICA",
+        "INSTALACIÓN"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 10,
+      "slug": "errores-comunes-instalacion-mantenimiento-aire",
+      "titulo": "Errores Comunes en Instalación y Mantenimiento de Aires Acondicionados",
+      "descripcion_corta": "Errores frecuentes que generan sobrecostos y fallas prematuras.",
+      "img_principal": "/Blog/10.webp",
+      "fecha_publicacion": "2024-02-11",
+      "tags": [
+        "INSTALACIÓN",
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 11,
+      "slug": "impacto-economico-fallas-refrigeracion",
+      "titulo": "¿Cuánto Dinero Pierde un Negocio por una Falla en Refrigeración?",
+      "descripcion_corta": "Análisis real de pérdidas económicas por fallas técnicas.",
+      "img_principal": "/Blog/11.webp",
+      "fecha_publicacion": "2024-02-14",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 12,
+      "slug": "mantenimiento-preventivo-vs-emergencia",
+      "titulo": "Mantenimiento Preventivo vs Reparación de Emergencia: ¿Qué Conviene?",
+      "descripcion_corta": "Comparación de costos, tiempos y riesgos operativos.",
+      "img_principal": "/Blog/12.webp",
+      "fecha_publicacion": "2024-02-17",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 13,
+      "slug": "senales-alerta-sistema-refrigeracion",
+      "titulo": "Señales de Alerta que Indican que tu Sistema de Refrigeración Está Fallando",
+      "descripcion_corta": "Síntomas visibles y auditivos que alertan fallas críticas.",
+      "img_principal": "/Blog/13.webp",
       "fecha_publicacion": "2024-02-20",
-      "tiempo_lectura": "11 min",
-      "autor_id": 1,
-      "categorias": [2, 3],
-      "tags": ["VRF", "comercial", "eficiencia", "zonificación"],
-      "destacado": true,
-      "vistas": 521
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 14,
+      "slug": "elegir-proveedor-mantenimiento-hvac",
+      "titulo": "¿Qué Debe Incluir un Contrato Profesional de Mantenimiento HVAC?",
+      "descripcion_corta": "Elementos clave para contratar un proveedor confiable.",
+      "img_principal": "/Blog/14.webp",
+      "fecha_publicacion": "2024-02-23",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 15,
+      "slug": "errores-empresas-contratar-tecnicos",
+      "titulo": "Errores que Cometen las Empresas al Contratar Servicios Técnicos",
+      "descripcion_corta": "Prácticas que afectan seguridad, costos y cumplimiento normativo.",
+      "img_principal": "/Blog/15.webp",
+      "fecha_publicacion": "2024-02-26",
+      "tags": [
+        "SALUD Y CONFORT",
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 16,
+      "slug": "impacto-clima-negocio",
+      "titulo": "¿Cómo Afecta el Clima en el Rendimiento de tu Negocio?",
+      "descripcion_corta": "Relación entre confort térmico y productividad.",
+      "img_principal": "/Blog/16.webp",
+      "fecha_publicacion": "2024-02-29",
+      "tags": [
+        "SALUD Y CONFORT"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 17,
+      "slug": "fallas-tecnicas-negocios-247",
+      "titulo": "Cómo Reducir Paradas Técnicas en Negocios que Operan 24/7",
+      "descripcion_corta": "Estrategias de mantenimiento continuo y monitoreo.",
+      "img_principal": "/Blog/17.webp",
+      "fecha_publicacion": "2024-03-03",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 18,
+      "slug": "guia-gerentes-elegir-proveedor-refrigeracion",
+      "titulo": "Guía para Gerentes: Cómo Elegir un Proveedor de Refrigeración",
+      "descripcion_corta": "Criterios técnicos y comerciales para decisiones acertadas.",
+      "img_principal": "/Blog/18.webp",
+      "fecha_publicacion": "2024-03-06",
+      "tags": [
+        "INSTALACIÓN",
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 19,
+      "slug": "uso-correcto-aire-acondicionado-hogares-negocios",
+      "titulo": "Uso Correcto del Aire Acondicionado en Hogares y Negocios",
+      "descripcion_corta": "Buenas prácticas para eficiencia y durabilidad.",
+      "img_principal": "/Blog/19.webp",
+      "fecha_publicacion": "2024-03-09",
+      "tags": [
+        "SALUD Y CONFORT"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 20,
+      "slug": "sistema-aire-acondicionado-industrial",
+      "titulo": "¿Qué es el Sistema de Aire Acondicionado Industrial?",
+      "descripcion_corta": "Características y aplicaciones industriales.",
+      "img_principal": "/Blog/20.webp",
+      "fecha_publicacion": "2024-03-12",
+      "tags": [
+        "INSTALACIÓN"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 21,
+      "slug": "para-que-sirve-filtro-aire-acondicionado",
+      "titulo": "¿Para Qué Nos Sirve el Filtro de Aire Acondicionado?",
+      "descripcion_corta": "Importancia del filtrado para salud y eficiencia.",
+      "img_principal": "/Blog/21.webp",
+      "fecha_publicacion": "2024-03-15",
+      "tags": [
+        "SALUD Y CONFORT"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 22,
+      "slug": "instalar-aire-acondicionado-rendimiento",
+      "titulo": "¿Dónde Instalar tu Aire Acondicionado para Mejor Rendimiento?",
+      "descripcion_corta": "Ubicación correcta para maximizar eficiencia.",
+      "img_principal": "/Blog/22.webp",
+      "fecha_publicacion": "2024-03-18",
+      "tags": [
+        "INSTALACIÓN"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 23,
+      "slug": "mantener-aire-acondicionado",
+      "titulo": "¿Qué Tan Importante es Limpiar el Aire Acondicionado?",
+      "descripcion_corta": "Prevención de fallas y problemas de salud.",
+      "img_principal": "/Blog/23.webp",
+      "fecha_publicacion": "2024-03-21",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 24,
+      "slug": "tipos-mantenimiento-vrf",
+      "titulo": "5 Tips Importantes para el Mantenimiento de Sistemas VRF",
+      "descripcion_corta": "Recomendaciones técnicas para sistemas VRF.",
+      "img_principal": "/Blog/24.webp",
+      "fecha_publicacion": "2024-03-24",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 25,
+      "slug": "mantenimiento-ductos-ventilacion",
+      "titulo": "Mantenimiento Preventivo de Equipos de Ventilación",
+      "descripcion_corta": "Claves para cumplir normas sanitarias.",
+      "img_principal": "/Blog/25.webp",
+      "fecha_publicacion": "2024-03-27",
+      "tags": [
+        "VENTILACIÓN MECÁNICA"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 26,
+      "slug": "fallas-comunes-aire-acondicionado",
+      "titulo": "¿Cuáles son los Problemas de Aire Acondicionado Más Comunes?",
+      "descripcion_corta": "Listado de fallas frecuentes y soluciones.",
+      "img_principal": "/Blog/26.webp",
+      "fecha_publicacion": "2024-03-30",
+      "tags": [
+        "MANTENIMIENTO"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 27,
+      "slug": "10-puntos-importantes-compra-climatizacion",
+      "titulo": "10 Puntos Importantes para Comprar un Equipo de Climatización",
+      "descripcion_corta": "Checklist para decisiones inteligentes de compra.",
+      "img_principal": "/Blog/27.webp",
+      "fecha_publicacion": "2024-04-02",
+      "tags": [
+        "INSTALACIÓN"
+      ],
+      "destacado": false
+    },
+    {
+      "id": 28,
+      "slug": "calcular-carga-termica-correctamente",
+      "titulo": "¿Por Qué es Tan Importante Calcular Bien la Carga Térmica?",
+      "descripcion_corta": "Errores comunes que generan sobrecostos energéticos.",
+      "img_principal": "/Blog/28.webp",
+      "fecha_publicacion": "2024-04-05",
+      "tags": [
+        "INSTALACIÓN"
+      ],
+      "destacado": false
     }
   ],
-  
-  "mas_leidos": [1, 3, 5, 2, 4],
-  
+  "mas_leidos": [
+    1,
+    3,
+    5,
+    2,
+    4
+  ],
   "nuevas_tendencias": [
     {
       "titulo": "Climatización con Energía Solar",

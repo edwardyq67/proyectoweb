@@ -7,15 +7,6 @@ import "../styles/global.css";
 // Obtener artículos destacados
 const articulosDestacados = BlogData.articulos.filter(articulo => articulo.destacado);
 
-// Corregir el error de ordenación de fechas
-const articulosRecientes = [...BlogData.articulos]
-  .sort((a, b) => {
-    const dateA = new Date(a.fecha_publicacion).getTime();
-    const dateB = new Date(b.fecha_publicacion).getTime();
-    return dateB - dateA;
-  })
-  .slice(0, 6);
-
 // Formatear fecha
 function formatearFecha(fecha:any) {
   return new Date(fecha).toLocaleDateString('es-ES', {
@@ -23,52 +14,6 @@ function formatearFecha(fecha:any) {
     month: 'long',
     year: 'numeric'
   });
-}
-
-// Obtener autor por ID
-function obtenerAutor(id:any) {
-  return BlogData.autores.find(autor => autor.id === id);
-}
-
-// Obtener categoría por ID
-function obtenerCategoria(id:any) {
-  return BlogData.categorias.find(cat => cat.id === id);
-}
-
-// Función segura para obtener categoría
-function obtenerCategoriaSegura(id:any) {
-  const categoria = obtenerCategoria(id);
-  if (!categoria) {
-    // Retornar una categoría por defecto
-    return {
-      id: 0,
-      nombre: 'General',
-      slug: 'general',
-      descripcion: 'Categoría general',
-      color: 'bg-gray-500',
-      icono: 'mdi:help-circle',
-      total_articulos: 0
-    };
-  }
-  return categoria;
-}
-
-// Función segura para obtener autor
-function obtenerAutorSeguro(id:any) {
-  const autor = obtenerAutor(id);
-  if (!autor) {
-    // Retornar un autor por defecto
-    return {
-      id: 0,
-      nombre: 'Autor del Blog',
-      cargo: 'Especialista',
-      avatar: '/images/default-avatar.jpg',
-      bio: 'Especialista en climatización y ventilación',
-      especialidad: 'Climatización General',
-      redes: {}
-    };
-  }
-  return autor;
 }
 ---
 
@@ -169,9 +114,6 @@ function obtenerAutorSeguro(id:any) {
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {articulosDestacados.map((articulo) => {
-          const autor = obtenerAutorSeguro(articulo.autor_id);
-          const categoria = obtenerCategoriaSegura(articulo.categorias[0]);
-          
           return (
             <article class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
               <div class="relative h-64 md:h-72 overflow-hidden">
@@ -180,11 +122,6 @@ function obtenerAutorSeguro(id:any) {
                   alt={articulo.titulo}
                   class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
-                <div class="absolute top-4 left-4">
-                  <span class={`${categoria.color} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
-                    {categoria.nombre}
-                  </span>
-                </div>
               </div>
               
               <div class="p-6">
@@ -192,10 +129,6 @@ function obtenerAutorSeguro(id:any) {
                   <div class="flex items-center gap-2 text-gray-500 text-sm">
                     <Icon name="mdi:calendar" class="w-4 h-4" />
                     {formatearFecha(articulo.fecha_publicacion)}
-                  </div>
-                  <div class="flex items-center gap-2 text-gray-500 text-sm">
-                    <Icon name="mdi:clock-outline" class="w-4 h-4" />
-                    {articulo.tiempo_lectura} lectura
                   </div>
                 </div>
                 
@@ -207,29 +140,6 @@ function obtenerAutorSeguro(id:any) {
                   {articulo.descripcion_corta}
                 </p>
                 
-                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
-                      <img 
-                        src={autor.avatar} 
-                        alt={autor.nombre}
-                        class="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <div class="font-medium text-gray-900">{autor.nombre}</div>
-                      <div class="text-sm text-gray-500">{autor.cargo}</div>
-                    </div>
-                  </div>
-                  
-                  <a 
-                    href={`/blog/${articulo.slug}`}
-                    class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                  >
-                    Leer más
-                    <Icon name="mdi:arrow-right" class="w-4 h-4" />
-                  </a>
-                </div>
               </div>
             </article>
           );
