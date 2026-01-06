@@ -5,48 +5,137 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import "../styles/global.css";
 import "../styles/carrusel.css";
-const { 
-  title = 'Teknisolutions - Especialistas en Climatización y Refrigeración', 
-  description = 'Soluciones integrales en aire acondicionado, refrigeración industrial, cámaras frigoríficas y sistemas HVAC en Lima, Perú.',
-  image = '/AireAcodicionadoClimatizacion.webp',
-  canonical = Astro.url
+
+const {
+  title = 'Teknisolutions - Especialistas en Climatización y Refrigeración',
+  description = 'Soluciones integrales en aire acondicionado, refrigeración industrial, cámaras frigoríficas y sistemas HVAC en Lima, Perú. Instalación, mantenimiento y reparación.',
+  keywords = 'aire acondicionado, refrigeración, HVAC, climatización, cámaras frigoríficas, mantenimiento industrial, Lima, Perú, Teknisolutions',
+  image = '/images/nosotros/TS.webp',
+  canonical = Astro.url,
+  ogType = 'website',
+  twitterCard = 'summary_large_image',
+  author = 'Teknisolutions',
+  robots = 'index, follow',
+  language = 'es',
+  geo = 'PE-Lima',
+  themeColor = '#0066cc'
 } = Astro.props;
+
+const fullImageUrl = new URL(image, Astro.url).href;
+const siteName = 'Teknisolutions Perú';
 ---
 
 <!doctype html>
-<html lang="es" class="light">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="TS Group - Soluciones Integrales" href="/TS-Group-logo-Color.webp" />
-		<meta name="generator" content={Astro.generator} />
-		<title>TS Group</title>
-		
-		<!-- Meta tags SEO -->
-		<meta name="description" content={description} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={image} />
-		<meta property="og:url" content={canonical} />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={image} />
-		
-		<!-- Schema Markup -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "HVACBusiness",
-				"name": "Teknisolutions",
-				"image": "/TS-Group-logo-Color.webp",
-				"description": "{description}"
-			}
-		</script>
-		
-		<ViewTransitions />
-		
-		<slot name="head" />
-	</head>
+<html lang="es" prefix="og: https://ogp.me/ns#" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Favicon y Web App -->
+    <link rel="icon" type="image/webp" href="/favicon.webp" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.webp">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0066cc">
+    <meta name="msapplication-TileColor" content="#0066cc">
+    <meta name="theme-color" content={themeColor}>
+    <meta name="apple-mobile-web-app-title" content="Teknisolutions">
+    <meta name="application-name" content="Teknisolutions">
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <meta name="copyright" content={author} />
+    <meta name="robots" content={robots} />
+    <meta name="language" content={language} />
+    <meta name="geo.region" content={geo} />
+    <meta name="geo.placename" content="Lima" />
+    <meta name="geo.position" content="-12.046374;-77.042793" />
+    <meta name="ICBM" content="-12.046374, -77.042793" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={fullImageUrl} />
+    <meta property="og:image:alt" content="Teknisolutions - Soluciones en Climatización" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/webp" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:site" content="@teknisolutions" />
+    <meta name="twitter:creator" content="@teknisolutions" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullImageUrl} />
+    <meta name="twitter:image:alt" content="Teknisolutions - Soluciones en Climatización" />
+    
+    <!-- Canonical & Alternate URLs -->
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={canonical} />
+    <link rel="alternate" hreflang="es-PE" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://teknisolutions.com/#organization",
+        "name": "Teknisolutions",
+        "alternateName": "Teknisolutions Perú",
+        "url": "https://teknisolutions.com",
+        "logo": "https://teknisolutions.com/images/logo.webp",
+        "description": "{description}",
+        "foundingDate": "2015",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "PE",
+          "addressRegion": "Lima",
+          "addressLocality": "Lima",
+          "postalCode": "15000",
+          "streetAddress": "Av. Principal 123"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+51-123-456-789",
+          "contactType": "customer service",
+          "email": "contacto@teknisolutions.com",
+          "areaServed": "PE",
+          "availableLanguage": ["Spanish"]
+        },
+        "sameAs": [
+          "https://facebook.com/teknisolutions",
+          "https://instagram.com/teknisolutions",
+          "https://linkedin.com/company/teknisolutions"
+        ]
+      }
+    </script>
+    
+    <!-- Additional SEO -->
+    <meta name="generator" content={Astro.generator} />
+    <meta name="rating" content="General" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="Global" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/styles/global.css" as="style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/carrusel.css" />
+    
+    <!-- View Transitions -->
+    <ViewTransitions />
+  </head>
 	<body>
 		<Header client:load/>
 		<slot />

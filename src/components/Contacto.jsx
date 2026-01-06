@@ -22,17 +22,17 @@ import {
 } from 'react-icons/fa';
 import ContactoData from '../lib/Contacto.json';
 
-const Contacto = ({ tipo  }) => {
+const Contacto = ({ tipo }) => {
   const datos = ContactoData.contacto;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [showTermsModal, setShowTermsModal] = useState(false);
-  
+
   const handleOpenTermsModal = (e) => {
     e.preventDefault();
     setShowTermsModal(true);
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,11 +67,11 @@ const Contacto = ({ tipo  }) => {
       setIsSubmitting(false);
     }
   };
-  
+
   const handleCloseTermsModal = () => {
     setShowTermsModal(false);
   };
-  
+
   const socialIcons = {
     facebook: FaFacebook,
     instagram: FaInstagram,
@@ -200,13 +200,15 @@ const Contacto = ({ tipo  }) => {
                 Horarios
               </h3>
               <div className="space-y-1.5">
-                <div className="flex items-center justify-between py-1.5">
-                  <div className="flex items-center gap-1.5">
-                    <FaCalendarWeek className="text-primary" />
-                    <span className="text-foreground text-sm">General</span>
+                {direcciones.map((direccion, index) => (
+                  <div key={index} className="flex items-center justify-between py-1.5">
+                    <div className="flex items-center gap-1.5">
+                      <FaCalendarWeek className="text-primary" />
+                      <span className="text-foreground text-sm">{horariosAtencion.general}</span> /
+                      <span className="text-foreground text-sm">Sabado: {direccion.Sabado || "Sábados: 9:00 AM - 1:00 PM"}</span>
+                    </div>
                   </div>
-                  <span className="text-foreground text-sm">{horariosAtencion.general}</span>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -349,24 +351,49 @@ const Contacto = ({ tipo  }) => {
                 {/* CAMBIO IMPORTANTE: Enviar como "estado" no "tipo" */}
                 <input type="hidden" name="estado" value={tipo} />
 
-                <div className="flex items-start gap-2">
-                  <input
-                    type="checkbox"
-                    id="privacidad"
-                    className="mt-0.5"
-                    required
-                  />
-                  <label htmlFor="privacidad" className="flex gap-2 text-xs text-muted-foreground">
-                    {datos.formulario_contacto.politica_privacidad}
-                    <a
-                      href="#"
-                      onClick={handleOpenTermsModal}
-                      className='text-blue-600 cursor-pointer border-b hover:text-blue-800 hover:border-blue-800 transition-colors'
-                    >
-                      aqui
-                    </a>
-                  </label>
-                </div>
+               <div className="flex items-start gap-2">
+  <input
+    type="checkbox"
+    id="privacidad"
+    className="mt-0.5"
+    required
+  />
+  <label htmlFor="privacidad" className="flex flex-wrap gap-1 text-xs text-muted-foreground">
+    {datos.formulario_contacto.politica_privacidad.split(' ').map((word, index, array) => {
+      if (word === "Términos" || (word === "Terminos" && array[index + 1] === "y")) {
+        return (
+          <span key={index}>
+            <a
+              href="#"
+              onClick={handleOpenTermsModal}
+              className="text-blue-600 cursor-pointer border-b hover:text-blue-800 hover:border-blue-800 transition-colors"
+            >
+              Términos y condiciones
+            </a>
+            {' '}
+          </span>
+        );
+      } else if (word === "Política" || word === "politica") {
+        return (
+          <span key={index}>
+            {' '}
+            <a
+              href="/Politicas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 cursor-pointer border-b hover:text-blue-800 hover:border-blue-800 transition-colors"
+            >
+              Política de privacidad
+            </a>
+          </span>
+        );
+      } else if (word !== "y" && word !== "condiciones" && word !== "de" && word !== "privacidad") {
+        return <span key={index}>{word} </span>;
+      }
+      return null;
+    })}
+  </label>
+</div>
 
                 <button
                   type="submit"

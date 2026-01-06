@@ -3,7 +3,7 @@
     "titulo": "Blog de Aire Acondicionado y Ventilación Mecánica",
     "descripcion": "Consejos, noticias y guías sobre climatización, ventilación y eficiencia energética",
     "eslogan": "Expertos en climatización y calidad del aire",
-    "total_articulos": 12,
+    "total_articulos": 28,
     "categorias": [
       "Mantenimiento",
       "Instalación",
@@ -19,46 +19,46 @@
       "id": 1,
       "nombre": "Mantenimiento",
       "slug": "mantenimiento",
-      "descripcion": "Guías y consejos para el mantenimiento de sistemas de climatización",
+      "descripcion": "Servicios de mantenimiento preventivo y correctivo para sistemas de climatización",
       "color": "bg-blue-600",
       "icono": "mdi:wrench",
-      "total_articulos": 4
+      "total_articulos": 28
     },
     {
       "id": 2,
-      "nombre": "Instalación",
-      "slug": "instalacion",
-      "descripcion": "Procedimientos y mejores prácticas para instalación de equipos",
-      "color": "bg-green-600",
-      "icono": "mdi:air-filter",
-      "total_articulos": 3
+      "nombre": "Reparación",
+      "slug": "reparacion",
+      "descripcion": "Soluciones de reparación y diagnóstico de fallas en equipos HVAC",
+      "color": "bg-orange-600",
+      "icono": "mdi:tools",
+      "total_articulos": 28
     },
     {
       "id": 3,
-      "nombre": "Eficiencia Energética",
-      "slug": "eficiencia-energetica",
-      "descripcion": "Cómo ahorrar energía con tu sistema de climatización",
-      "color": "bg-yellow-600",
-      "icono": "mdi:leaf",
-      "total_articulos": 2
+      "nombre": "Instalación",
+      "slug": "instalacion",
+      "descripcion": "Instalación profesional de sistemas de climatización y ventilación",
+      "color": "bg-green-600",
+      "icono": "mdi:air-conditioner",
+      "total_articulos": 28
     },
     {
       "id": 4,
-      "nombre": "Ventilación Mecánica",
-      "slug": "ventilacion-mecanica",
-      "descripcion": "Sistemas de ventilación y calidad del aire interior",
-      "color": "bg-purple-600",
+      "nombre": "Desarrollo",
+      "slug": "desarrollo",
+      "descripcion": "Diseño y desarrollo de proyectos de climatización a medida",
+      "color": "bg-indigo-600",
       "icono": "mdi:fan",
-      "total_articulos": 3
+      "total_articulos": 24
     },
     {
       "id": 5,
-      "nombre": "Salud y Confort",
-      "slug": "salud-confort",
-      "descripcion": "Impacto de la climatización en la salud y bienestar",
-      "color": "bg-red-500",
-      "icono": "mdi:heart-pulse",
-      "total_articulos": 2
+      "nombre": "Ejecución de Proyectos",
+      "slug": "ejecucion-proyectos",
+      "descripcion": "Gestión y ejecución integral de proyectos de climatización",
+      "color": "bg-purple-600",
+      "icono": "mdi:clipboard-check",
+      "total_articulos": 24
     }
   ],
   "autores": [
@@ -107,8 +107,7 @@
       "tags": [
         "MANTENIMIENTO",
         "SALUD Y CONFORT"
-      ],
-      "destacado": true
+      ]
     },
     {
       "id": 2,
@@ -121,7 +120,7 @@
         "MANTENIMIENTO",
         "EFICIENCIA ENERGÉTICA"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 3,
@@ -134,7 +133,7 @@
         "INSTALACIÓN",
         "EFICIENCIA ENERGÉTICA"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 4,
@@ -146,7 +145,7 @@
       "tags": [
         "SALUD Y CONFORT"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 5,
@@ -159,7 +158,7 @@
         "INSTALACIÓN",
         "EFICIENCIA ENERGÉTICA"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 6,
@@ -171,7 +170,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 7,
@@ -208,20 +207,7 @@
         "EFICIENCIA ENERGÉTICA",
         "INSTALACIÓN"
       ],
-      "destacado": false
-    },
-    {
-      "id": 10,
-      "slug": "errores-comunes-instalacion-mantenimiento-aire",
-      "titulo": "Errores Comunes en Instalación y Mantenimiento de Aires Acondicionados",
-      "descripcion_corta": "Errores frecuentes que generan sobrecostos y fallas prematuras.",
-      "img_principal": "/Blog/10.webp",
-      "fecha_publicacion": "2024-02-11",
-      "tags": [
-        "INSTALACIÓN",
-        "MANTENIMIENTO"
-      ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 11,
@@ -233,7 +219,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 12,
@@ -245,7 +231,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 13,
@@ -257,7 +243,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 14,
@@ -269,7 +255,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 15,
@@ -282,7 +268,7 @@
         "SALUD Y CONFORT",
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 16,
@@ -294,7 +280,7 @@
       "tags": [
         "SALUD Y CONFORT"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 17,
@@ -306,7 +292,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 18,
@@ -319,7 +305,7 @@
         "INSTALACIÓN",
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 19,
@@ -331,7 +317,7 @@
       "tags": [
         "SALUD Y CONFORT"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 20,
@@ -343,7 +329,7 @@
       "tags": [
         "INSTALACIÓN"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 21,
@@ -355,7 +341,7 @@
       "tags": [
         "SALUD Y CONFORT"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 22,
@@ -367,7 +353,7 @@
       "tags": [
         "INSTALACIÓN"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 23,
@@ -379,7 +365,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 24,
@@ -391,7 +377,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 25,
@@ -403,7 +389,7 @@
       "tags": [
         "VENTILACIÓN MECÁNICA"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 26,
@@ -415,7 +401,7 @@
       "tags": [
         "MANTENIMIENTO"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 27,
@@ -427,7 +413,7 @@
       "tags": [
         "INSTALACIÓN"
       ],
-      "destacado": false
+      "destacado": true
     },
     {
       "id": 28,
@@ -439,7 +425,7 @@
       "tags": [
         "INSTALACIÓN"
       ],
-      "destacado": false
+      "destacado": true
     }
   ],
   "mas_leidos": [

@@ -1,0 +1,183 @@
+---
+// app-service.astro
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Eliminación de Cuenta - App Service">
+  
+  <section class="py-16 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Encabezado -->
+        <div class="text-center mb-12">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Solicitud de Eliminación de Cuenta y Datos - App Service
+          </h1>
+          <div class="text-gray-600">
+            <p class="mb-2">Desarrollador: TS Group</p>
+            <p>Última actualización: {new Date().toLocaleDateString('es-ES', { 
+              day: 'numeric', 
+              month: 'long', 
+              year: 'numeric' 
+            })}</p>
+          </div>
+        </div>
+
+        <!-- Introducción -->
+        <div class="mb-10 p-6 bg-blue-50 rounded-xl border border-blue-100">
+          <p class="text-gray-700 leading-relaxed">
+            En TS Group, valoramos la privacidad de nuestros usuarios y la seguridad de sus datos. 
+            De acuerdo con las políticas de Google Play, proporcionamos este mecanismo para que 
+            cualquier usuario de la aplicación App Service pueda solicitar la eliminación de su 
+            cuenta y la información personal asociada.
+          </p>
+        </div>
+
+        <!-- A. Instrucciones para la eliminación -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2">
+            A. Instrucciones para la eliminación
+          </h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Para garantizar la seguridad de la información, el proceso de eliminación debe 
+              realizarse mediante una verificación de identidad. Siga estos pasos:
+            </p>
+            
+            <ol class="list-decimal pl-5 space-y-4">
+              <li>
+                Redacte un correo electrónico desde la cuenta que desea dar de baja.
+              </li>
+              <li>
+                Dirija el mensaje a: <strong class="text-primary">soporte@tsgroup.com</strong>
+              </li>
+              <li>
+                En el asunto, coloque: <strong>"Solicitud de eliminación de cuenta - App Service"</strong>.
+              </li>
+              <li>
+                En el cuerpo del mensaje, incluya su <strong>Nombre de usuario</strong> y el 
+                <strong> Nombre de la empresa</strong> a la que pertenece.
+              </li>
+              <li>
+                Nuestro equipo técnico procesará su solicitud y confirmará la eliminación en 
+                un plazo máximo de <strong>48 a 72 horas hábiles</strong>.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- B. Datos sujetos a eliminación -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2">
+            B. Datos sujetos a eliminación
+          </h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Al procesar su solicitud, se eliminarán de forma permanente los siguientes datos 
+              personales de nuestros servidores activos:
+            </p>
+            
+            <ul class="list-disc pl-5 space-y-3">
+              <li>
+                <strong>Información de Perfil:</strong> Nombre completo, fotografía de perfil y datos de contacto.
+              </li>
+              <li>
+                <strong>Credenciales de Acceso:</strong> Correo electrónico vinculado y contraseñas cifradas.
+              </li>
+              <li>
+                <strong>Preferencias:</strong> Configuraciones personalizadas dentro de la app y 
+                preferencias de notificaciones push.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- C. Política de retención -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2">
+            C. Política de retención (Datos que se conservan)
+          </h2>
+          <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Debido a la naturaleza de App Service como herramienta de recolección de datos 
+              corporativos y auditoría, existen excepciones en la eliminación de ciertos registros 
+              por motivos legales, de seguridad y de control interno de la organización:
+            </p>
+            
+            <ul class="list-disc pl-5 space-y-3">
+              <li>
+                <strong>Registros de Transacciones y Formularios:</strong> Los datos recolectados 
+                mediante formularios, auditorías o registros de campo no serán eliminados de la 
+                base de datos empresarial, ya que forman parte del patrimonio informativo de la 
+                organización.
+              </li>
+              <li>
+                <strong>Historial de Actividad:</strong> Los registros de envíos y aprobaciones se 
+                conservarán para fines de trazabilidad, pero serán desvinculados de su identidad 
+                personal (anonimización) siempre que sea técnicamente posible.
+              </li>
+              <li>
+                <strong>Cumplimiento Legal:</strong> Se conservará aquella información que por ley 
+                la empresa esté obligada a mantener durante los periodos de retención vigentes en 
+                la jurisdicción correspondiente.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- D. Preguntas Adicionales -->
+        <div class="mb-10 p-6 bg-gray-50 rounded-xl border border-gray-200">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">
+            D. Preguntas Adicionales
+          </h2>
+          <p class="text-gray-700 leading-relaxed">
+            Si tiene dudas sobre cómo se gestionan sus datos después de la eliminación, puede 
+            contactarnos a través del mismo correo de soporte: 
+            <strong class="text-primary">soporte@tsgroup.com</strong>.
+          </p>
+        </div>
+
+        <!-- Botón de acción -->
+        <div class="text-center mt-12">
+          <a 
+            href="mailto:soporte@tsgroup.com?subject=Solicitud de eliminación de cuenta - App Service"
+            class="inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            Enviar Solicitud de Eliminación
+          </a>
+          
+          <p class="text-gray-500 text-sm mt-4">
+            Se abrirá su cliente de correo con el asunto y destinatario preconfigurados
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Estilos adicionales para mejor legibilidad */
+  ol, ul {
+    line-height: 1.8;
+  }
+  
+  strong {
+    color: #1e40af; /* Color similar a text-primary */
+  }
+  
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

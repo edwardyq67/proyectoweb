@@ -40,7 +40,6 @@ const Header = () => {
 
   const isHomePage = currentPath === "/";
 
-
   // Mapeo de iconos usando componentes de react-icons
   const getIconForService = (title) => {
     const iconMap = {
@@ -77,25 +76,25 @@ const Header = () => {
               className="flex items-center gap-2 font-bold text-xl transition-transform hover:scale-105"
             >
               <img
-                src="/TS-Group-logo-Color.webp"
+                src="/transparenteNegro.png"
                 alt="TS Group - Soluciones Integrales"
-                width="180"
+                width="100"
                 height="60"
-                className="h-20 w-auto md:h-24"
+                className="w-auto h-16"
                 loading="eager"
                 decoding="async"
               />
             </a>
           </div>
 
-          {/* Navegación Desktop */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Navegación Desktop COMPLETA (solo lg+) */}
+          <nav className="hidden lg:flex items-center gap-8">
             {/* Inicio */}
             <a
               href={isHomePage ? "#Inicio" : "/#Inicio"}
               className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${isHomePage && currentHash === "#Inicio"
-                  ? "text-primary bg-primary/10"
-                  : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
+                ? "text-primary bg-primary/10"
+                : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
                 }`}
             >
               <FaHome className={`w-4 h-4 ${isHomePage && currentHash === "#Inicio" ? "text-primary" : "group-hover:text-primary transition-colors"}`} />
@@ -106,8 +105,8 @@ const Header = () => {
             <a
               href={isHomePage ? "#Nosotros" : "/#Nosotros"}
               className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${isLinkActive("Nosotros")
-                  ? "text-primary bg-primary/10"
-                  : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
+                ? "text-primary bg-primary/10"
+                : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
                 }`}
             >
               <FaInfoCircle className={`w-4 h-4 ${isLinkActive("Nosotros") ? "text-primary" : "group-hover:text-primary transition-colors"}`} />
@@ -157,8 +156,8 @@ const Header = () => {
             <a
               href={isHomePage ? "#Productos" : "/#Productos"}
               className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${isLinkActive("Productos")
-                  ? "text-primary bg-primary/10"
-                  : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
+                ? "text-primary bg-primary/10"
+                : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
                 }`}
             >
               <FaBox className={`w-4 h-4 ${isLinkActive("Productos") ? "text-primary" : "group-hover:text-primary transition-colors"}`} />
@@ -169,54 +168,64 @@ const Header = () => {
             <a
               href={isHomePage ? "#contacto" : "/#contacto"}
               className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${isLinkActive("contacto")
-                  ? "text-primary bg-primary/10"
-                  : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
+                ? "text-primary bg-primary/10"
+                : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
                 }`}
             >
               <FaPhone className={`w-4 h-4 ${isLinkActive("contacto") ? "text-primary" : "group-hover:text-primary transition-colors"}`} />
               CONTACTO
             </a>
-            <a
-              href="/Blog"
-              className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${currentPath === "/Blog" ? "text-primary bg-primary/10" : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
-                }`}
-            >
-              <FaBlog className={`w-4 h-4 ${currentPath === "/Blog" ? "text-primary" : "group-hover:text-primary transition-colors"}`} />
-              BLOG
-            </a>
           </nav>
 
-          {/* Botones CTA */}
-          <div className="flex items-center gap-4">
+          {/* Navegación Móvil/Tablet (md: hasta lg) - Solo Inicio, Servicios, Blog */}
+          <nav className="hidden md:flex lg:hidden items-center gap-4">
+            {/* Inicio */}
             <a
-              href="https://wa.me/519XXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden base:inline-flex items-center justify-center rounded-full text-sm font-semibold transition-colors bg-green-500 text-white hover:bg-green-600 h-10 px-4 gap-2 shadow-md hover:shadow-lg"
+              href={isHomePage ? "#Inicio" : "/#Inicio"}
+              className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${isHomePage && currentHash === "#Inicio"
+                ? "text-primary bg-primary/10"
+                : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
+                }`}
             >
-              <FaWhatsapp className="w-5 h-5" />
-              WhatsApp
+              <FaHome className="w-4 h-4" />
+              <span className="hidden sm:inline">INICIO</span>
             </a>
 
-            <a
-              href={isHomePage ? "#contacto" : "/#contacto"}
-              className="hidden base:inline-flex items-center justify-center rounded-full text-sm font-semibold transition-colors bg-primary text-white hover:bg-primary/90 h-10 px-6 gap-2 shadow-md hover:shadow-lg hover:scale-105 transition-transform"
-            >
-              <FaPhoneAlt className="w-4 h-4" />
-              CONTACTANOS
-            </a>
+            {/* Servicios Dropdown compacto */}
+            <div className="relative group">
+              <button className="flex items-center gap-2 text-sm font-semibold transition-colors text-foreground/80 hover:text-foreground px-3 py-2 rounded-lg hover:bg-accent/50">
+                <FaCog className="w-4 h-4" />
+                <span className="hidden sm:inline">SERVICIOS</span>
+                <svg className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute left-0 top-full mt-2 w-64 rounded-xl border bg-white shadow-2xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top">
+                <div className="space-y-2">
+                  {datosNosotros.servicios.map((servicio, index) => {
+                    const IconComponent = getIconForService(servicio.titulo);
+                    const isServiceActive = currentPath.includes(servicio.slug || "");
 
-            <button
-              onClick={toggleMobileMenu}
-              className="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
-              aria-label="Abrir menú"
-            >
-              <FaBars className="h-6 w-6" />
-            </button>
-          </div>
+                    return (
+                      <a
+                        key={index}
+                        href={`/${servicio.slug || "#"}`}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 text-sm ${isServiceActive ? "bg-primary-50 text-primary-700" : ""
+                          }`}
+                      >
+                        <IconComponent className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                        <span className="font-medium truncate">{servicio.titulo}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </nav>
         </div>
       </header>
-      {/* Menú móvil */}
+
+      {/* Menú móvil completo (para md-) */}
       <div
         className={`md:hidden fixed inset-0 z-40 bg-black/50 transition-all duration-300 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
@@ -231,7 +240,11 @@ const Header = () => {
           <div className="flex-shrink-0 p-6">
             <div className="flex justify-between items-center">
               <span className="text-xl font-bold text-gray-900">Menú</span>
-              <button onClick={closeMobileMenu} className="p-2 rounded-lg hover:bg-gray-100">
+              <button
+                onClick={closeMobileMenu}
+                className="p-2 rounded-lg hover:bg-gray-100"
+                aria-label="Cerrar menú"
+              >
                 <FaTimes className="h-6 w-6" />
               </button>
             </div>
@@ -245,7 +258,7 @@ const Header = () => {
                   { section: "Inicio", href: isHomePage ? "#Inicio" : "/#Inicio", icon: FaHome, text: "INICIO" },
                   { section: "Nosotros", href: isHomePage ? "#Nosotros" : "/#Nosotros", icon: FaInfoCircle, text: "NOSOTROS" },
                   { section: "Productos", href: isHomePage ? "#Productos" : "/#Productos", icon: FaBox, text: "PRODUCTOS" },
-                  { section: "contacto", href: isHomePage ? "#contacto" : "/#contacto", icon: FaPhone, text: "CONTACTO" }
+                  { section: "contacto", href: isHomePage ? "#contacto" : "/#contacto", icon: FaPhone, text: "CONTACTO" },
                 ].map((item, index) => {
                   const IconComponent = item.icon;
                   return (
@@ -254,8 +267,8 @@ const Header = () => {
                       href={item.href}
                       onClick={closeMobileMenu}
                       className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isLinkActive(item.section)
-                          ? "bg-primary-50 text-primary-700"
-                          : "hover:bg-primary-50 hover:text-primary-700"
+                        ? "bg-primary-50 text-primary-700"
+                        : "hover:bg-primary-50 hover:text-primary-700"
                         }`}
                     >
                       <IconComponent className="w-5 h-5" />
@@ -277,8 +290,8 @@ const Header = () => {
                           href={`/${servicio.slug || "#"}`}
                           onClick={closeMobileMenu}
                           className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isServiceActive
-                              ? "bg-primary-50 text-primary-700"
-                              : "hover:bg-primary-50"
+                            ? "bg-primary-50 text-primary-700"
+                            : "hover:bg-primary-50"
                             }`}
                         >
                           <IconComponent className="w-5 h-5 text-primary-600" />
