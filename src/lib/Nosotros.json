@@ -20,7 +20,7 @@
     "texto": "Años de experiencia"
   },
   "servicios": [
-    {
+        {
       "img": "/Servicios/AireAcodicionadoClimatizacion.webp",
       "titulo": "Aire acondicionado y climatización",
       "contenido": "Realizamos la instalación, mantenimiento y reparación de sistemas tipo Split, MultiSplit, Piso-Techo, Cassette, VRF/VRV y sistemas HVAC centralizados.",
@@ -54,9 +54,34 @@
           }
         ]
       },
-      "Domestico": [9,12],
-      "Comercial": [1,2,3,4,5,6,7,8,9,11,12,13,14],
-      "Industrial": [1,2,3,4,5,6,7,8,9,11,12,13,14]
+      "Domestico": [9, 12],
+      "Comercial": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14],
+      "Industrial": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14],
+      "DomesticoComercial": [
+        {
+          "titulo": "Servicio Técnico de Aire Acondicionado – Nivel Doméstico",
+          "img": "/Inicio/Servicio de aire acondicionado doméstico.png",
+          "descripcion_corta": "Brindamos servicio técnico especializado para equipos de aire acondicionado en hogares, departamentos y oficinas pequeñas, con un enfoque en la seguridad, eficiencia y confort de tu familia.",
+          "servicios": [
+            {
+              "nombre": "Mantenimiento Preventivo",
+              "descripcion": "Limpieza integral de la unidad interna y externa, desinfección de filtros, revisión de presión de gas, consumo eléctrico y estado de componentes para asegurar un funcionamiento óptimo y evitar futuras averías.",
+              "icono": "mdi:check-circle"
+            },
+            {
+              "nombre": "Reparación",
+              "descripcion": "Diagnóstico preciso de fallas como falta de enfriamiento, ruidos anormales, fugas de agua o problemas eléctricos. Reemplazamos repuestos y recargamos gas refrigerante utilizando herramientas profesionales.",
+              "icono": "mdi:wrench"
+            },
+            {
+              "nombre": "Instalación",
+              "descripcion": "Instalamos todo tipo de equipos split y portátiles, realizando el correcto montaje, vacío del sistema, configuración y pruebas de rendimiento para garantizar un clima agradable con el menor consumo energético.",
+              "icono": "mdi:hammer-wrench"
+            }
+          ],
+          "compromiso": "Nuestro compromiso es ofrecer una atención rápida, transparente y con garantía, para que disfrutes de un ambiente fresco y saludable durante todo el año."
+        }
+      ]
     },
     {
       "img": "/Servicios/RefrigeracionComercialEIndustrial.webp",

@@ -1,14 +1,14 @@
 ---
 import Carrusel from '../components/Carrusel.jsx';
-import Inicio from '../components/Inicio.astro';
+import Inicio from '../components/Inicio.jsx';
 import Nosotros from '../components/Nosotros.astro';
 import Productos from '../components/Productos.jsx';
 import Layout from '../layouts/Layout.astro';
 import Contacto from '../components/Contacto.jsx';
 ---
 
-<Layout title="TS Group">
-	<Inicio />
+<Layout title="TS Group - Especialistas en Climatización y Refrigeración">
+	<Inicio client:only="react"/>
 	<Nosotros />
 	
 	<!-- Estos NO se renderizarán en el servidor -->

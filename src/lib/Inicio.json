@@ -1,10 +1,14 @@
 {
-  "fondos":["/Inicio/azulImg.webp","/Inicio/horno.webp"],
-  "titulo": "Bienvenido a Nuestra Empresa",
-  "subtitulo": "Soluciones domesticas, comerciales e industriales de alta calidad, con +2 años de experiencia",
+  "fondos":["/Inicio/azulImg.webp","/Inicio/horno.webp","/Inicio/Servicio de aire acondicionado comercial.png","/Inicio/Servicio de aire acondicionado doméstico.png"],
+"titulo": [
+  "Brindamos servicios de aire acondicionado",
+  "Brindamos servicios de aire acondicionado industrial",
+  "Brindamos servicio de aire acondicionado comercial", 
+  "Brindamos servicio de aire acondicionado doméstico"
+],
   "botones": {
     "contacto": {
-      "texto": "CONTACTANOS",
+      "texto": "CONTÁCTANOS",
       "enlace": "/contacto",
       "estilo": "primary"
     },
