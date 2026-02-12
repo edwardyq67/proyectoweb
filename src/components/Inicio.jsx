@@ -6,30 +6,57 @@ const Inicio = () => {
   const currentSlideRef = useRef(0);
   const isTransitioningRef = useRef(false);
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [currentDescIndex, setCurrentDescIndex] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState({});
+  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+
+  // Precargar todas las imágenes al montar el componente
+  useEffect(() => {
+    const loadPromises = datosInicio.fondos.map((src, index) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          setImagesLoaded(prev => ({ ...prev, [index]: true }));
+          resolve();
+        };
+        img.onerror = () => {
+          console.error(`Error cargando imagen: ${src}`);
+          setImagesLoaded(prev => ({ ...prev, [index]: false }));
+          resolve(); // Resolvemos igual para no bloquear
+        };
+      });
+    });
+
+    Promise.all(loadPromises).then(() => {
+      setAllImagesLoaded(true);
+    });
+  }, []);
 
   const goToSlide = (slideIndex) => {
     if (isTransitioningRef.current || slideIndex === currentSlideRef.current) return;
-    
+
     const slides = document.querySelectorAll('[id^="slide-"]');
     if (!slides.length) return;
-    
+
     isTransitioningRef.current = true;
-    
+
     // Mostrar el slide seleccionado
     slides[slideIndex].classList.remove('opacity-0');
-    
+
     // Ocultar el slide actual
     slides[currentSlideRef.current].classList.add('opacity-0');
-    
+
     // Actualizar referencias y estado
     currentSlideRef.current = slideIndex;
     setCurrentTitleIndex(slideIndex);
+    setCurrentDescIndex(slideIndex);
     setActiveSlide(slideIndex);
-    
+
     // Restablecer el temporizador del carrusel automático
     resetAutoSlide();
-    
+
     setTimeout(() => {
       isTransitioningRef.current = false;
     }, 1000);
@@ -38,7 +65,7 @@ const Inicio = () => {
   const nextSlide = () => {
     const slides = document.querySelectorAll('[id^="slide-"]');
     if (slides.length <= 1 || isTransitioningRef.current) return;
-    
+
     const nextSlideIndex = (currentSlideRef.current + 1) % slides.length;
     goToSlide(nextSlideIndex);
   };
@@ -47,49 +74,84 @@ const Inicio = () => {
     if (intervalIdRef.current) {
       clearInterval(intervalIdRef.current);
     }
-    
-    // Reiniciar el carrusel automático después de 10 segundos
+
     intervalIdRef.current = setInterval(nextSlide, 10000);
   };
 
   useEffect(() => {
+    if (!allImagesLoaded) return; // Esperar a que todas las imágenes estén cargadas
+
     const slides = document.querySelectorAll('[id^="slide-"]');
-    
+
     if (slides.length <= 1) return;
 
     // Iniciar el carrusel automático
     intervalIdRef.current = setInterval(nextSlide, 5000);
 
-    // Limpiar el intervalo al desmontar el componente
     return () => {
       if (intervalIdRef.current) {
         clearInterval(intervalIdRef.current);
       }
     };
-  }, []);
+  }, [allImagesLoaded]);
 
   return (
     <section id="Inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Carrusel de fondos */}
-      <div className="absolute inset-0 z-0">
+      {/* Pantalla de carga mientras se cargan las imágenes */}
+      {!allImagesLoaded && (
+        <div className="absolute inset-0 z-50 bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+          <div className="text-center">
+            {/* Spinner animado */}
+            <div className="relative w-20 h-20 mx-auto mb-4">
+              <div className="absolute inset-0 border-4 border-white/20 rounded-full"></div>
+              <div className="absolute inset-0 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <p className="text-white text-lg font-medium">Cargando imágenes...</p>
+            <div className="flex gap-1 justify-center mt-4">
+              {datosInicio.fondos.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    imagesLoaded[index] ? 'bg-green-500' : 'bg-white/30 animate-pulse'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Carrusel de fondos - Solo mostrar cuando las imágenes estén cargadas */}
+      <div className={`absolute inset-0 z-0 transition-opacity duration-500 ${allImagesLoaded ? 'opacity-100' : 'opacity-0'}`}>
         {/* Contenedor para el carrusel */}
         <div className="relative w-full h-full">
           {datosInicio.fondos.map((fondo, index) => (
-            <div 
+            <div
               key={index}
               id={`slide-${index}`}
-              className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
                 index === 0 ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
                 backgroundImage: `url('${fondo}')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
+                backgroundRepeat: 'no-repeat',
+                // Mostrar placeholder mientras carga cada imagen individual
+                backgroundColor: '#1a1a1a'
               }}
             >
               {/* Overlay fijo */}
               <div className="absolute inset-0 bg-black/50 md:bg-black/60" />
+              
+              {/* Skeleton loader para imagen específica (opcional) */}
+              {!imagesLoaded[index] && (
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-700 animate-pulse">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-white/50 text-sm">Cargando...</div>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -102,44 +164,64 @@ const Inicio = () => {
               onClick={() => goToSlide(index)}
               className="flex flex-col items-center gap-1 group"
               aria-label={`Ir a imagen ${index + 1}`}
+              disabled={!allImagesLoaded}
             >
               {/* Círculo de paginación */}
               <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === activeSlide 
-                  ? 'bg-white scale-125' 
+                index === activeSlide
+                  ? 'bg-white scale-125'
                   : 'bg-white/50 group-hover:bg-white/70'
-              }`} />
-              
+                }`} 
+              />
             </button>
           ))}
         </div>
       </div>
-      
-      {/* Contenido */}
-      <div className="container relative z-10 text-center text-white px-4 py-8 md:py-16 lg:py-20">
-        <h1 
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 md:mb-8 tracking-tight opacity-0"
+
+      {/* Contenido - Mostrar aunque las imágenes estén cargando */}
+      <div className={`container relative z-10 text-center text-white px-4 py-8 md:py-16 lg:py-20 transition-opacity duration-500 ${
+        allImagesLoaded ? 'opacity-100' : 'opacity-0'
+      }`}>
+        {/* ... resto del contenido igual ... */}
+        <h1
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 md:mb-6 tracking-tight opacity-0"
           style={{
             transform: 'translateY(30px)',
             textShadow: '0 10px 30px rgba(0,0,0,0.3)',
             animation: 'fade-in-up 1s ease-out 0.3s forwards'
           }}
         >
-          <span 
-            className="bg-primary text-white from-white via-primary/30 to-white bg-clip-text animate-background-shine"
+          <span
+            className="text-white animate-fade-in"
             key={currentTitleIndex}
           >
             {datosInicio.titulo[currentTitleIndex]}
           </span>
         </h1>
-        
+
+        {/* ... resto del contenido (descripción, botones, estadísticas) ... */}
+        <div className="max-w-4xl mx-auto mb-8 md:mb-12 lg:mb-16">
+          <p
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-medium leading-relaxed opacity-0"
+            style={{
+              textShadow: '0 2px 10px rgba(0,0,0,0.2)',
+              animation: 'fade-in-up 0.8s ease-out 0.6s forwards'
+            }}
+            key={`desc-${currentDescIndex}`}
+          >
+            {datosInicio.descripcion[currentDescIndex]}
+          </p>
+        </div>
+
         {/* Botones */}
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center opacity-0 px-2 sm:px-0"
-          style={{ animation: 'fade-in-up 0.8s ease-out 1s forwards' }}
+          style={{ animation: 'fade-in-up 0.8s ease-out 0.9s forwards' }}
         >
           <a
-            href="#contacto"
-            className="group relative w-full sm:w-auto px-6 sm:px-8 md:px-12 py-4 md:py-5 bg-gradient-to-br from-white to-gray-100 text-primary font-bold text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95"
+            href="https://wa.me/51912909920?text=Hola,%20quiero%20más%20información%20del%20servicio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative w-full sm:w-auto px-6 sm:px-8 md:px-12 py-3 md:py-4 bg-gradient-to-br from-white to-gray-100 text-primary font-bold text-base sm:text-lg md:text-xl rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95"
           >
             <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
               {datosInicio.botones.contacto.texto}
@@ -147,10 +229,10 @@ const Inicio = () => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 rounded-xl sm:rounded-2xl transition-opacity duration-300"></div>
           </a>
-          
-          <a 
+
+          <a
             href="#Nosotros"
-            className="group relative w-full sm:w-auto px-6 sm:px-8 md:px-12 py-4 md:py-5 backdrop-blur-md bg-white/10 border-2 border-white/30 text-white font-bold text-lg sm:text-xl rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 hover:bg-white/20 hover:border-white/50"
+            className="group relative w-full sm:w-auto px-6 sm:px-8 md:px-12 py-3 md:py-4 backdrop-blur-md bg-white/10 border-2 border-white/30 text-white font-bold text-base sm:text-lg md:text-xl rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 hover:bg-white/20 hover:border-white/50"
           >
             <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
               {datosInicio.botones.servicios.texto}
@@ -158,10 +240,10 @@ const Inicio = () => {
             </span>
           </a>
         </div>
-        
+
         {/* Estadísticas */}
-        <div className="mt-10 sm:mt-14 md:mt-16 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 opacity-0"
-          style={{ animation: 'fade-in 1s ease-out 1.5s forwards' }}
+        <div className="mt-8 sm:mt-12 md:mt-14 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 opacity-0"
+          style={{ animation: 'fade-in 1s ease-out 1.2s forwards' }}
         >
           <div className="text-center sm:min-w-0 px-2">
             <div className="text-2xl sm:text-3xl font-bold mb-1 animate-pulse">500+</div>
@@ -179,12 +261,6 @@ const Inicio = () => {
       </div>
 
       <style jsx>{`
-        /* Animaciones del fondo */
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
         @keyframes fade-in-up {
           from {
             opacity: 0;
@@ -201,16 +277,6 @@ const Inicio = () => {
           to { opacity: 1; }
         }
         
-        @keyframes background-shine {
-          0% {
-            background-position: -200% center;
-          }
-          100% {
-            background-position: 200% center;
-          }
-        }
-        
-        /* Animación para cambio de texto */
         @keyframes text-fade-in {
           from {
             opacity: 0;
@@ -222,15 +288,13 @@ const Inicio = () => {
           }
         }
         
-        .animate-background-shine {
-          background-size: 200% auto;
-          animation: background-shine 5s ease-in-out infinite;
+        .animate-fade-in {
+          animation: text-fade-in 0.5s ease-out;
         }
         
-        /* Optimización para móviles pequeños */
         @media (max-width: 380px) {
           h1 {
-            font-size: 2.5rem !important;
+            font-size: 2rem !important;
           }
           .container {
             padding-left: 1rem !important;
@@ -241,7 +305,6 @@ const Inicio = () => {
           }
         }
         
-        /* Efecto de pulso para círculo activo */
         @keyframes pulse-dot {
           0%, 100% {
             transform: scale(1);
@@ -253,19 +316,6 @@ const Inicio = () => {
         
         .bg-white.scale-125 {
           animation: pulse-dot 2s infinite;
-        }
-      `}</style>
-      
-      <style jsx global>{`
-        span[class*="bg-clip-text"] {
-          display: inline-block;
-          animation: text-fade-in 0.5s ease-out;
-        }
-        
-        /* Efecto hover para los círculos */
-        button.flex.flex-col:hover div.w-3.h-3:not(.bg-white.scale-125) {
-          transform: scale(1.1);
-          transition: transform 0.2s ease;
         }
       `}</style>
     </section>

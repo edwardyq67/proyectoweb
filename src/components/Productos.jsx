@@ -150,9 +150,7 @@ const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
         )}
 
         <a
-          href={`https://wa.me/51912909920?text=${generarMensajeWhatsApp(producto)}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          
           className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:gap-3 mt-auto"
         >
           <FaWhatsapp className="text-lg" />

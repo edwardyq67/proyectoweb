@@ -7,12 +7,12 @@ import Layout from '../layouts/Layout.astro';
 import Contacto from '../components/Contacto.jsx';
 ---
 
-<Layout title="TS Group - Especialistas en Climatización y Refrigeración">
-	<Inicio client:only="react"/>
+<Layout title="TS Group">
+	<!-- client:load permite renderizado SSR + hidratación -->
+	<Inicio client:load />
 	<Nosotros />
 	
-	<!-- Estos NO se renderizarán en el servidor -->
-	<Carrusel client:only="react"/>
-	<Productos client:only="react" />
-	<Contacto client:only="react" tipo="Informacion" />
+	<Carrusel client:load />
+	<Productos client:load />
+	<Contacto client:load tipo="Informacion" />
 </Layout>

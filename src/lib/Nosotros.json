@@ -20,9 +20,9 @@
     "texto": "Años de experiencia"
   },
   "servicios": [
-        {
+    {
       "img": "/Servicios/AireAcodicionadoClimatizacion.webp",
-      "titulo": "Aire acondicionado y climatización",
+      "titulo": "Aire acondicionado a nivel (doméstico, comercial e industrial) y climatización",
       "contenido": "Realizamos la instalación, mantenimiento y reparación de sistemas tipo Split, MultiSplit, Piso-Techo, Cassette, VRF/VRV y sistemas HVAC centralizados.",
       "url": "/aire-acondicionado-climatizacion",
       "slug": "aire-acondicionado-climatizacion",
@@ -54,13 +54,44 @@
           }
         ]
       },
-      "Domestico": [9, 12],
-      "Comercial": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14],
-      "Industrial": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14],
+      "Domestico": [
+        9,
+        12
+      ],
+      "Comercial": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14
+      ],
+      "Industrial": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14
+      ],
       "DomesticoComercial": [
         {
-          "titulo": "Servicio Técnico de Aire Acondicionado – Nivel Doméstico",
-          "img": "/Inicio/Servicio de aire acondicionado doméstico.png",
+          "titulo": "Aire Acondicionado residencial",
+          "img": "/Inicio/Servicio-de-aire-acondicionado-doméstico.webp",
           "descripcion_corta": "Brindamos servicio técnico especializado para equipos de aire acondicionado en hogares, departamentos y oficinas pequeñas, con un enfoque en la seguridad, eficiencia y confort de tu familia.",
           "servicios": [
             {
@@ -87,22 +118,40 @@
       "img": "/Servicios/RefrigeracionComercialEIndustrial.webp",
       "titulo": "Refrigeración comercial e industrial",
       "contenido": "En Teknisolutions, nos especializamos en soluciones integrales de refrigeración industrial y comercial, diseñando e implementando cámaras frigoríficas, túneles de enfriamiento y sistemas de congelamiento de alto rendimiento.",
-     "url": "/refrigeracion-comercial-industrial",
+      "url": "/refrigeracion-comercial-industrial",
       "slug": "refrigeracion-comercial-industrial",
       "descripcion_larga": "En Teknisolutions, nos especializamos en soluciones integrales de refrigeración industrial y comercial, diseñando e implementando cámaras frigoríficas, túneles de enfriamiento y sistemas de congelamiento de alto rendimiento. Gracias a nuestra tecnología de vanguardia y un equipo de ingeniería experto, optimizamos la climatización de salas de procesos y la operación de plantas de hielo, garantizando sistemas eficientes, confiables y con un control térmico riguroso para la conservación y procesamiento de sus productos.",
       "icono": "mdi:snowflake-thermometer",
       "VentilacionClimatizacion": {},
-
-  "Domestico": [],
-  "Comercial": [15, 16, 24, 25, 18, 19, 22, 28],
-  "Industrial": [17, 20, 21, 23, 26, 27,24,25,15,16]
-
+      "Domestico": [],
+      "Comercial": [
+        15,
+        16,
+        24,
+        25,
+        18,
+        19,
+        22,
+        28
+      ],
+      "Industrial": [
+        17,
+        20,
+        21,
+        23,
+        26,
+        27,
+        24,
+        25,
+        15,
+        16
+      ]
     },
     {
       "img": "/Servicios/Asesoramiento.webp",
       "titulo": "Consultoría de desarrollo y ejecución de proyecto",
       "contenido": "Diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida.",
-     "url": "/consultoria-desarrollo-ejecucion-proyecto",
+      "url": "/consultoria-desarrollo-ejecucion-proyecto",
       "slug": "consultoria-desarrollo-ejecucion-proyecto",
       "descripcion_larga": "En Teknisolutions, diseñamos y ejecutamos proyectos integrales de climatización, ventilación y refrigeración industrial a medida. Nuestro equipo de ingenieros especializados gestiona cada etapa del proceso, desde el cálculo de redes de ductos y selección de equipos hasta la implementación final, garantizando el cumplimiento normativo, la eficiencia energética y la puntualidad en cada entrega.",
       "icono": "mdi:clipboard-check",
@@ -169,7 +218,7 @@
       "img": "/Servicios/CamaraFrigorificas.webp",
       "titulo": "Servicio especial de cámara frigorífica",
       "contenido": "Soluciones integrales de refrigeración industrial y comercial diseñadas para maximizar la eficiencia y confiabilidad en la conservación de productos.",
-     "url": "/servicio-especial-camara-frigorifica",
+      "url": "/servicio-especial-camara-frigorifica",
       "slug": "servicio-especial-camara-frigorifica",
       "descripcion_larga": "En Teknisolutions, nos especializamos en ofrecer soluciones integrales de refrigeración industrial y comercial, diseñadas para maximizar la eficiencia y confiabilidad en la conservación de sus productos. Proporcionamos un servicio completo que abarca desde el diseño técnico hasta la instalación de infraestructura de alta precisión.",
       "icono": "mdi:clipboard-check",

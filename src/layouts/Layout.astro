@@ -34,7 +34,7 @@ const siteName = 'Teknisolutions Perú';
     
     <!-- Favicon y Web App -->
     <link rel="icon" type="image/icon" href="/Nosotros/TS.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Nosotros/TS.ico">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0066cc">
     <meta name="msapplication-TileColor" content="#0066cc">
     <meta name="theme-color" content={themeColor}>
@@ -84,7 +84,7 @@ const siteName = 'Teknisolutions Perú';
         "@id": "https://teknisolutions.com/#organization",
         "name": "Teknisolutions",
         "alternateName": "Teknisolutions Perú",
-        "url": " http://tsgroups.org/",
+        "url": "http://tsgroups.org/",
         "logo": "/Nosotros/TS.ico",
         "description": "{description}",
         "foundingDate": "2015",
@@ -127,52 +127,75 @@ const siteName = 'Teknisolutions Perú';
     <link rel="stylesheet" href="/styles/global.css" />
     <link rel="stylesheet" href="/styles/carrusel.css" />
     
+    <!-- Google Analytics -->
+    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-3EVM7VZXJ7" async></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3EVM7VZXJ7', {
+        send_page_view: true,
+        anonymize_ip: true,
+        cookie_domain: 'auto',
+        cookie_flags: 'SameSite=None;Secure'
+      });
+
+      // Seguimiento de navegación con View Transitions
+      document.addEventListener('astro:page-load', () => {
+        gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname
+        });
+      });
+    </script>
+    
     <!-- View Transitions -->
     <ViewTransitions />
   </head>
-	<body>
-		<Header client:load/>
-		<slot />
-		<Footer client:load/>
-	</body>
+  <body>
+    <Header client:load/>
+    <slot />
+    <Footer client:load/>
+  </body>
 </html>
 
 <style>
-	html {
-		scroll-behavior: smooth;
-	}
-	body {
-		margin: 0;
-	}
-	
-	/* Estilos opcionales para personalizar las transiciones */
-	::view-transition-old(root) {
-		animation: fade-out 0.3s ease;
-	}
-	
-	::view-transition-new(root) {
-		animation: fade-in 0.3s ease;
-	}
-	
-	@keyframes fade-in {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	
-	@keyframes fade-out {
-		from {
-			opacity: 1;
-			transform: translateY(0);
-		}
-		to {
-			opacity: 0;
-			transform: translateY(-20px);
-		}
-	}
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+  }
+  
+  /* Estilos opcionales para personalizar las transiciones */
+  ::view-transition-old(root) {
+    animation: fade-out 0.3s ease;
+  }
+  
+  ::view-transition-new(root) {
+    animation: fade-in 0.3s ease;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
 </style>

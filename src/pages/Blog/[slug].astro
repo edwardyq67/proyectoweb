@@ -1,0 +1,304 @@
+---
+// pages/Blog/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import datosBlog from '../../lib/Blog.json';
+
+// Obtener el slug de la URL
+const { slug } = Astro.params;
+
+// Acceder a los artículos - CORREGIDO
+// Si los artículos están en un array anidado, usamos flat()
+// Si están directamente en datosBlog.articulos, usamos eso
+const articulos = Array.isArray(datosBlog.articulos) 
+  ? datosBlog.articulos.flat() 
+  : datosBlog.articulos || [];
+
+// Encontrar el artículo específico
+const articulo = articulos.find((art) => art.slug === slug);
+
+// Si no existe el artículo, redirigir a 404
+if (!articulo) {
+  return Astro.redirect('/404');
+}
+
+// Generar rutas estáticas
+export async function getStaticPaths() {
+  try {
+    // Importar los datos
+    const datos = await import('../../lib/Blog.json');
+    
+    // Obtener los artículos correctamente
+    const articulos = Array.isArray(datos.default.articulos)
+      ? datos.default.articulos.flat()
+      : datos.default.articulos || [];
+    
+    // Generar las rutas
+    return articulos.map((articulo) => ({
+      params: { 
+        slug: articulo.slug 
+      },
+      props: {
+        articulo
+      }
+    }));
+  } catch (error) {
+    console.error('Error en getStaticPaths:', error);
+    return [];
+  }
+}
+---
+
+<Layout 
+  title={`${articulo.titulo} - Blog TS Group`}
+  description={articulo.descripcion_corta}
+  image={articulo.img_principal}
+  canonical={`https://tusitio.com/Blog/${articulo.slug}`}
+>
+  <div class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- Botón Volver -->
+      <div class="mb-8">
+        <a 
+          href="/Blog" 
+          class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
+        >
+          <span>←</span>
+          <span>Volver al Blog</span>
+        </a>
+      </div>
+
+      <!-- Artículo -->
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <!-- Imagen Principal -->
+        <div class="relative h-64 md:h-96">
+          <img
+            src={articulo.img_principal || "/default-blog.jpg"}
+            alt={articulo.titulo}
+            width="800"
+            height="400"
+            loading="eager"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Contenido -->
+        <div class="p-6 md:p-8 lg:p-10">
+          <!-- Encabezado -->
+          <header class="mb-8">
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              {articulo.tags && articulo.tags.map((tag) => (
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <!-- Título -->
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              {articulo.titulo}
+            </h1>
+
+            <!-- Metadatos -->
+            <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm mb-6">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div class="w-1 h-1 bg-gray-400 rounded-full"></div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                </svg>
+                <span>{articulo.autor || 'Equipo TS Group'}</span>
+              </div>
+            </div>
+
+            <!-- Descripción Corta -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-primary p-4 md:p-6 mb-8 rounded-r-lg">
+              <p class="text-lg text-gray-700 italic leading-relaxed">
+                {articulo.descripcion_corta}
+              </p>
+            </div>
+          </header>
+
+          <!-- Contenido Completo -->
+          <div class="prose prose-lg max-w-none mb-10">
+            {articulo.contenido_completo && articulo.contenido_completo.split('\n').map((linea, index) => {
+              // Quitar espacios en blanco al inicio y final
+              const lineaTrimmed = linea.trim();
+              
+              if (!lineaTrimmed) return <br />;
+              
+              // Encabezados
+              if (lineaTrimmed.startsWith('## ')) {
+                return (
+                  <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-4 pb-2 border-b border-gray-200">
+                    {lineaTrimmed.replace('## ', '')}
+                  </h2>
+                );
+              }
+              
+              if (lineaTrimmed.startsWith('### ')) {
+                return (
+                  <h3 class="text-xl md:text-2xl font-bold text-gray-800 mt-8 mb-3">
+                    {lineaTrimmed.replace('### ', '')}
+                  </h3>
+                );
+              }
+              
+              // Listas con viñetas
+              if (lineaTrimmed.startsWith('- ')) {
+                return (
+                  <li class="ml-4 mb-2 flex items-start">
+                    <span class="text-primary mr-2 mt-1.5">•</span>
+                    <span>{lineaTrimmed.replace('- ', '')}</span>
+                  </li>
+                );
+              }
+              
+              // Listas con check/error
+              if (lineaTrimmed.startsWith('❌ ') || lineaTrimmed.startsWith('✔ ')) {
+                const isError = lineaTrimmed.startsWith('❌ ');
+                return (
+                  <p class={`flex items-start gap-2 mb-2 ${isError ? 'text-red-600' : 'text-green-600'}`}>
+                    <span class="mt-0.5">{isError ? '❌' : '✔'}</span>
+                    <span>{lineaTrimmed.slice(2)}</span>
+                  </p>
+                );
+              }
+              
+              // Texto destacado
+              if (lineaTrimmed.startsWith('👉 ') || lineaTrimmed.startsWith('📞 ')) {
+                return (
+                  <p class="font-semibold text-lg my-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                    {lineaTrimmed}
+                  </p>
+                );
+              }
+              
+              // Párrafos normales
+              return (
+                <p class="mb-4 text-gray-700 leading-relaxed text-base md:text-lg">
+                  {lineaTrimmed}
+                </p>
+              );
+            })}
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-12 p-6 md:p-8 bg-gradient-to-r from-primary to-blue-600 rounded-2xl text-white shadow-xl">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div class="flex-1">
+                <h3 class="text-xl md:text-2xl font-bold mb-3">¿Necesitas Asesoramiento Técnico?</h3>
+                <p class="mb-0 text-blue-100">
+                  Nuestros expertos están listos para ayudarte con mantenimiento preventivo, 
+                  cumplimiento normativo y optimización de sistemas.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-3 md:gap-4">
+                <a
+                  href="https://wa.me/51912909920"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 min-w-[140px]"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.507 14.307l-.009.075c-.266 1.678-1.156 2.098-1.501 2.198-.418.119-.758.143-1.119.143-2.772-.037-4.894-.67-6.914-2.688C5.281 12.414 4.139 10.352 4 7.786c-.039-.825.112-1.655.433-2.375l.114-.265c.183-.425.446-.798.78-1.103.426-.353.954-.545 1.502-.545.19 0 .379.022.554.067.226.056.423.167.583.331.155.159.271.35.348.556.089.234.179.468.27.698.203.528.455 1.18.494 1.284.036.095.066.193.091.291.03.119.058.238.082.358.069.345.108.696.119 1.05.029.998-.151 1.975-.536 2.878-.066.157-.146.306-.239.447-.116.167-.243.327-.379.479-.173.198-.05.381.039.534.089.152.391.697.588.947.214.273.507.577.827.847.227.213.476.4.743.556.237.135.483.256.736.363.436.181.899.309 1.375.381.457.069.92.069 1.377-.001.224-.033.445-.081.661-.144.171-.05.337-.116.497-.196.169-.085.329-.184.48-.293.153-.111.297-.233.431-.366.193-.191.384-.382.564-.582.206-.229.409-.459.607-.692.2-.237.386-.484.558-.739.155-.227.289-.468.402-.719.103-.234.202-.469.296-.706.101-.257.195-.517.283-.779.085-.253.164-.509.236-.767.1-.349.179-.704.238-1.063.023-.135.041-.271.056-.407.015-.144.024-.289.029-.434.005-.125-.009-.248-.045-.366-.041-.135-.126-.253-.246-.339-.106-.079-.226-.138-.354-.175-.13-.036-.264-.049-.397-.037-.221.02-.438.059-.652.115-.425.109-1.145.357-1.279.395-.135.038-.223.057-.305.054-.082-.003-.167-.024-.25-.057-.082-.033-.167-.074-.25-.116-.082-.041-.168-.082-.25-.122-.246-.117-.494-.233-.738-.354-.285-.139-.574-.27-.867-.393-.378-.159-.766-.301-1.16-.426-.488-.156-.985-.285-1.489-.385-.312-.063-.626-.114-.943-.152-.35-.041-.702-.058-1.054-.052-.799.015-1.597.092-2.386.229-.309.054-.615.129-.915.225-.479.151-.929.376-1.334.667-.385.275-.722.606-1.002.976-.285.375-.509.787-.668 1.223-.155.429-.255.875-.297 1.327-.088.965-.038 1.933.148 2.884.186.951.526 1.873 1.007 2.727 1.057 1.878 2.507 3.426 4.238 4.573 1.731 1.147 3.693 1.86 5.727 2.086 1.016.112 2.039.112 3.055 0 .871-.096 1.726-.296 2.548-.595 1.056-.386 2.056-.938 2.965-1.636 1.166-.893 2.145-2.035 2.878-3.353.559-1.016.942-2.12 1.135-3.266.102-.606.152-1.22.149-1.835-.003-.866-.078-1.728-.224-2.579-.065-.379-.161-.75-.287-1.112-.096-.274-.226-.534-.388-.773-.165-.243-.363-.459-.588-.642-.263-.212-.572-.365-.905-.447-.271-.066-.554-.089-.836-.067-.335.025-.663.106-.968.24z"/>
+                  </svg>
+                  WhatsApp
+                </a>
+                <a
+                  href="/#contacto"
+                  class="inline-flex items-center justify-center gap-2 bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 min-w-[140px]"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  Contactar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Compartir en redes sociales -->
+      <div class="mt-8 pt-8 border-t border-gray-200">
+        <div class="flex items-center justify-between">
+          <span class="text-gray-700 font-medium">Compartir artículo:</span>
+          <div class="flex gap-3">
+            <a 
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://tusitio.com/Blog/${articulo.slug}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors"
+              aria-label="Compartir en Facebook"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a 
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(articulo.titulo)}&url=${encodeURIComponent(`https://tusitio.com/Blog/${articulo.slug}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 transition-colors"
+              aria-label="Compartir en Twitter"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.213c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+            <a 
+              href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://tusitio.com/Blog/${articulo.slug}`)}&title=${encodeURIComponent(articulo.titulo)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:bg-blue-800 transition-colors"
+              aria-label="Compartir en LinkedIn"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Estilos para mejorar la legibilidad */
+  .prose {
+    color: #374151;
+    line-height: 1.8;
+  }
+  
+  .prose p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+  }
+  
+  .prose h2 {
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+    color: #111827;
+  }
+  
+  .prose h3 {
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    color: #1f2937;
+  }
+  
+  .prose ul {
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5em;
+  }
+</style>

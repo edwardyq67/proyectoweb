@@ -1,0 +1,80 @@
+---
+interface Props {
+  articulo: {
+    id: number;
+    slug: string;
+    titulo: string;
+    descripcion_corta: string;
+    img_principal: string;
+    fecha_publicacion: string;
+    tags: string[];
+    destacado: boolean;
+  };
+  destacado?: boolean;
+}
+
+const { articulo, destacado = false } = Astro.props;
+---
+
+<article 
+  class={`cursor-pointer group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${destacado ? 'border-2 border-primary' : ''}`}
+>
+  <a href={`/blog/${articulo.slug}`} class="block">
+    <!-- Imagen -->
+    <div class="relative h-64 md:h-72 overflow-hidden">
+      <img
+        src={articulo.img_principal}
+        alt={articulo.titulo}
+        width="400"
+        height="300"
+        loading="lazy"
+        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+      />
+      {destacado && (
+        <div class="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+          Destacado
+        </div>
+      )}
+    </div>
+
+    <!-- Contenido -->
+    <div class="p-6">
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-3">
+        {articulo.tags.slice(0, 2).map((tag) => (
+          <span
+            class="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <!-- Título -->
+      <h3 class={`font-bold mb-3 line-clamp-2 group-hover:text-primary transition-colors ${destacado ? 'text-xl' : 'text-lg'}`}>
+        {articulo.titulo}
+      </h3>
+
+      <!-- Descripción -->
+      <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+        {articulo.descripcion_corta}
+      </p>
+
+      <!-- Footer -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+        <div class="flex items-center gap-2 text-gray-500 text-sm">
+          <span>
+            {new Date(articulo.fecha_publicacion).toLocaleDateString('es-ES', {
+              month: 'short',
+              day: 'numeric'
+            })}
+          </span>
+        </div>
+        <div class="flex items-center gap-2 text-primary font-medium text-sm">
+          Leer más
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </div>
+      </div>
+    </div>
+  </a>
+</article>
