@@ -11,7 +11,7 @@ const {
   description = 'Soluciones integrales en aire acondicionado, refrigeración industrial, cámaras frigoríficas y sistemas HVAC en Lima, Perú. Instalación, mantenimiento y reparación.',
   keywords = 'aire acondicionado, refrigeración, HVAC, climatización, cámaras frigoríficas, mantenimiento industrial, Lima, Perú, Teknisolutions',
   image = '/Nosotros/TS.ico',
-  canonical = Astro.url,
+  canonical = Astro.url.pathname, // Cambiado a pathname para URL relativa
   ogType = 'website',
   twitterCard = 'summary_large_image',
   author = 'Teknisolutions',
@@ -23,19 +23,38 @@ const {
 
 const fullImageUrl = new URL(image, Astro.url).href;
 const siteName = 'Teknisolutions Perú';
+const canonicalUrl = new URL(canonical, Astro.url).href; // URL completa para canonical
 ---
 
 <!doctype html>
 <html lang="es" prefix="og: https://ogp.me/ns#" class="light">
   <head>
+        <!-- Google Tag Manager (único sistema de tracking) -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5DFFWXGL');
+
+      // Seguimiento de navegación con View Transitions
+      document.addEventListener('astro:page-load', () => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'page_view',
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname
+        });
+      });
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="format-detection" content="telephone=no">
     
     <!-- Favicon y Web App -->
-    <link rel="icon" type="image/icon" href="/Nosotros/TS.ico" />
+    <link rel="icon" type="image/x-icon" href="/Nosotros/TS.ico" /> <!-- Cambiado image/icon a image/x-icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/Nosotros/TS.ico">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0066cc">
     <meta name="msapplication-TileColor" content="#0066cc">
     <meta name="theme-color" content={themeColor}>
     <meta name="apple-mobile-web-app-title" content="Teknisolutions">
@@ -53,6 +72,7 @@ const siteName = 'Teknisolutions Perú';
     <meta name="geo.placename" content="Jr. María José de Arce 261" />
     <meta name="geo.position" content="-12.0807;-77.09075" />
     <meta name="ICBM" content="-12.0807,-77.09075" />
+    <link rel="canonical" href={canonicalUrl} /> <!-- Añadido canonical link -->
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />
@@ -60,12 +80,12 @@ const siteName = 'Teknisolutions Perú';
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={fullImageUrl} />
     <meta property="og:image:alt" content="Teknisolutions - Soluciones en Climatización" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:type" content="image/x-icon" /> <!-- Cambiado a tipo correcto -->
     
     <!-- Twitter -->
     <meta name="twitter:card" content={twitterCard} />
@@ -77,40 +97,38 @@ const siteName = 'Teknisolutions Perú';
     <meta name="twitter:image:alt" content="Teknisolutions - Soluciones en Climatización" />
     
     <!-- Structured Data / Schema.org -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://teknisolutions.com/#organization",
-        "name": "Teknisolutions",
-        "alternateName": "Teknisolutions Perú",
-        "url": "http://tsgroups.org/",
-        "logo": "/Nosotros/TS.ico",
-        "description": "{description}",
-        "foundingDate": "2015",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "PE",
-          "addressRegion": "Lima",
-          "addressLocality": "Lima",
-          "postalCode": "15000",
-          "streetAddress": "Av. Principal 123"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+51-123-456-789",
-          "contactType": "customer service",
-          "email": "contacto@teknisolutions.com",
-          "areaServed": "PE",
-          "availableLanguage": ["Spanish"]
-        },
-        "sameAs": [
-          "https://facebook.com/teknisolutions",
-          "https://instagram.com/teknisolutions",
-          "https://linkedin.com/company/teknisolutions"
-        ]
-      }
-    </script>
+    <script type="application/ld+json" set:html={{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://teknisolutions.com/#organization",
+      "name": "Teknisolutions",
+      "alternateName": "Teknisolutions Perú",
+      "url": "https://teknisolutions.com",
+      "logo": "https://teknisolutions.com/Nosotros/TS.ico",
+      "description": description,
+      "foundingDate": "2015",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PE",
+        "addressRegion": "Lima",
+        "addressLocality": "Lima",
+        "postalCode": "15000",
+        "streetAddress": "Jr. María José de Arce 261" // Actualizado con dirección real
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+51-123-456-789",
+        "contactType": "customer service",
+        "email": "contacto@teknisolutions.com",
+        "areaServed": "PE",
+        "availableLanguage": ["Spanish"]
+      },
+      "sameAs": [
+        "https://facebook.com/teknisolutions",
+        "https://instagram.com/teknisolutions",
+        "https://linkedin.com/company/teknisolutions"
+      ]
+    }} />
     
     <!-- Additional SEO -->
     <meta name="generator" content={Astro.generator} />
@@ -127,40 +145,23 @@ const siteName = 'Teknisolutions Perú';
     <link rel="stylesheet" href="/styles/global.css" />
     <link rel="stylesheet" href="/styles/carrusel.css" />
     
-    <!-- Google Analytics -->
-    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-3EVM7VZXJ7" async></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3EVM7VZXJ7', {
-        send_page_view: true,
-        anonymize_ip: true,
-        cookie_domain: 'auto',
-        cookie_flags: 'SameSite=None;Secure'
-      });
 
-      // Seguimiento de navegación con View Transitions
-      document.addEventListener('astro:page-load', () => {
-        gtag('event', 'page_view', {
-          page_title: document.title,
-          page_location: window.location.href,
-          page_path: window.location.pathname
-        });
-      });
-    </script>
     
     <!-- View Transitions -->
     <ViewTransitions />
   </head>
   <body>
-    <Header client:load/>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DFFWXGL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <Header client:load />
     <slot />
-    <Footer client:load/>
+    <Footer client:load />
   </body>
 </html>
 
-<style>
+<style is:global>
   html {
     scroll-behavior: smooth;
   }
@@ -168,7 +169,7 @@ const siteName = 'Teknisolutions Perú';
     margin: 0;
   }
   
-  /* Estilos opcionales para personalizar las transiciones */
+  /* Estilos para las transiciones de vista */
   ::view-transition-old(root) {
     animation: fade-out 0.3s ease;
   }
@@ -187,15 +188,5 @@ const siteName = 'Teknisolutions Perú';
       transform: translateY(0);
     }
   }
-  
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-  }
+
 </style>

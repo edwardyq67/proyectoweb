@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import datosInicio from '../lib/Inicio.json';
 
 const Inicio = () => {
-  const intervalIdRef = useRef(null);
-  const currentSlideRef = useRef(0);
-  const isTransitioningRef = useRef(false);
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentDescIndex, setCurrentDescIndex] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState({});
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+  
+  const intervalIdRef = useRef(null);
+  const isTransitioningRef = useRef(false);
 
   // Precargar todas las imágenes al montar el componente
   useEffect(() => {
@@ -24,7 +24,7 @@ const Inicio = () => {
         img.onerror = () => {
           console.error(`Error cargando imagen: ${src}`);
           setImagesLoaded(prev => ({ ...prev, [index]: false }));
-          resolve(); // Resolvemos igual para no bloquear
+          resolve();
         };
       });
     });
@@ -35,24 +35,14 @@ const Inicio = () => {
   }, []);
 
   const goToSlide = (slideIndex) => {
-    if (isTransitioningRef.current || slideIndex === currentSlideRef.current) return;
-
-    const slides = document.querySelectorAll('[id^="slide-"]');
-    if (!slides.length) return;
+    if (isTransitioningRef.current || slideIndex === activeSlide) return;
 
     isTransitioningRef.current = true;
 
-    // Mostrar el slide seleccionado
-    slides[slideIndex].classList.remove('opacity-0');
-
-    // Ocultar el slide actual
-    slides[currentSlideRef.current].classList.add('opacity-0');
-
-    // Actualizar referencias y estado
-    currentSlideRef.current = slideIndex;
+    // Actualizar el slide activo
+    setActiveSlide(slideIndex);
     setCurrentTitleIndex(slideIndex);
     setCurrentDescIndex(slideIndex);
-    setActiveSlide(slideIndex);
 
     // Restablecer el temporizador del carrusel automático
     resetAutoSlide();
@@ -63,10 +53,8 @@ const Inicio = () => {
   };
 
   const nextSlide = () => {
-    const slides = document.querySelectorAll('[id^="slide-"]');
-    if (slides.length <= 1 || isTransitioningRef.current) return;
-
-    const nextSlideIndex = (currentSlideRef.current + 1) % slides.length;
+    if (datosInicio.fondos.length <= 1 || isTransitioningRef.current) return;
+    const nextSlideIndex = (activeSlide + 1) % datosInicio.fondos.length;
     goToSlide(nextSlideIndex);
   };
 
@@ -74,34 +62,26 @@ const Inicio = () => {
     if (intervalIdRef.current) {
       clearInterval(intervalIdRef.current);
     }
-
-    intervalIdRef.current = setInterval(nextSlide, 10000);
+    intervalIdRef.current = setInterval(nextSlide, 5000);
   };
 
+  // Iniciar el carrusel automático cuando las imágenes estén cargadas
   useEffect(() => {
-    if (!allImagesLoaded) return; // Esperar a que todas las imágenes estén cargadas
-
-    const slides = document.querySelectorAll('[id^="slide-"]');
-
-    if (slides.length <= 1) return;
-
-    // Iniciar el carrusel automático
-    intervalIdRef.current = setInterval(nextSlide, 5000);
-
+    if (!allImagesLoaded) return;
+    resetAutoSlide();
     return () => {
       if (intervalIdRef.current) {
         clearInterval(intervalIdRef.current);
       }
     };
-  }, [allImagesLoaded]);
+  }, [allImagesLoaded, activeSlide]);
 
   return (
-    <section id="Inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Pantalla de carga mientras se cargan las imágenes */}
+    <section id="Inicio" className="relative flex items-center justify-center overflow-hidden min-h-screen pt-16 md:pt-0">
+      {/* Pantalla de carga */}
       {!allImagesLoaded && (
-        <div className="absolute inset-0 z-50 bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+        <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
           <div className="text-center">
-            {/* Spinner animado */}
             <div className="relative w-20 h-20 mx-auto mb-4">
               <div className="absolute inset-0 border-4 border-white/20 rounded-full"></div>
               <div className="absolute inset-0 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -121,101 +101,86 @@ const Inicio = () => {
         </div>
       )}
 
-      {/* Carrusel de fondos - Solo mostrar cuando las imágenes estén cargadas */}
+      {/* Carrusel de fondos */}
       <div className={`absolute inset-0 z-0 transition-opacity duration-500 ${allImagesLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        {/* Contenedor para el carrusel */}
         <div className="relative w-full h-full">
           {datosInicio.fondos.map((fondo, index) => (
             <div
               key={index}
-              id={`slide-${index}`}
-              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                index === 0 ? 'opacity-100' : 'opacity-0'
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === activeSlide ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
                 backgroundImage: `url('${fondo}')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                // Mostrar placeholder mientras carga cada imagen individual
-                backgroundColor: '#1a1a1a'
               }}
             >
-              {/* Overlay fijo */}
-              <div className="absolute inset-0 bg-black/50 md:bg-black/60" />
-              
-              {/* Skeleton loader para imagen específica (opcional) */}
-              {!imagesLoaded[index] && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-700 animate-pulse">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white/50 text-sm">Cargando...</div>
-                  </div>
-                </div>
-              )}
+              {/* Overlay oscuro */}
+              <div className="absolute inset-0 bg-black/80" />
             </div>
           ))}
         </div>
 
-        {/* Indicadores de paginación (círculos) */}
+        {/* Indicadores de paginación */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-3">
           {datosInicio.fondos.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className="flex flex-col items-center gap-1 group"
+              className="group"
               aria-label={`Ir a imagen ${index + 1}`}
               disabled={!allImagesLoaded}
             >
-              {/* Círculo de paginación */}
               <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === activeSlide
                   ? 'bg-white scale-125'
                   : 'bg-white/50 group-hover:bg-white/70'
-                }`} 
-              />
+              }`} />
             </button>
           ))}
         </div>
       </div>
 
-      {/* Contenido - Mostrar aunque las imágenes estén cargando */}
+      {/* Contenido */}
       <div className={`container relative z-10 text-center text-white px-4 py-8 md:py-16 lg:py-20 transition-opacity duration-500 ${
         allImagesLoaded ? 'opacity-100' : 'opacity-0'
       }`}>
-        {/* ... resto del contenido igual ... */}
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 md:mb-6 tracking-tight opacity-0"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 md:mb-6 tracking-tight"
           style={{
-            transform: 'translateY(30px)',
-            textShadow: '0 10px 30px rgba(0,0,0,0.3)',
-            animation: 'fade-in-up 1s ease-out 0.3s forwards'
+            animation: 'fade-in-up 1s ease-out 0.3s forwards',
+            opacity: 0,
+            transform: 'translateY(30px)'
           }}
         >
-          <span
-            className="text-white animate-fade-in"
-            key={currentTitleIndex}
-          >
+          <span className="text-white">
             {datosInicio.titulo[currentTitleIndex]}
           </span>
         </h1>
 
-        {/* ... resto del contenido (descripción, botones, estadísticas) ... */}
         <div className="max-w-4xl mx-auto mb-8 md:mb-12 lg:mb-16">
           <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-medium leading-relaxed opacity-0"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-medium leading-relaxed"
             style={{
-              textShadow: '0 2px 10px rgba(0,0,0,0.2)',
-              animation: 'fade-in-up 0.8s ease-out 0.6s forwards'
+              animation: 'fade-in-up 0.8s ease-out 0.6s forwards',
+              opacity: 0,
+              transform: 'translateY(30px)'
             }}
-            key={`desc-${currentDescIndex}`}
           >
             {datosInicio.descripcion[currentDescIndex]}
           </p>
         </div>
 
         {/* Botones */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center opacity-0 px-2 sm:px-0"
-          style={{ animation: 'fade-in-up 0.8s ease-out 0.9s forwards' }}
+        <div
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-2 sm:px-0"
+          style={{
+            animation: 'fade-in-up 0.8s ease-out 0.9s forwards',
+            opacity: 0,
+            transform: 'translateY(30px)'
+          }}
         >
           <a
             href="https://wa.me/51912909920?text=Hola,%20quiero%20más%20información%20del%20servicio"
@@ -242,8 +207,12 @@ const Inicio = () => {
         </div>
 
         {/* Estadísticas */}
-        <div className="mt-8 sm:mt-12 md:mt-14 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 opacity-0"
-          style={{ animation: 'fade-in 1s ease-out 1.2s forwards' }}
+        <div
+          className="mt-8 sm:mt-12 md:mt-14 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8"
+          style={{
+            animation: 'fade-in 1s ease-out 1.2s forwards',
+            opacity: 0
+          }}
         >
           <div className="text-center sm:min-w-0 px-2">
             <div className="text-2xl sm:text-3xl font-bold mb-1 animate-pulse">500+</div>
@@ -277,21 +246,6 @@ const Inicio = () => {
           to { opacity: 1; }
         }
         
-        @keyframes text-fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fade-in {
-          animation: text-fade-in 0.5s ease-out;
-        }
-        
         @media (max-width: 380px) {
           h1 {
             font-size: 2rem !important;
@@ -303,19 +257,6 @@ const Inicio = () => {
           .absolute.bottom-8 {
             bottom: 6rem;
           }
-        }
-        
-        @keyframes pulse-dot {
-          0%, 100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.2);
-          }
-        }
-        
-        .bg-white.scale-125 {
-          animation: pulse-dot 2s infinite;
         }
       `}</style>
     </section>
