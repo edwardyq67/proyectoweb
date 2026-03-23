@@ -12,9 +12,14 @@ export default defineConfig({
     }),
     icon(),
   ],
-  output: 'server', // o 'static' si no necesitas SSR
+  output: 'server',
   adapter: cloudflare({
     mode: 'directory',
     runtime: 'off',
   }),
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/noop',
+    },
+  },
 });
