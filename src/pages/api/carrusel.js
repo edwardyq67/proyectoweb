@@ -1,5 +1,5 @@
 // src/pages/api/carrusel.js
-import carruselData from '../../lib/carrusel.json';
+import carruselData from '../../lib/Carrusel.json';
 
 export async function GET() {
   return new Response(JSON.stringify(carruselData), {
