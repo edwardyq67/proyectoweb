@@ -17,7 +17,7 @@
         },
         {
           "tipo": "Privacidad",
-          "email": "privacidad@tsgroup.pe",
+          "email": "privacidad@teknisolutions.pe",
           "descripcion": "Consultas sobre protección de datos"
         }
       ],
@@ -29,7 +29,7 @@
           "pais": "Perú",
           "mapa": "https://www.google.com/maps/place/Jr.+Mar%C3%ADa+Jos%C3%A9+de+Arce+261,+Lima+15087/@-12.0808518,-77.093553,17z/data=!3m1!4b1!4m6!3m5!1s0x9105c9709d87e7c3:0xf774936e84aa5580!8m2!3d-12.0808571!4d-77.0909781!16s%2Fg%2F11y3306t0q?entry=ttu&g_ep=EgoyMDI1MTIwOS.0wIKXMDSoASAFQAw%3D%3D",
           "horario": "Lun-Vie: 9:00 AM - 6:00 PM",
-          "Sabado": "Mediodia"
+          "Sábados": "9:00 AM - 12:00 PM"
         }
       ]
     },
@@ -38,14 +38,14 @@
         "nombre": "Facebook",
         "icono": "mdi:facebook",
         "url": "https://www.facebook.com/profile.php?id=61582764215863",
-        "usuario": "@TS GROUP",
+        "usuario": "@Teknisolutions",
         "color": "bg-blue-600"
       },
       "tiktok": {
         "nombre": "TikTok",
         "icono": "mdi:tiktok",
         "url": "https://www.tiktok.com/@ts.group.peru?_r=1&_t=ZS-92KnR5t9hyC",
-        "usuario": "@TS GROUP",
+        "usuario": "@Teknisolutions",
         "color": "bg-black"
       }
     },
@@ -92,13 +92,6 @@
         "mensaje": "Hola, me gustaría hacer una consulta",
         "color": "bg-green-500",
         "icono": "mdi:whatsapp"
-      },
-      {
-        "tipo": "Soporte Privacidad",
-        "numero": "+51 912 909 920",
-        "mensaje": "Hola, tengo una consulta sobre protección de datos",
-        "color": "bg-blue-500",
-        "icono": "mdi:shield-check"
       }
     ],
     "horarios_atencion": {
@@ -107,7 +100,7 @@
     },
     "oficial_proteccion_datos": {
       "nombre": "Oficial de Protección de Datos",
-      "email": "dpo@tsgroup.pe",
+      "email": "servicios@teknisolutions.pe",
       "responsabilidades": "Gestión de solicitudes ARCO y cumplimiento Ley 29733"
     }
   }

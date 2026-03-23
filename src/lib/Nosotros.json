@@ -1,13 +1,13 @@
 {
   "titulo": "Sobre Nosotros",
-  "contenido": "Somos una empresa líder en el sector de aire acondicionado y ventilación mecánica con más de 2 años de experiencia especializada en instalación, mantenimiento y reparación de sistemas HVAC para el sector comercial, industrial y residencial.",
+  "contenido": "Somos una empresa líder en el sector de aire acondicionado y ventilación mecánica con más de 10 años de experiencia especializada en instalación, mantenimiento y reparación de sistemas HVAC para el sector comercial, industrial y residencial.",
   "boton": {
     "texto": "Conoce Nuestra Historia",
     "enlace": "/historia"
   },
   "foto": "/Nosotros/Foto04-casco.webp",
   "logros": [
-    "Más de 2 años de experiencia",
+    "Más de 10 años de experiencia",
     "Equipo de especialistas certificados",
     "Tecnología de última generación",
     "Soporte técnico 24/7",
@@ -16,7 +16,7 @@
   ],
   "img": "/Nosotros/Foto04-casco.webp",
   "sello": {
-    "numero": "2+",
+    "numero": "10+",
     "texto": "Años de experiencia"
   },
   "servicios": [

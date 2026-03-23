@@ -8,7 +8,6 @@ import {
   FaWhatsapp,
   FaBlog,
   FaPhoneAlt,
-  FaChevronRight,
   FaSnowflake,
   FaIndustry,
   FaClipboardCheck,
@@ -34,11 +33,10 @@ function Header() {
     return iconMap[title] || FaCog;
   };
 
-  // Array de navegación principal
+  // Array de navegación principal - ORDEN CORRECTO: INICIO, NOSOTROS, BLOG, CONTACTO
   const menuItems = [
     { name: 'INICIO', href: '#Inicio', icon: FaHome, section: 'Inicio' },
     { name: 'NOSOTROS', href: '#Nosotros', icon: FaInfoCircle, section: 'Nosotros' },
-    { name: 'PRODUCTOS', href: '#Productos', icon: FaBox, section: 'Productos' },
     { name: 'BLOG', href: '/Blog', icon: FaBlog, section: 'Blog' },
     { name: 'CONTACTO', href: '#contacto', icon: FaPhone, section: 'contacto' },
   ];
@@ -76,17 +74,17 @@ function Header() {
 
   const isHomePage = currentPath === "/";
 
-  // Determinar clases del header según scroll - MODO BLACK AL HACER SCROLL
+  // Determinar clases del header según scroll
   const getHeaderClasses = () => {
-    const baseClasses = "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 h-16";
+    const baseClasses = "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300";
     return scrollState === 'top'
-      ? `${baseClasses} bg-transparent`
-      : `${baseClasses} bg-black/90 backdrop-blur-md shadow-sm`; // Cambiado a black/90
+      ? `${baseClasses} bg-transparent py-4 md:py-6`
+      : `${baseClasses} bg-black/90 backdrop-blur-md shadow-sm py-3 md:py-4`;
   };
 
   // Determinar color del texto según scroll
   const getTextColor = () => {
-    return scrollState === 'top' ? 'text-white' : 'text-white'; // Ambos estados texto blanco
+    return 'text-white';
   };
 
   // Verificar si un enlace está activo
@@ -120,11 +118,10 @@ function Header() {
         <a
           key={item.name}
           href={href}
-          className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${
-            isActive
-              ? "text-primary bg-primary/20" // Fondo más visible sobre negro
+          className={`text-sm font-semibold transition-colors flex items-center gap-2 px-3 py-2 rounded-lg ${isActive
+              ? "text-primary bg-primary/20"
               : `${getTextColor()} hover:text-primary hover:bg-white/10`
-          }`}
+            }`}
         >
           <IconComponent className="w-4 h-4" />
           {item.name}
@@ -136,26 +133,24 @@ function Header() {
   return (
     <>
       <header className={getHeaderClasses()}>
-        <div className="container mx-auto px-4 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Logo */}
-            <a href="/" className="flex items-center">
+        <div className="mx-auto px-4 md:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo Responsive */}
+            <a href="/" className="flex items-center shrink-0">
               <img
-                src="/teknisolution.png"
-                alt="TS Group - Soluciones Integrales"
-                width="100"
-                height="60"
-                className="w-auto h-16"
+                src="/teknisolution.webp"
+                alt="Teknisolutions - Soluciones Integrales"
+                className="w-auto h-8 sm:h-9 md:h-10 lg:h-12 brightness-0 invert transition-all duration-300"
                 loading="eager"
                 decoding="async"
               />
             </a>
 
             {/* Navegación Desktop */}
-            <nav className="hidden lg:flex items-center gap-6">
-              {renderDesktopNavItems()}
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+              {renderDesktopNavItems().slice(0, 2)}
 
-              {/* Dropdown Servicios */}
+              {/* Dropdown SERVICIOS */}
               <div className="relative group">
                 <button className={`flex items-center gap-2 text-sm font-semibold transition-colors ${getTextColor()} hover:text-primary px-3 py-2 rounded-lg hover:bg-white/10`}>
                   <FaCog className="w-4 h-4" />
@@ -174,22 +169,31 @@ function Header() {
                     />
                   </svg>
                 </button>
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-72 rounded-xl bg-black/90 backdrop-blur-md shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top border border-gray-800">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 lg:w-96 rounded-xl bg-gradient-to-br from-gray-900 to-black backdrop-blur-md shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 origin-top">
                   {datosNosotros.servicios.map((servicio, index) => {
                     const IconComponent = getIconForService(servicio.titulo);
                     return (
                       <a
                         key={index}
                         href={`/${servicio.slug || "#"}`}
-                        className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors text-white"
+                        className="flex items-center gap-4 px-4 lg:px-5 py-3 lg:py-4 hover:bg-gradient-to-r hover:from-primary/20 hover:to-transparent transition-all duration-300 text-white group/item"
                       >
-                        <IconComponent className="w-5 h-5 text-primary-400" />
-                        <span className="text-sm font-medium">{servicio.titulo}</span>
+                        <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-primary/20 flex items-center justify-center group-hover/item:bg-primary/30 transition-colors">
+                          <IconComponent className="w-4 h-4 lg:w-5 lg:h-5 text-primary-400 group-hover/item:text-primary-300 transition-colors" />
+                        </div>
+                        <div className="flex-1">
+                          <span className="text-xs lg:text-sm font-semibold block">{servicio.titulo}</span>
+                          <span className="text-xs text-gray-400 group-hover/item:text-gray-300 transition-colors">
+                            Ver más →
+                          </span>
+                        </div>
                       </a>
                     );
                   })}
                 </div>
               </div>
+
+              {renderDesktopNavItems().slice(2)}
             </nav>
 
             {/* Botón menú móvil */}
@@ -199,9 +203,9 @@ function Header() {
               aria-label="Abrir menú"
             >
               {isMobileMenuOpen ? (
-                <FaTimes className="h-6 w-6 text-white" />
+                <FaTimes className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               ) : (
-                <FaBars className="h-6 w-6 text-white" />
+                <FaBars className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               )}
             </button>
           </div>
@@ -210,35 +214,33 @@ function Header() {
 
       {/* Menú móvil overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black/80 transition-all duration-300 lg:hidden ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 z-40 bg-black/80 transition-all duration-300 lg:hidden ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
         onClick={closeMobileMenu}
       >
         <div
-          className={`absolute right-0 top-0 h-full w-80 bg-black shadow-xl transform transition-transform duration-300 flex flex-col ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute right-0 top-0 h-full w-80 max-w-[90vw] bg-black shadow-xl transform transition-transform duration-300 flex flex-col ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header del menú móvil */}
-          <div className="flex-shrink-0 p-6 border-b border-gray-800">
+          <div className="flex-shrink-0 p-4 sm:p-6">
             <div className="flex justify-between items-center">
-              <span className="text-xl font-bold text-white">Menú</span>
+              <span className="text-lg sm:text-xl font-bold text-white">Menú</span>
               <button
                 onClick={closeMobileMenu}
                 className="p-2 rounded-lg hover:bg-white/10 text-white"
                 aria-label="Cerrar menú"
               >
-                <FaTimes className="h-6 w-6" />
+                <FaTimes className="h-5 w-5 sm:h-6 sm:w-6" />
               </button>
             </div>
           </div>
 
           {/* Contenido del menú móvil */}
           <div className="flex-1 overflow-y-auto">
-            <div className="p-6">
-              <div className="space-y-6">
+            <div className="p-4 sm:p-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* Items del menú principal */}
                 {menuItems.map((item) => {
                   const IconComponent = item.icon;
@@ -254,25 +256,24 @@ function Header() {
                       key={item.name}
                       href={href}
                       onClick={closeMobileMenu}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                        isActive
+                      className={`flex items-center gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg transition-colors ${isActive
                           ? "bg-primary/20 text-primary"
                           : "text-white hover:bg-white/10"
-                      }`}
+                        }`}
                     >
-                      <IconComponent className="w-5 h-5" />
-                      <span className="font-medium">{item.name}</span>
+                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <span className="text-sm sm:text-base font-medium">{item.name}</span>
                     </a>
                   );
                 })}
 
-                {/* Sección Servicios en móvil */}
-                <div className="pt-6 border-t border-gray-800">
-                  <h3 className="font-bold text-white mb-4 px-4 flex items-center gap-2">
-                    <FaCog className="w-5 h-5" />
+                {/* Sección SERVICIOS en móvil */}
+                <div className="pt-4 sm:pt-6">
+                  <h3 className="font-bold text-white mb-3 sm:mb-4 px-3 sm:px-4 flex items-center gap-2 text-sm sm:text-base">
+                    <FaCog className="w-4 h-4 sm:w-5 sm:h-5" />
                     SERVICIOS
                   </h3>
-                  <div className="space-y-2">
+                  <div className="space-y-1 sm:space-y-2">
                     {datosNosotros.servicios.map((servicio, index) => {
                       const IconComponent = getIconForService(servicio.titulo);
                       return (
@@ -280,10 +281,10 @@ function Header() {
                           key={index}
                           href={`/${servicio.slug || "#"}`}
                           onClick={closeMobileMenu}
-                          className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-white"
+                          className="flex items-center gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg hover:bg-white/10 transition-colors text-white"
                         >
-                          <IconComponent className="w-5 h-5 text-primary-400" />
-                          <span className="text-sm font-medium">{servicio.titulo}</span>
+                          <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
+                          <span className="text-xs sm:text-sm font-medium">{servicio.titulo}</span>
                         </a>
                       );
                     })}
@@ -291,23 +292,23 @@ function Header() {
                 </div>
 
                 {/* Botones de acción móvil */}
-                <div className="space-y-4 pt-6 border-t border-gray-800">
+                <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6">
                   <a
                     href="https://wa.me/51912909920"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMobileMenu}
-                    className="flex items-center justify-center gap-2 w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
+                    className="flex items-center justify-center gap-2 w-full bg-green-600 text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-green-700 transition-colors text-sm sm:text-base"
                   >
-                    <FaWhatsapp className="w-5 h-5" />
+                    <FaWhatsapp className="w-4 h-4 sm:w-5 sm:h-5" />
                     WhatsApp
                   </a>
                   <a
                     href={isHomePage ? "#contacto" : "/#contacto"}
                     onClick={closeMobileMenu}
-                    className="flex items-center justify-center gap-2 w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/80 transition-colors"
+                    className="flex items-center justify-center gap-2 w-full bg-primary text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-primary/80 transition-colors text-sm sm:text-base"
                   >
-                    <FaPhoneAlt className="w-5 h-5" />
+                    <FaPhoneAlt className="w-4 h-4 sm:w-5 sm:h-5" />
                     CONTÁCTANOS
                   </a>
                 </div>

@@ -1,48 +1,49 @@
 // Footer.jsx
 import React, { useState } from 'react';
 import {
-  FaFacebook,
+  FaWhatsapp,
+  FaUser,
+  FaUserTie,
+  FaFacebookF,
   FaInstagram,
   FaTwitter,
-  FaWhatsapp,
+  FaTiktok,
   FaMapMarkerAlt,
   FaPhone,
   FaEnvelope,
   FaCheckCircle,
   FaCog,
-  FaTiktok
+  FaClock,
+  FaShieldAlt,
+  FaSnowflake,
+  FaIndustry,
+  FaClipboardCheck
 } from 'react-icons/fa';
+import { MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
 import datosNosotros from '../lib/Nosotros.json';
 import ContactoData from '../lib/Contacto.json';
-import ProductosData from '../lib/Productos.json';
 
 const Footer = () => {
   const datos = ContactoData.contacto || {};
-  
+  const [showWhatsAppOptions, setShowWhatsAppOptions] = useState(false);
+
   // Mapeo de iconos de servicios
-  const iconMap = {
-    "Mantenimiento Preventivo": FaCheckCircle,
-    "Instalación de Sistemas": FaCheckCircle,
-    "Reparación Especializada": FaCheckCircle,
-    "Ductos y Ventilación": FaCheckCircle,
-    "Control de Calidad": FaCheckCircle,
-    "Consultoría HVAC": FaCheckCircle,
+  const getIconForService = (title) => {
+    const iconMap = {
+      "Aire acondicionado y climatización": FaSnowflake,
+      "Refrigeración comercial e industrial": FaIndustry,
+      "Consultoría de desarrollo y ejecución de proyecto": FaClipboardCheck,
+      "Servicio especial de cámara frigorífica": FaClipboardCheck
+    };
+    return iconMap[title] || FaCog;
   };
 
   // Configuración de iconos para redes sociales
   const socialIcons = {
-    facebook: FaFacebook,
+    facebook: FaFacebookF,
     instagram: FaInstagram,
     twitter: FaTwitter,
     tiktok: FaTiktok
-  };
-
-  // Configuración de colores para redes sociales
-  const socialColors = {
-    facebook: 'bg-blue-600 hover:bg-blue-700',
-    instagram: 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700',
-    twitter: 'bg-blue-400 hover:bg-blue-500',
-    tiktok: 'bg-black hover:bg-gray-800'
   };
 
   // Asegurar que los datos existan
@@ -52,241 +53,309 @@ const Footer = () => {
   const direcciones = informacionContacto.direcciones || [];
   const redesSociales = datos.redes_sociales || {};
   const whatsappBotones = datos.whatsapp_botones || [];
-  const horariosAtencion = datos.horarios_atencion || {};
   const servicios = datosNosotros.servicios || [];
-  const logros = datosNosotros.logros || [];
+
+  const handleContactClick = (tipo, valor) => {
+    console.log('Contact click:', tipo, valor);
+  };
+
+  const handleSocialClick = (red) => {
+    console.log('Social click:', red);
+  };
+
+  const handleWhatsAppClick = (asesor, telefono) => {
+    console.log('WhatsApp click:', asesor, telefono);
+    setShowWhatsAppOptions(false);
+  };
+
+  const handleWhatsAppOptionsToggle = (isOpen) => {
+    console.log('WhatsApp options:', isOpen);
+  };
 
   return (
     <>
-      <footer className="bg-gray-900 text-white pt-12 pb-8">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <footer className="bg-gradient-to-b from-gray-900 to-black text-white pt-16 pb-8 relative">
+        {/* Línea decorativa superior */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-500"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Sección principal del footer */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+
             {/* Columna 1: Logo y descripción */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <img
-                  src="/transparente.png"
-                  alt="Logo de la empresa"
-                  className="w-52 h-auto max-w-full"
-                  loading="lazy"
-                />
+            <div className="lg:col-span-4 space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="bg-white/10 p-2 rounded-xl">
+                  <img
+                    src="/teknisolution.webp"
+                    alt="Teknisolutions"
+                    className="h-12 w-auto brightness-0 invert"
+                  />
+                </div>
               </div>
-              <p className="text-gray-400 mb-6">
-                Especialistas en sistemas de climatización y ventilación
-                industrial. Soluciones HVAC de alta calidad desde 2010.
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Especialistas en sistemas de climatización y ventilación industrial.
+                Soluciones HVAC de alta calidad desde 2010 en Lima, Perú.
               </p>
 
-              {/* Redes Sociales en el footer */}
-              <div className="flex gap-4">
+              {/* Redes Sociales */}
+              <div className="flex gap-3">
                 {Object.entries(redesSociales).map(([key, red]) => {
                   const IconComponent = socialIcons[key];
-                  const colorClass = socialColors[key] || 'bg-gray-600 hover:bg-gray-700';
-
                   if (!IconComponent) return null;
-
                   return (
                     <a
                       key={key}
                       href={red.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${colorClass}`}
+                      onClick={() => handleSocialClick(key)}
+                      className="w-10 h-10 rounded-lg bg-white/5 hover:bg-primary-500/20 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/10"
                       aria-label={red.nombre}
                     >
-                      <IconComponent className="w-5 h-5" />
+                      <IconComponent className="w-5 h-5 text-gray-300 hover:text-white" />
                     </a>
                   );
                 })}
-
-                {whatsappBotones.length > 0 && (
-                  <a
-                    href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-green-600 hover:bg-green-700 flex items-center justify-center transition-colors"
-                    aria-label="WhatsApp"
-                  >
-                    <FaWhatsapp className="w-5 h-5" />
-                  </a>
-                )}
               </div>
             </div>
+            {/* Columna 2: Servicios Destacados y Horarios */}
+            <div className="lg:col-span-5">
+              {/* Servicios Destacados */}
+              <h3 className="text-lg font-semibold mb-5 flex items-center gap-2">
+                <span className="w-1 h-5 bg-primary-500 rounded-full"></span>
+                Servicios Destacados
+              </h3>
 
-            {/* Columna 2: Servicios usando .map() */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Servicios</h3>
-              <ul className="space-y-3">
-                {servicios.slice(0, 6).map((servicio, index) => {
-                  const IconComponent = iconMap[servicio.titulo] || FaCog;
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-8">
+                {servicios.slice(0, 4).map((servicio, index) => {
+                  const IconComponent = getIconForService(servicio.titulo);
                   return (
                     <li key={index}>
                       <a
-                        href={servicio.url || "#"}
-                        className="text-gray-400 hover:text-primary transition-colors flex items-center gap-2"
+                        href={`/${servicio.slug || "#"}`}
+                        className="text-gray-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2 group"
                       >
-                        <IconComponent className="w-4 h-4" />
+                        <IconComponent className="w-3 h-3 group-hover:scale-110 transition-transform text-primary-400" />
                         {servicio.titulo}
                       </a>
                     </li>
                   );
                 })}
               </ul>
-            </div>
 
-            {/* Columna 3: Contacto desde JSON */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Contacto</h3>
-              <ul className="space-y-4">
-                {direcciones.map((direccion, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <FaMapMarkerAlt className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-400">
-                      {direccion.direccion}
-                      <br />
-                      {direccion.ciudad}, {direccion.pais}
-                    </span>
-                  </li>
-                ))}
+              {/* Horarios */}
+              <h3 className="text-lg font-semibold mb-5 flex items-center gap-2">
+                <span className="w-1 h-5 bg-primary-500 rounded-full"></span>
+                Horarios
+              </h3>
 
-                {telefonos.map((telefono, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <FaPhone className="w-5 h-5 text-primary flex-shrink-0" />
-                    <a
-                      href={`tel:${telefono.numero}`}
-                      className="text-gray-400 hover:text-primary transition-colors"
-                    >
-                      {telefono.numero}
-                    </a>
-                  </li>
-                ))}
-
-                {correos.map((correo, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <FaEnvelope className="w-5 h-5 text-primary flex-shrink-0" />
-                    <a
-                      href={`mailto:${correo.email}`}
-                      className="text-gray-400 hover:text-primary transition-colors"
-                    >
-                      {correo.email}
-                    </a>
-                  </li>
-                ))}
-
-                {whatsappBotones.slice(0, 1).map((boton, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <FaWhatsapp className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <a
-                      href={`https://wa.me/${boton.numero.replace(/\D/g, '')}?text=${encodeURIComponent(boton.mensaje)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-green-400 hover:text-green-300 transition-colors font-medium"
-                    >
-                      WhatsApp: {boton.numero}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Horario de atención actualizado */}
-              {Object.keys(horariosAtencion).length > 0 && (
-                <div className="mt-6 pt-6 border-t border-gray-800">
-                  <h4 className="text-sm font-semibold mb-2">Horario de Atención</h4>
-                  <div className="space-y-1">
-                    <p className="text-gray-400 text-sm">
-                      <span className="font-medium text-gray-300">Lunes a Viernes:</span> 9:00 AM - 6:00 PM
-                    </p>
-                    <p className="text-gray-400 text-sm">
-                      <span className="font-medium text-gray-300">Sábados:</span> {direcciones[0]?.Sabado || "Mediodia"}
-                    </p>
-                  </div>
+              <div className="bg-white/5 rounded-lg p-4 border border-white/10 max-w-[350px]">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-gray-400">Lunes - Viernes</span>
+                  <span className="text-white font-medium">8:30 AM - 6:00 PM</span>
                 </div>
-              )}
-            </div>
-
-            {/* Columna 4: Libro de reclamaciones y Logros */}
-            <div>
-              <div
-                className="p-3 cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg hover:from-gray-800 hover:to-gray-700 transition-all duration-300"
-                onClick={() => window.location.href = '/reclamaciones'}
-              >
-                <img
-                  src="https://friotemp.com.pe/wp-content/uploads/libroreclamaciones-blanco.avif"
-                  alt="Libro de Reclamaciones"
-                  className="h-20 w-auto hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
+                <div className="flex justify-between items-center text-sm mt-2">
+                  <span className="text-gray-400">Sábados</span>
+                  <span className="text-white font-medium">9:00 AM - 12:00 PM</span>
+                </div>
               </div>
+            </div>
 
-              {/* Logros usando .map() */}
-              {logros.length > 0 && (
-                <div className="mt-8 pt-6 border-t border-gray-800">
-                  <h4 className="text-sm font-semibold mb-4">Nuestros Logros</h4>
-                  <ul className="space-y-2">
-                    {logros.slice(0, 3).map((logro, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <FaCheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-400 text-sm">{logro}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+
+            {/* Columna 4: Contacto */}
+            <div className="lg:col-span-3">
+              <h3 className="text-lg font-semibold mb-5 flex items-center gap-2">
+                <span className="w-1 h-5 bg-primary-500 rounded-full"></span>
+                Contacto
+              </h3>
+              <div className="space-y-4">
+                {/* Dirección */}
+                {direcciones.map((direccion, index) => (
+                  <a
+                    key={index}
+                    href="https://www.google.com/maps/search/Jr.+María+José+de+Arce+261,+Lima+15087"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleContactClick('direccion', direccion.direccion)}
+                    className="flex items-start gap-3 text-gray-400 hover:text-white transition-colors group"
+                  >
+                    <div className="bg-primary-500/10 p-2 rounded-lg group-hover:bg-primary-500/20 transition-colors">
+                      <MapPin className="w-4 h-4 text-primary-400" />
+                    </div>
+                    <p className="text-sm leading-relaxed">{direccion.direccion}</p>
+                  </a>
+                ))}
+
+                {/* Teléfonos */}
+                {telefonos.map((telefono, index) => (
+                  <a
+                    key={index}
+                    href={`tel:${telefono.numero}`}
+                    onClick={() => handleContactClick('telefono', telefono.numero)}
+                    className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                  >
+                    <div className="bg-primary-500/10 p-2 rounded-lg group-hover:bg-primary-500/20 transition-colors">
+                      <Phone className="w-4 h-4 text-primary-400" />
+                    </div>
+                    <span className="text-sm">{telefono.numero}</span>
+                  </a>
+                ))}
+
+                {/* Email */}
+                {correos.map((correo, index) => (
+                  <a
+                    key={index}
+                    href={`mailto:${correo.email}`}
+                    onClick={() => handleContactClick('email', correo.email)}
+                    className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                  >
+                    <div className="bg-primary-500/10 p-2 rounded-lg group-hover:bg-primary-500/20 transition-colors">
+                      <Mail className="w-4 h-4 text-primary-400" />
+                    </div>
+                    <span className="text-sm break-all">{correo.email}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Línea divisoria */}
-          <div className="border-t border-gray-800 pt-8">
+          {/* Footer inferior */}
+          <div className="border-t border-gray-800 pt-8 mt-8 relative">
+            <div className="absolute -top-px left-0 w-24 h-px bg-gradient-to-r from-primary-500 to-transparent"></div>
+
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              {/* Copyright */}
-              <div className="text-gray-500 text-sm">
-                &copy; {new Date().getFullYear()} TS GROUP. Todos los derechos reservados.
+              <div className="text-center md:text-left">
+                <p className="text-gray-400 text-sm">
+                  © {new Date().getFullYear()} Teknisolutions. Todos los derechos reservados.
+                </p>
+                <p className="text-gray-500 text-xs mt-1 flex items-center gap-2 justify-center md:justify-start">
+                  <FaShieldAlt className="w-3 h-3" />
+                  Especialistas en soluciones HVAC
+                </p>
               </div>
 
-              {/* Enlaces legales */}
-              <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <a
                   href="/Politicas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-1"
+                  className="text-gray-400 hover:text-white text-sm transition-colors rounded px-3 py-1.5 border border-gray-800 hover:border-gray-700"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
                   Política de Privacidad
                 </a>
-
                 <a
                   href="/reclamaciones"
-                  className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-1"
+                  className="text-gray-400 hover:text-white text-sm transition-colors rounded px-3 py-1.5 border border-gray-800 hover:border-gray-700"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
                   Libro de Reclamaciones
                 </a>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Stickers flotantes - WhatsApp con opciones y Facebook */}
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+
+          {/* Botón de Facebook */}
+          <a
+            href={redesSociales.facebook?.url || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => handleSocialClick('Facebook')}
+            className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center relative group"
+            aria-label="Facebook"
+          >
+            <FaFacebookF className="w-7 h-7" />
+
+            {/* Tooltip */}
+            <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+              Síguenos en Facebook
+              <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></span>
+            </span>
+          </a>
+
+          {/* Botón principal de WhatsApp con opciones */}
+          {whatsappBotones.length > 0 && (
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setShowWhatsAppOptions(!showWhatsAppOptions);
+                  handleWhatsAppOptionsToggle(!showWhatsAppOptions);
+                }}
+                className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center relative group"
+                aria-label="Contactar por WhatsApp"
+              >
+                <FaWhatsapp className="w-7 h-7" />
+
+                {/* Indicador de opciones */}
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full animate-pulse"></span>
+
+                {/* Tooltip */}
+                <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                  Contáctanos por WhatsApp
+                  <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></span>
+                </span>
+              </button>
+
+              {/* Opciones de WhatsApp */}
+              {showWhatsAppOptions && (
+                <>
+                  {/* Overlay para cerrar */}
+                  <div
+                    className="fixed inset-0 z-30"
+                    onClick={() => setShowWhatsAppOptions(false)}
+                  ></div>
+
+                  <div className="absolute bottom-0 right-0 mb-2 space-y-3 animate-fade-in-up z-40">
+                    {whatsappBotones.map((boton, index) => (
+                      <a
+                        key={index}
+                        href={`https://wa.me/${boton.numero.replace(/\D/g, '')}?text=${encodeURIComponent(boton.mensaje || 'Hola, necesito información')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => handleWhatsAppClick(boton.nombre || 'Asesor', boton.numero)}
+                        className="bg-white text-gray-800 p-4 rounded-xl shadow-2xl flex items-center gap-3 hover:bg-gray-50 transition-all duration-300 hover:scale-105 min-w-[260px] border-l-4 border-green-500 group"
+                      >
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="relative">
+                            <FaUser className="w-5 h-5 text-primary-600" />
+                            <FaWhatsapp className="w-3 h-3 text-green-500 absolute -bottom-1 -right-1" />
+                          </div>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-semibold text-gray-800 group-hover:text-green-600 transition-colors">
+                            {boton.nombre || 'Asesor Comercial'}
+                          </p>
+                          <p className="text-xs text-gray-500">Contacto</p>
+                          <p className="text-xs text-gray-400 mt-1 truncate">{boton.numero}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
       </footer>
 
-      {/* Botón flotante de WhatsApp (derecha) */}
-      {whatsappBotones.length > 0 && (
-        <a
-          href={`https://wa.me/${whatsappBotones[0].numero.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappBotones[0].mensaje)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:fixed md:flex bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl group"
-          aria-label="Contactar por WhatsApp"
-        >
-          <FaWhatsapp className="w-7 h-7" />
-          <div className="absolute flex flex-col right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-            <span>¿Necesitas ayuda? </span>
-            <span>{whatsappBotones[0].numero}</span>
-          </div>
-        </a>
-      )}
+      {/* Estilos adicionales */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 0.3s ease-out;
+        }
+      `}</style>
     </>
   );
 };

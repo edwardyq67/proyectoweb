@@ -49,12 +49,14 @@ export async function getStaticPaths() {
 ---
 
 <Layout 
-  title={`${articulo.titulo} - Blog TS Group`}
+  title={`${articulo.titulo} - Blog Teknisolutions`}
   description={articulo.descripcion_corta}
   image={articulo.img_principal}
   canonical={`https://tusitio.com/Blog/${articulo.slug}`}
 >
+<div class="bg-black w-ful h-20"></div>
   <div class="min-h-screen bg-gray-50 py-12">
+    
     <div class="max-w-4xl mx-auto px-4">
       <!-- Botón Volver -->
       <div class="mb-8">
@@ -111,7 +113,7 @@ export async function getStaticPaths() {
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
                 </svg>
-                <span>{articulo.autor || 'Equipo TS Group'}</span>
+                <span>{articulo.autor || 'Equipo Teknisolutions'}</span>
               </div>
             </div>
 

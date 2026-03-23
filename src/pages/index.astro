@@ -1,18 +1,16 @@
 ---
 import Carrusel from '../components/Carrusel.jsx';
 import Inicio from '../components/Inicio.jsx';
-import Nosotros from '../components/Nosotros.astro';
+import Nosotros from '../components/Nosotros.jsx';
 import Productos from '../components/Productos.jsx';
 import Layout from '../layouts/Layout.astro';
 import Contacto from '../components/Contacto.jsx';
 ---
 
-<Layout title="TS Group">
-	<!-- client:load permite renderizado SSR + hidratación -->
-	<Inicio client:load />
-	<Nosotros />
-	
-	<Carrusel client:load />
-	<Productos client:load />
-	<Contacto client:load tipo="Informacion" />
+<Layout title="Teknisolutions">
+	<Inicio client:visible />
+	<Nosotros client:visible />
+	<Carrusel client:visible />
+	<Productos client:visible />
+	<Contacto client:visible tipo="Informacion" />
 </Layout>

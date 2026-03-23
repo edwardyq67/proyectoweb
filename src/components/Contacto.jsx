@@ -205,7 +205,7 @@ const Contacto = ({ tipo }) => {
                     <div className="flex items-center gap-1.5">
                       <FaCalendarWeek className="text-primary" />
                       <span className="text-foreground text-sm">{horariosAtencion.general}</span> /
-                      <span className="text-foreground text-sm">Sabado: {direccion.Sabado || "Sábados: 9:00 AM - 1:00 PM"}</span>
+                      <span className="text-foreground text-sm">Sábados: {direccion.Sábados || "Sábados: 9:00 AM - 1:00 PM"}</span>
                     </div>
                   </div>
                 ))}

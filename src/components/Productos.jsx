@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useMemo, memo } from "react";
-import serviciosData from "../lib/Nosotros.json";
-import productosData from "../lib/Productos.json";
+import { motion } from "framer-motion";
 import {
   FaHome,
   FaBuilding,
@@ -40,7 +39,6 @@ const categoriasInfo = {
 
 // Componente memoizado para ProductoCard
 const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
-  // Función para generar el mensaje de WhatsApp
   const generarMensajeWhatsApp = useCallback((producto) => {
     let mensaje = `Hola, estoy interesado en obtener información sobre:\n\n`;
     
@@ -69,9 +67,15 @@ const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
   }, [categoriaActiva]);
 
   return (
-    <div className="group cursor-pointer bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out flex flex-col">
-      {/* CONTENEDOR DE img CON ALTURA FIJA */}
-      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-white to-white flex-shrink-0">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -8 }}
+      className="group cursor-pointer bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out flex flex-col h-full"
+    >
+      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gradient-to-br from-gray-50 to-white flex-shrink-0">
         <div className="absolute inset-0 flex items-center justify-center p-4">
           {producto.img ? (
             <img
@@ -91,9 +95,9 @@ const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
               <div className="text-gray-400">
                 {categoriaActiva === "Especialistas" ? (
-                  <FaUserTie className="text-5xl" />
+                  <FaUserTie className="text-3xl sm:text-4xl md:text-5xl" />
                 ) : (
-                  <FaTools className="text-5xl" />
+                  <FaTools className="text-3xl sm:text-4xl md:text-5xl" />
                 )}
               </div>
             </div>
@@ -101,31 +105,22 @@ const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
         </div>
       </div>
 
-      {/* CONTENIDO */}
-      <div className="p-6 flex flex-col flex-grow">
-        {!servicioActual && producto.servicio !== "General" && (
-          <div className="mb-2">
-            <span className="text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-              {producto.servicio}
-            </span>
-          </div>
-        )}
-
-        <div className="mb-3">
-          <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1.5 rounded-full">
+      <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
+        <div className="mb-2 sm:mb-3">
+          <span className="text-xs font-medium text-primary bg-primary/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full inline-block">
             {producto.tipo}
           </span>
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
           {producto.nombre.toUpperCase() || producto.tipo.toUpperCase()}
         </h3>
 
         {producto.puntos && producto.puntos.length > 0 && (
-          <div className="mb-4 flex-grow">
+          <div className="mb-3 sm:mb-4 flex-grow">
             <ul className="space-y-1">
               {producto.puntos.slice(0, 3).map((punto, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-gray-600">
                   <span className="text-primary mt-1">•</span>
                   <span className="line-clamp-2">{punto}</span>
                 </li>
@@ -135,12 +130,12 @@ const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
         )}
 
         {producto.categoria && producto.categoria.length > 0 && (
-          <div className="mb-6">
-            <div className="flex flex-wrap gap-2">
-              {producto.categoria.map((cat, idx) => (
+          <div className="mb-4 sm:mb-6">
+            <div className="flex flex-wrap gap-1 sm:gap-2">
+              {producto.categoria.slice(0, 3).map((cat, idx) => (
                 <span
                   key={idx}
-                  className="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full hover:bg-gray-200 transition-colors duration-300"
+                  className="text-[10px] sm:text-xs bg-gray-100 text-gray-700 px-2 sm:px-3 py-1 rounded-full hover:bg-gray-200 transition-colors duration-300"
                 >
                   {cat}
                 </span>
@@ -150,30 +145,60 @@ const ProductoCard = memo(({ producto, categoriaActiva, servicioActual }) => {
         )}
 
         <a
-          
-          className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:gap-3 mt-auto"
+          href={`https://wa.me/51912909920?text=${generarMensajeWhatsApp(producto)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white py-2.5 sm:py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:gap-3 mt-auto text-sm sm:text-base"
         >
-          <FaWhatsapp className="text-lg" />
-          Consultar por WhatsApp
-          <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+          <FaWhatsapp className="text-base sm:text-lg" />
+          <span className="hidden xs:inline">Consultar por WhatsApp</span>
+          <span className="xs:hidden">WhatsApp</span>
+          <FaArrowRight className="hidden sm:block group-hover:translate-x-1 transition-transform duration-300" />
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 });
 
 ProductoCard.displayName = 'ProductoCard';
 
 const Productos = memo(({ servicioSlug = null }) => {
-  console.log('🔍 Productos se está re-renderizando');
-
   const [categoriaActiva, setCategoriaActiva] = useState("Domestico");
   const [categoriasDisponibles, setCategoriasDisponibles] = useState([]);
   const [mostrarSeccion, setMostrarSeccion] = useState(false);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
+  const [serviciosData, setServiciosData] = useState(null);
+  const [productosData, setProductosData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Memoizar función para calcular categorías
+  // Cargar datos desde API
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [serviciosRes, productosRes] = await Promise.all([
+          fetch('/api/nosotros'),
+          fetch('/api/productos')
+        ]);
+        
+        const servicios = await serviciosRes.json();
+        const productos = await productosRes.json();
+        
+        setServiciosData(servicios);
+        setProductosData(productos);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error cargando datos:', error);
+        setLoading(false);
+      }
+    };
+    
+    loadData();
+  }, []);
+
+  // Calcular categorías y productos
   const calcularCategoriasYProductos = useCallback(() => {
+    if (!serviciosData || !productosData) return;
+
     const productosDeData = productosData.productos || [];
     let productosFiltradosPorCategoria = productosDeData;
 
@@ -244,18 +269,18 @@ const Productos = memo(({ servicioSlug = null }) => {
     } else {
       setCategoriasDisponibles([]);
     }
-  }, [servicioSlug, categoriaActiva]);
+  }, [servicioSlug, categoriaActiva, serviciosData, productosData]);
 
-  // Solo ejecutar una vez al cargar
   useEffect(() => {
-    calcularCategoriasYProductos();
-  }, [calcularCategoriasYProductos]);
+    if (!loading) {
+      calcularCategoriasYProductos();
+    }
+  }, [calcularCategoriasYProductos, loading]);
 
-  // Memoizar la función para obtener productos
+  // Obtener productos
   const obtenerProductos = useCallback(() => {
-    if (!mostrarSeccion) return [];
+    if (!mostrarSeccion || !serviciosData || !productosData) return [];
 
-    // Para categoría Comercial, mostrar productos agrupados por servicio
     if (categoriaActiva === "Comercial" && productosFiltrados.length > 0) {
       const productosAgrupados = {};
 
@@ -343,14 +368,12 @@ const Productos = memo(({ servicioSlug = null }) => {
     });
 
     return productos;
-  }, [mostrarSeccion, categoriaActiva, productosFiltrados, servicioSlug]);
+  }, [mostrarSeccion, categoriaActiva, productosFiltrados, servicioSlug, serviciosData, productosData]);
 
-  // Memoizar productos
   const productos = useMemo(() => {
     return obtenerProductos();
   }, [obtenerProductos]);
 
-  // Memoizar categorías
   const renderCategorias = useMemo(() => {
     return categoriasDisponibles.map((categoriaKey) => {
       const info = categoriasInfo[categoriaKey];
@@ -358,56 +381,73 @@ const Productos = memo(({ servicioSlug = null }) => {
         <button
           key={categoriaKey}
           onClick={() => setCategoriaActiva(categoriaKey)}
-          className={`flex cursor-pointer items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 
-            w-full md:w-auto md:flex-1 
-            md:max-w-xs mx-auto sm:mx-0 md:min-w-[200px]
+          className={`flex cursor-pointer items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold transition-all transform hover:scale-105 
+            w-full sm:w-auto sm:flex-1 
+            sm:max-w-xs mx-auto sm:mx-0 sm:min-w-[180px] md:min-w-[200px]
             ${categoriaActiva === categoriaKey
               ? `${info.color} text-white shadow-lg`
               : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300"
             }`}
         >
-          <div className={`p-2 rounded-lg ${categoriaActiva === categoriaKey ? 'bg-white/20' : 'bg-gray-100'}`}>
+          <div className={`p-1.5 sm:p-2 rounded-lg ${categoriaActiva === categoriaKey ? 'bg-white/20' : 'bg-gray-100'}`}>
             {info.icon}
           </div>
           <div className="text-left flex-1">
-            <div className="font-bold">{info.nombre}</div>
+            <div className="font-bold text-sm sm:text-base">{info.nombre}</div>
           </div>
         </button>
       );
     });
   }, [categoriasDisponibles, categoriaActiva]);
 
-  // Memoizar productos renderizados
   const renderProductos = useMemo(() => {
     return productos.map((producto, index) => (
       <ProductoCard
         key={producto.id || index}
         producto={producto}
         categoriaActiva={categoriaActiva}
-        servicioActual={servicioSlug ? serviciosData.servicios.find(s => s.slug === servicioSlug) : null}
+        servicioActual={servicioSlug && serviciosData ? serviciosData.servicios.find(s => s.slug === servicioSlug) : null}
       />
     ));
-  }, [productos, categoriaActiva, servicioSlug]);
+  }, [productos, categoriaActiva, servicioSlug, serviciosData]);
+
+  if (loading) {
+    return (
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="h-8 sm:h-10 w-48 sm:w-64 bg-gray-200 rounded-lg animate-pulse mx-auto mb-3 sm:mb-4"></div>
+            <div className="h-5 sm:h-6 w-64 sm:w-96 bg-gray-200 rounded-lg animate-pulse mx-auto"></div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white rounded-2xl h-80 sm:h-96 animate-pulse"></div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (!mostrarSeccion) {
     return null;
   }
 
-  const servicioActual = servicioSlug
+  const servicioActual = servicioSlug && serviciosData
     ? serviciosData.servicios.find(s => s.slug === servicioSlug)
     : null;
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white" id="Productos">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white" id="Productos">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
             {servicioActual
               ? `Productos y Servicios de ${servicioActual.titulo}`
               : "Nuestros Productos y Servicios"
             }
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
             {servicioActual
               ? "Soluciones especializadas para tu proyecto"
               : "Soluciones especializadas según tu tipo de proyecto"
@@ -416,14 +456,14 @@ const Productos = memo(({ servicioSlug = null }) => {
         </div>
 
         {categoriasDisponibles.length > 0 && (
-          <div className="mb-12">
-            <div className="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
+          <div className="mb-8 sm:mb-12">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 flex-wrap">
               {renderCategorias}
             </div>
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {renderProductos}
         </div>
       </div>

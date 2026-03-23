@@ -21,9 +21,9 @@ const {
   themeColor = '#0066cc'
 } = Astro.props;
 
-const fullImageUrl = new URL(image, Astro.url).href;
+const fullImageUrl = 'https://teknisolutions.pe/';
 const siteName = 'Teknisolutions Perú';
-const canonicalUrl = new URL(canonical, Astro.url).href; // URL completa para canonical
+const canonicalUrl = 'https://teknisolutions.pe/'; // URL completa para canonical
 ---
 
 <!doctype html>
@@ -130,11 +130,6 @@ const canonicalUrl = new URL(canonical, Astro.url).href; // URL completa para ca
       ]
     }} />
     
-    <!-- Additional SEO -->
-    <meta name="generator" content={Astro.generator} />
-    <meta name="rating" content="General" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="distribution" content="Global" />
     
     <!-- Preload critical resources -->
     <link rel="preload" href="/styles/global.css" as="style" />
@@ -164,9 +159,11 @@ const canonicalUrl = new URL(canonical, Astro.url).href; // URL completa para ca
 <style is:global>
   html {
     scroll-behavior: smooth;
+    background-color: black; 
   }
   body {
     margin: 0;
+    background-color: black; 
   }
   
   /* Estilos para las transiciones de vista */
